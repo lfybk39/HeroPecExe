@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HeroPecApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GoogleMailName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">heropeccompany@gmail.com</Value>
+    </Setting>
+    <Setting Name="GoogleMailPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">yrzsdlzcdivsdpcd</Value>
+    </Setting>
+    <Setting Name="CurrentUserLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CurrentUserPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IsRemember" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
