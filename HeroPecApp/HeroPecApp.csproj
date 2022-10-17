@@ -179,6 +179,7 @@
       <LastGenOutput>HeroPecModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Bebas Neue.ttf" />
+    <None Include="HelveticaNeueCyr-Roman.ttf" />
     <None Include="HeroPecModel.edmx.diagram">
       <DependentUpon>HeroPecModel.edmx</DependentUpon>
     </None>
@@ -207,6 +208,7 @@
       <DependentUpon>HeroPecModel.edmx</DependentUpon>
       <LastGenOutput>HeroPecModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\zxczxcxzxzxzczxcxzxzcxz.png" />
     <None Include="Resources\Bebas Cyrillic.bmp" />
     <None Include="Resources\minimize_hover.png" />
     <None Include="Resources\maximize_hover.png" />

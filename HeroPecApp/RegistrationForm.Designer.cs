@@ -57,29 +57,31 @@ namespace HeroPecApp
             this.loginTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.nicknameTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.emailTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.dragPanel = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // emailLabel
             // 
             this.emailLabel.AutoSize = true;
-            this.emailLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.emailLabel.Location = new System.Drawing.Point(122, 139);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(55, 18);
+            this.emailLabel.Size = new System.Drawing.Size(54, 20);
             this.emailLabel.TabIndex = 0;
             this.emailLabel.Text = "Email*";
             // 
             // registrationButton
             // 
             this.registrationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.registrationButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.registrationButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registrationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registrationButton.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registrationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.registrationButton.Location = new System.Drawing.Point(259, 419);
             this.registrationButton.Name = "registrationButton";
@@ -113,55 +115,55 @@ namespace HeroPecApp
             // loginLabel
             // 
             this.loginLabel.AutoSize = true;
-            this.loginLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.loginLabel.Location = new System.Drawing.Point(122, 197);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(59, 18);
+            this.loginLabel.Size = new System.Drawing.Size(61, 20);
             this.loginLabel.TabIndex = 24;
             this.loginLabel.Text = "Логин*";
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.nameLabel.Location = new System.Drawing.Point(395, 139);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(40, 18);
+            this.nameLabel.Size = new System.Drawing.Size(40, 20);
             this.nameLabel.TabIndex = 22;
             this.nameLabel.Text = "Имя";
             // 
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.phoneLabel.Location = new System.Drawing.Point(395, 196);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(75, 18);
+            this.phoneLabel.Size = new System.Drawing.Size(79, 20);
             this.phoneLabel.TabIndex = 26;
             this.phoneLabel.Text = "Телефон";
             // 
             // confirmPasswordLabel
             // 
             this.confirmPasswordLabel.AutoSize = true;
-            this.confirmPasswordLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.confirmPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.confirmPasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.confirmPasswordLabel.Location = new System.Drawing.Point(122, 320);
             this.confirmPasswordLabel.Name = "confirmPasswordLabel";
-            this.confirmPasswordLabel.Size = new System.Drawing.Size(193, 18);
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(200, 20);
             this.confirmPasswordLabel.TabIndex = 31;
             this.confirmPasswordLabel.Text = "Подтверждение пароля*";
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.passwordLabel.Location = new System.Drawing.Point(122, 262);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(70, 18);
+            this.passwordLabel.Size = new System.Drawing.Size(73, 20);
             this.passwordLabel.TabIndex = 28;
             this.passwordLabel.Text = "Пароль*";
             // 
@@ -187,22 +189,24 @@ namespace HeroPecApp
             this.label4.Size = new System.Drawing.Size(161, 31);
             this.label4.TabIndex = 34;
             this.label4.Text = "в Heropec Cloud";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // captchaLabel
             // 
             this.captchaLabel.AutoSize = true;
-            this.captchaLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.captchaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.captchaLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.captchaLabel.Location = new System.Drawing.Point(395, 262);
             this.captchaLabel.Name = "captchaLabel";
-            this.captchaLabel.Size = new System.Drawing.Size(86, 18);
+            this.captchaLabel.Size = new System.Drawing.Size(89, 20);
             this.captchaLabel.TabIndex = 37;
             this.captchaLabel.Text = "Вы робот?";
             // 
             // wrapPictureBox
             // 
+            this.wrapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wrapPictureBox.Image = global::HeroPecApp.Properties.Resources.wrap;
-            this.wrapPictureBox.Location = new System.Drawing.Point(615, -1);
+            this.wrapPictureBox.Location = new System.Drawing.Point(613, 4);
             this.wrapPictureBox.Name = "wrapPictureBox";
             this.wrapPictureBox.Size = new System.Drawing.Size(24, 24);
             this.wrapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -214,8 +218,9 @@ namespace HeroPecApp
             // 
             // maximizePictureBox
             // 
+            this.maximizePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.maximizePictureBox.Image = global::HeroPecApp.Properties.Resources.maximize;
-            this.maximizePictureBox.Location = new System.Drawing.Point(645, -1);
+            this.maximizePictureBox.Location = new System.Drawing.Point(643, 4);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Size = new System.Drawing.Size(24, 24);
             this.maximizePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -227,8 +232,9 @@ namespace HeroPecApp
             // 
             // exitPictureBox
             // 
+            this.exitPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.exitPictureBox.Image = global::HeroPecApp.Properties.Resources.exit;
-            this.exitPictureBox.Location = new System.Drawing.Point(675, 0);
+            this.exitPictureBox.Location = new System.Drawing.Point(673, 4);
             this.exitPictureBox.Name = "exitPictureBox";
             this.exitPictureBox.Size = new System.Drawing.Size(24, 24);
             this.exitPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -417,12 +423,23 @@ namespace HeroPecApp
             this.emailTextBox.UnderlinedStyle = true;
             this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             // 
+            // dragPanel
+            // 
+            this.dragPanel.Location = new System.Drawing.Point(-3, -1);
+            this.dragPanel.Name = "dragPanel";
+            this.dragPanel.Size = new System.Drawing.Size(612, 29);
+            this.dragPanel.TabIndex = 47;
+            this.dragPanel.TabStop = false;
+            this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
+            this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(700, 524);
+            this.Controls.Add(this.dragPanel);
             this.Controls.Add(this.errorConfirmPasswordLabel);
             this.Controls.Add(this.errorPasswordLabel);
             this.Controls.Add(this.errorLoginTextBox);
@@ -461,6 +478,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,5 +514,6 @@ namespace HeroPecApp
         private System.Windows.Forms.Label errorLoginTextBox;
         private System.Windows.Forms.Label errorPasswordLabel;
         private System.Windows.Forms.Label errorConfirmPasswordLabel;
+        private System.Windows.Forms.PictureBox dragPanel;
     }
 }

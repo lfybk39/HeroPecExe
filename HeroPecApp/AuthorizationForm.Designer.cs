@@ -44,11 +44,13 @@ namespace HeroPecApp
             this.label3 = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new HeroPecApp.ToggleSwitch();
             this.toggleSwitch2 = new HeroPecApp.ToggleSwitch();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // authorizationButton
             // 
-            this.authorizationButton.Location = new System.Drawing.Point(276, 363);
+            this.authorizationButton.Location = new System.Drawing.Point(288, 353);
             this.authorizationButton.Name = "authorizationButton";
             this.authorizationButton.Size = new System.Drawing.Size(139, 36);
             this.authorizationButton.TabIndex = 0;
@@ -140,7 +142,7 @@ namespace HeroPecApp
             this.emailTextBox.BorderSize = 3;
             this.emailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.emailTextBox.Location = new System.Drawing.Point(243, 112);
+            this.emailTextBox.Location = new System.Drawing.Point(254, 197);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Padding = new System.Windows.Forms.Padding(7);
@@ -156,7 +158,7 @@ namespace HeroPecApp
             this.textBoxControl1.BorderSize = 3;
             this.textBoxControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.textBoxControl1.Location = new System.Drawing.Point(243, 207);
+            this.textBoxControl1.Location = new System.Drawing.Point(254, 255);
             this.textBoxControl1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.textBoxControl1.Name = "textBoxControl1";
             this.textBoxControl1.Padding = new System.Windows.Forms.Padding(7);
@@ -169,11 +171,11 @@ namespace HeroPecApp
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Font = new System.Drawing.Font("Helvetica", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.loginLabel.Location = new System.Drawing.Point(316, 91);
+            this.loginLabel.Location = new System.Drawing.Point(335, 178);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(55, 20);
+            this.loginLabel.Size = new System.Drawing.Size(50, 18);
             this.loginLabel.TabIndex = 25;
             this.loginLabel.Text = "Логин";
             // 
@@ -181,11 +183,11 @@ namespace HeroPecApp
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Font = new System.Drawing.Font("Helvetica", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.label3.Location = new System.Drawing.Point(316, 186);
+            this.label3.Location = new System.Drawing.Point(329, 234);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.Size = new System.Drawing.Size(63, 18);
             this.label3.TabIndex = 26;
             this.label3.Text = "Пароль";
             // 
@@ -198,7 +200,7 @@ namespace HeroPecApp
             this.toggleSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.toggleSwitch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.toggleSwitch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.toggleSwitch1.Location = new System.Drawing.Point(263, 244);
+            this.toggleSwitch1.Location = new System.Drawing.Point(277, 292);
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.Size = new System.Drawing.Size(167, 15);
             this.toggleSwitch1.TabIndex = 27;
@@ -214,19 +216,30 @@ namespace HeroPecApp
             this.toggleSwitch2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.toggleSwitch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.toggleSwitch2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.toggleSwitch2.Location = new System.Drawing.Point(263, 265);
+            this.toggleSwitch2.Location = new System.Drawing.Point(279, 313);
             this.toggleSwitch2.Name = "toggleSwitch2";
             this.toggleSwitch2.Size = new System.Drawing.Size(163, 15);
             this.toggleSwitch2.TabIndex = 28;
             this.toggleSwitch2.Text = "Запомнить меня";
             this.toggleSwitch2.TextOnChecked = "";
             // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Image = global::HeroPecApp.Properties.Resources.logo;
+            this.logoPictureBox.Location = new System.Drawing.Point(254, 12);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(212, 153);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 29;
+            this.logoPictureBox.TabStop = false;
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.ClientSize = new System.Drawing.Size(684, 411);
+            this.ClientSize = new System.Drawing.Size(684, 488);
+            this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.toggleSwitch2);
             this.Controls.Add(this.toggleSwitch1);
             this.Controls.Add(this.label3);
@@ -245,6 +258,7 @@ namespace HeroPecApp
             this.Name = "AuthorizationForm";
             this.Text = "AuthorizationForm";
             this.Load += new System.EventHandler(this.AuthorizationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +281,6 @@ namespace HeroPecApp
         private System.Windows.Forms.Label label3;
         private ToggleSwitch toggleSwitch1;
         private ToggleSwitch toggleSwitch2;
+        private System.Windows.Forms.PictureBox logoPictureBox;
     }
 }

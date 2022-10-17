@@ -22,6 +22,8 @@ namespace HeroPecApp
 
         private int passwordDifficulty = 0;
 
+        private Point mPoint = new Point();
+
         private void CheckDifficulty(string password)
         {
             passwordDifficulty = 0;
@@ -242,7 +244,7 @@ namespace HeroPecApp
 
         private void exitPictureBox_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void wrapPictureBox_Click(object sender, EventArgs e)
@@ -344,6 +346,24 @@ namespace HeroPecApp
                 passwordLabel.ForeColor = Color.FromArgb(255, 77, 255, 186);
                 confirmPasswordLabel.ForeColor = Color.FromArgb(255, 77, 255, 186);
                 errorConfirmPasswordLabel.Visible = false;
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Еблан?");
+        }
+
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
         }
     }
