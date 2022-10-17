@@ -169,11 +169,11 @@ namespace HeroPecApp
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginLabel.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.loginLabel.Location = new System.Drawing.Point(316, 91);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(53, 18);
+            this.loginLabel.Size = new System.Drawing.Size(55, 20);
             this.loginLabel.TabIndex = 25;
             this.loginLabel.Text = "Логин";
             // 
@@ -181,11 +181,11 @@ namespace HeroPecApp
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("HelveticaNeueCyr", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.label3.Location = new System.Drawing.Point(316, 186);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 18);
+            this.label3.Size = new System.Drawing.Size(67, 20);
             this.label3.TabIndex = 26;
             this.label3.Text = "Пароль";
             // 
@@ -196,11 +196,11 @@ namespace HeroPecApp
             this.toggleSwitch1.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.toggleSwitch1.Checked = false;
             this.toggleSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toggleSwitch1.Font = new System.Drawing.Font("HelveticaNeueCyr", 10.5F);
+            this.toggleSwitch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.toggleSwitch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.toggleSwitch1.Location = new System.Drawing.Point(263, 244);
             this.toggleSwitch1.Name = "toggleSwitch1";
-            this.toggleSwitch1.Size = new System.Drawing.Size(172, 15);
+            this.toggleSwitch1.Size = new System.Drawing.Size(167, 15);
             this.toggleSwitch1.TabIndex = 27;
             this.toggleSwitch1.Text = "Показать пароль";
             this.toggleSwitch1.TextOnChecked = "";
@@ -212,11 +212,11 @@ namespace HeroPecApp
             this.toggleSwitch2.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.toggleSwitch2.Checked = false;
             this.toggleSwitch2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toggleSwitch2.Font = new System.Drawing.Font("HelveticaNeueCyr", 10.5F);
+            this.toggleSwitch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.toggleSwitch2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.toggleSwitch2.Location = new System.Drawing.Point(263, 265);
             this.toggleSwitch2.Name = "toggleSwitch2";
-            this.toggleSwitch2.Size = new System.Drawing.Size(168, 15);
+            this.toggleSwitch2.Size = new System.Drawing.Size(163, 15);
             this.toggleSwitch2.TabIndex = 28;
             this.toggleSwitch2.Text = "Запомнить меня";
             this.toggleSwitch2.TextOnChecked = "";

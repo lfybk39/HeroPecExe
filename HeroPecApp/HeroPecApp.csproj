@@ -178,6 +178,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HeroPecModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Bebas Neue.ttf" />
     <None Include="HeroPecModel.edmx.diagram">
       <DependentUpon>HeroPecModel.edmx</DependentUpon>
     </None>
@@ -206,6 +207,7 @@
       <DependentUpon>HeroPecModel.edmx</DependentUpon>
       <LastGenOutput>HeroPecModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Bebas Cyrillic.bmp" />
     <None Include="Resources\minimize_hover.png" />
     <None Include="Resources\maximize_hover.png" />
     <None Include="Resources\exit_hover.png" />

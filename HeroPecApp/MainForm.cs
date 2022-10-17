@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Compression;
 using System.IO;
-using MaterialSkin;
-using MaterialSkin.Animations;
-using MaterialSkin.Controls;
 
 namespace HeroPecApp
 {
