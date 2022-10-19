@@ -31,6 +31,8 @@ namespace HeroPecApp
         {
             this.filesListView = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
+            this.addFileButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // filesListView
@@ -58,12 +60,34 @@ namespace HeroPecApp
             this.label4.TabIndex = 35;
             this.label4.Text = "Heropec Cloud";
             // 
+            // addFileButton
+            // 
+            this.addFileButton.Location = new System.Drawing.Point(81, 59);
+            this.addFileButton.Name = "addFileButton";
+            this.addFileButton.Size = new System.Drawing.Size(104, 23);
+            this.addFileButton.TabIndex = 36;
+            this.addFileButton.Text = "Добавить файл";
+            this.addFileButton.UseVisualStyleBackColor = true;
+            this.addFileButton.Click += new System.EventHandler(this.addFileButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(81, 89);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(104, 23);
+            this.saveButton.TabIndex = 37;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.addFileButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.filesListView);
             this.Name = "MainForm";
@@ -78,6 +102,8 @@ namespace HeroPecApp
 
         private System.Windows.Forms.ListView filesListView;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button addFileButton;
+        private System.Windows.Forms.Button saveButton;
     }
 }
 

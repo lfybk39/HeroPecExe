@@ -15,6 +15,21 @@ namespace HeroPecApp
 {
     public partial class MainForm : Form
     {
+        private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{Properties.Settings.Default.CurrentUserLogin}.zip";
+        private string heroZip = $"{Environment.CurrentDirectory}\\DataFiles\\HeroData.zip";
+
+        private void FillListView()
+        {
+            filesListView.Items.Clear();
+            using (var Zip = new ZipFile(userZip))
+            {
+                foreach (var entry in Zip.Entries)
+                {
+                    filesListView.Items.Add(entry.FileName);
+                }
+            }
+        }
+
         public MainForm()
         {
 
@@ -27,23 +42,61 @@ namespace HeroPecApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //    if (!File.Exists($"{Environment.CurrentDirectory}\\DataFiles\\HeroData.zip"))
-            //    {
-            //        Directory.CreateDirectory($"{Environment.CurrentDirectory}\\DataFiles");
-            //        using (ZipFile zip = new ZipFile())
-            //        {
-            //            zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression; // Задаем максимальную степень сжатия 
-            //            zip.Password = Properties.Settings.Default.CurrentUserPassword;
-            //            zip.AddFile(File.Create($"{Environment.CurrentDirectory}\\DataFiles\\{Properties.Settings.Default.CurrentUserLogin}.zip").Name, "");
-            //            zip.Save($"{Environment.CurrentDirectory}\\DataFiles\\HeroData.zip");
-            //        }
-            //    }
+            if (!File.Exists(heroZip))
+            {
+                Directory.CreateDirectory($"{Environment.CurrentDirectory}\\DataFiles");
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression; // Задаем максимальную степень сжатия 
+                    zip.Save(userZip);
+                    zip.Password = Properties.Settings.Default.CurrentUserPassword;
+                    zip.AddFile(userZip, "");
+                    zip.Save($"{Environment.CurrentDirectory}\\DataFiles\\HeroData.zip");
+                }
+            }
 
-            //    using (ZipFile zip = new ZipFile($"{Environment.CurrentDirectory}\\DataFiles\\HeroData.zip"))
-            //    {
-            //        foreach (var item in zip.Entries)
-            //                filesListView.Items.Add(item.FileName);
-            //    }
+            using (ZipFile zip = new ZipFile(heroZip))
+            {
+                zip.Password = Properties.Settings.Default.CurrentUserPassword;
+                if (File.Exists(userZip))
+                {
+                    File.Delete(userZip);
+                }
+                zip.Entries.FirstOrDefault(en => en.FileName == $"{Properties.Settings.Default.CurrentUserLogin}.zip").Extract($"{Environment.CurrentDirectory}\\TempData");
+            }
+            FillListView();
+        }
+
+        private void addFileButton_Click(object sender, EventArgs e)
+        {
+            var addFile = new OpenFileDialog();
+            if(addFile.ShowDialog() == DialogResult.OK)
+            {
+                using (var zip = new ZipFile(userZip))
+                {
+                    zip.AddFile(addFile.FileName, "");
+                    zip.Save(userZip);
+                }
+            }
+            FillListView();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var zip = new ZipFile(heroZip))
+                {
+                    zip.Password = Properties.Settings.Default.CurrentUserPassword;
+                    zip.RemoveEntry($"{Properties.Settings.Default.CurrentUserLogin}.zip");
+                    zip.AddFile(userZip, "");
+                    zip.Save(heroZip);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

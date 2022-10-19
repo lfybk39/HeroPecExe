@@ -425,9 +425,11 @@ namespace HeroPecApp
             // 
             // dragPanel
             // 
+            this.dragPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dragPanel.Location = new System.Drawing.Point(-3, -1);
             this.dragPanel.Name = "dragPanel";
-            this.dragPanel.Size = new System.Drawing.Size(612, 29);
+            this.dragPanel.Size = new System.Drawing.Size(613, 29);
             this.dragPanel.TabIndex = 47;
             this.dragPanel.TabStop = false;
             this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
