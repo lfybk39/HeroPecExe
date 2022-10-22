@@ -82,5 +82,41 @@ namespace HeroPecApp.Properties {
                 this["IsRemember"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LocalHeroAdmin")]
+        public string LocalAdminLogin {
+            get {
+                return ((string)(this["LocalAdminLogin"]));
+            }
+            set {
+                this["LocalAdminLogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pass1234")]
+        public string LocalAdminPassword {
+            get {
+                return ((string)(this["LocalAdminPassword"]));
+            }
+            set {
+                this["LocalAdminPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LocalPath {
+            get {
+                return ((string)(this["LocalPath"]));
+            }
+            set {
+                this["LocalPath"] = value;
+            }
+        }
     }
 }

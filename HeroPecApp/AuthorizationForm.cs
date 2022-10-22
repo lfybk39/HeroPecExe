@@ -16,6 +16,26 @@ namespace HeroPecApp
 {
     public partial class AuthorizationForm : Form
     {
+        private void Authorize()
+        {
+            var currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
+                                u => emailLoginTextBox1.Text.Contains("@") ? (u.Email == emailLoginTextBox1.Text)
+                                : (u.Login == emailLoginTextBox1.Text));
+            if (currentUser == null || currentUser.Password != passwordTextBox1.Text)
+            {
+                throw new Exception("Неверные данные для входа.");
+            }
+            SendEmail(currentUser);
+            MessageBox.Show("Вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
+            Properties.Settings.Default.CurrentUserLogin = currentUser.Login;
+            Properties.Settings.Default.CurrentUserPassword = currentUser.Password;
+            if (stayLoggedCheckBox.Checked)
+            {
+                Properties.Settings.Default.IsRemember = true;
+                Properties.Settings.Default.Save();
+            }
+        }
+
         private static void SendEmail(User currentUser)
         {
             using (var smtp = new SmtpClient())
@@ -53,36 +73,30 @@ namespace HeroPecApp
 
         private void authorizationButton_Click(object sender, EventArgs e)
         {
-            try
+            if (emailLoginTextBox.Texts != Properties.Settings.Default.LocalAdminLogin)
             {
-                var currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
-                    u => emailLoginTextBox.Text.Contains("@") ? (u.Email == emailLoginTextBox.Text)
-                    : (u.Login == emailLoginTextBox.Text));
-                if (currentUser == null || currentUser.Password != passwordTextBox.Text)
+                try
                 {
-                    throw new Exception("Неверные данные для входа.");
+                    Authorize();
+                    this.DialogResult = DialogResult.OK;
+                    Close();
                 }
-                //SendEmail(currentUser);
-                MessageBox.Show("Вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
-                Properties.Settings.Default.CurrentUserLogin = currentUser.Login;
-                Properties.Settings.Default.CurrentUserPassword = currentUser.Password;
-                if (stayLoggedCheckBox.Checked)
-                {                    
-                    Properties.Settings.Default.IsRemember = true;
-                    Properties.Settings.Default.Save();
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
                 }
-                this.DialogResult = DialogResult.OK;
-                Close();
             }
-            catch (Exception exc)
+            else if (passwordTextBox.Texts == Properties.Settings.Default.LocalAdminPassword)
             {
-                MessageBox.Show(exc.Message);
+                new ConfigurationForm().Show();
             }
         }
 
+
+
         private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            passwordTextBox.UseSystemPasswordChar = !showPasswordCheckBox.Checked;
+            passwordTextBox1.UseSystemPasswordChar = !showPasswordCheckBox.Checked;
         }
 
         private void registerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -100,8 +114,8 @@ namespace HeroPecApp
             if (Properties.Settings.Default.IsRemember == true)
             {
                 stayLoggedCheckBox.Checked = true;
-                emailLoginTextBox.Text = Properties.Settings.Default.CurrentUserLogin;
-                passwordTextBox.Text = Properties.Settings.Default.CurrentUserPassword;
+                emailLoginTextBox1.Text = Properties.Settings.Default.CurrentUserLogin;
+                passwordTextBox1.Text = Properties.Settings.Default.CurrentUserPassword;
             }
         }
 

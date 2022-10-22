@@ -142,7 +142,7 @@ namespace HeroPecApp
                 //SendEmail(new User { Login="YaViblyadok2009", Password="zZVv", Email= "pcs.91.akt@gmail.com" });
                 //MessageBox.Show("Test");
                 StringBuilder errors = new StringBuilder();
-                if (Core.Context.Users.Any(u => u.Login == user.Login))
+                if (Core.Context.Users.Any(u => u.Login == user.Login) || user.Login == Properties.Settings.Default.LocalAdminLogin)
                 {
                     errors.AppendLine("Логин уже зарегистрирован в системе.");
                 }

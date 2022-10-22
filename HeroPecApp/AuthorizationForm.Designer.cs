@@ -32,14 +32,14 @@ namespace HeroPecApp
             this.authorizationButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.emailLoginTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.emailLoginTextBox1 = new System.Windows.Forms.TextBox();
+            this.passwordTextBox1 = new System.Windows.Forms.TextBox();
             this.showPasswordCheckBox = new System.Windows.Forms.CheckBox();
             this.registerLinkLabel = new System.Windows.Forms.LinkLabel();
             this.restoreLinkLabel = new System.Windows.Forms.LinkLabel();
             this.stayLoggedCheckBox = new System.Windows.Forms.CheckBox();
-            this.emailTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.textBoxControl1 = new HeroPecApp.Controls.TextBoxControl();
+            this.emailLoginTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.loginLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new HeroPecApp.ToggleSwitch();
@@ -76,20 +76,20 @@ namespace HeroPecApp
             this.label2.TabIndex = 2;
             this.label2.Text = "Пароль";
             // 
-            // emailLoginTextBox
+            // emailLoginTextBox1
             // 
-            this.emailLoginTextBox.Location = new System.Drawing.Point(18, 25);
-            this.emailLoginTextBox.Name = "emailLoginTextBox";
-            this.emailLoginTextBox.Size = new System.Drawing.Size(139, 20);
-            this.emailLoginTextBox.TabIndex = 3;
+            this.emailLoginTextBox1.Location = new System.Drawing.Point(18, 25);
+            this.emailLoginTextBox1.Name = "emailLoginTextBox1";
+            this.emailLoginTextBox1.Size = new System.Drawing.Size(139, 20);
+            this.emailLoginTextBox1.TabIndex = 3;
             // 
-            // passwordTextBox
+            // passwordTextBox1
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(18, 64);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(139, 20);
-            this.passwordTextBox.TabIndex = 4;
-            this.passwordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox1.Location = new System.Drawing.Point(18, 64);
+            this.passwordTextBox1.Name = "passwordTextBox1";
+            this.passwordTextBox1.Size = new System.Drawing.Size(139, 20);
+            this.passwordTextBox1.TabIndex = 4;
+            this.passwordTextBox1.UseSystemPasswordChar = true;
             // 
             // showPasswordCheckBox
             // 
@@ -135,37 +135,37 @@ namespace HeroPecApp
             this.stayLoggedCheckBox.UseVisualStyleBackColor = true;
             this.stayLoggedCheckBox.CheckedChanged += new System.EventHandler(this.stayLoggedCheckBox_CheckedChanged);
             // 
-            // emailTextBox
+            // emailLoginTextBox
             // 
-            this.emailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.emailTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.emailTextBox.BorderSize = 3;
-            this.emailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.emailTextBox.Location = new System.Drawing.Point(254, 197);
-            this.emailTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Padding = new System.Windows.Forms.Padding(7);
-            this.emailTextBox.Size = new System.Drawing.Size(212, 31);
-            this.emailTextBox.TabIndex = 21;
-            this.emailTextBox.Texts = "";
-            this.emailTextBox.UnderlinedStyle = false;
+            this.emailLoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.emailLoginTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.BorderSize = 3;
+            this.emailLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.Location = new System.Drawing.Point(254, 197);
+            this.emailLoginTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.emailLoginTextBox.Name = "emailLoginTextBox";
+            this.emailLoginTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.emailLoginTextBox.Size = new System.Drawing.Size(212, 31);
+            this.emailLoginTextBox.TabIndex = 21;
+            this.emailLoginTextBox.Texts = "";
+            this.emailLoginTextBox.UnderlinedStyle = false;
             // 
-            // textBoxControl1
+            // passwordTextBox
             // 
-            this.textBoxControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.textBoxControl1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.textBoxControl1.BorderSize = 3;
-            this.textBoxControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.textBoxControl1.Location = new System.Drawing.Point(254, 255);
-            this.textBoxControl1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.textBoxControl1.Name = "textBoxControl1";
-            this.textBoxControl1.Padding = new System.Windows.Forms.Padding(7);
-            this.textBoxControl1.Size = new System.Drawing.Size(212, 31);
-            this.textBoxControl1.TabIndex = 22;
-            this.textBoxControl1.Texts = "";
-            this.textBoxControl1.UnderlinedStyle = false;
+            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.passwordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.BorderSize = 3;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.Location = new System.Drawing.Point(254, 255);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.passwordTextBox.Size = new System.Drawing.Size(212, 31);
+            this.passwordTextBox.TabIndex = 22;
+            this.passwordTextBox.Texts = "";
+            this.passwordTextBox.UnderlinedStyle = false;
             // 
             // loginLabel
             // 
@@ -244,14 +244,14 @@ namespace HeroPecApp
             this.Controls.Add(this.toggleSwitch1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.loginLabel);
-            this.Controls.Add(this.textBoxControl1);
-            this.Controls.Add(this.emailTextBox);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.emailLoginTextBox);
             this.Controls.Add(this.stayLoggedCheckBox);
             this.Controls.Add(this.restoreLinkLabel);
             this.Controls.Add(this.registerLinkLabel);
             this.Controls.Add(this.showPasswordCheckBox);
-            this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.emailLoginTextBox);
+            this.Controls.Add(this.passwordTextBox1);
+            this.Controls.Add(this.emailLoginTextBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.authorizationButton);
@@ -269,14 +269,14 @@ namespace HeroPecApp
         private System.Windows.Forms.Button authorizationButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox emailLoginTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox emailLoginTextBox1;
+        private System.Windows.Forms.TextBox passwordTextBox1;
         private System.Windows.Forms.CheckBox showPasswordCheckBox;
         private System.Windows.Forms.LinkLabel registerLinkLabel;
         private System.Windows.Forms.LinkLabel restoreLinkLabel;
         private System.Windows.Forms.CheckBox stayLoggedCheckBox;
-        private Controls.TextBoxControl emailTextBox;
-        private Controls.TextBoxControl textBoxControl1;
+        private Controls.TextBoxControl emailLoginTextBox;
+        private Controls.TextBoxControl passwordTextBox;
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Label label3;
         private ToggleSwitch toggleSwitch1;

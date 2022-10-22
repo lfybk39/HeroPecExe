@@ -21,7 +21,9 @@ namespace HeroPecApp
         : u.Login == Properties.Settings.Default.CurrentUserLogin).Login;
         private string currentUserPassword = GetHash(Properties.Settings.Default.CurrentUserPassword);
         private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{currentUserLogin}.zip";
-        private string heroZip = $"{Environment.CurrentDirectory}\\DataFiles\\HeroData.zip";
+        private string heroZip = (Properties.Settings.Default.LocalPath == "" 
+            ? $"{Environment.CurrentDirectory}\\DataFiles"
+            : Properties.Settings.Default.LocalPath) +"\\HeroData.zip";
 
         public static string GetHash(string input)
         {
@@ -44,6 +46,22 @@ namespace HeroPecApp
                 }
             }
             loadPictureBox.Visible = false;
+        }
+
+        private void DeleteFile()
+        {
+            if (filesListView.SelectedItems.Count != 0)
+            {
+                using (var zip = new ZipFile(userZip))
+                {
+                    foreach (ListViewItem item in filesListView.SelectedItems)
+                    {
+                        zip.RemoveEntry(item.Text);
+                        zip.Save(userZip);
+                    }
+                }
+                FillListView();
+            }
         }
 
         private void SaveData()
@@ -85,14 +103,14 @@ namespace HeroPecApp
         {
             if (!File.Exists(heroZip))
             {
-                Directory.CreateDirectory($"{Environment.CurrentDirectory}\\DataFiles");
+                Directory.CreateDirectory(heroZip.Replace("\\HeroData.zip", ""));
                 using (ZipFile zip = new ZipFile())
                 {
-                    zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression; // Задаем максимальную степень сжатия 
+                    zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
                     zip.Save(userZip);
                     zip.Password = currentUserPassword;
                     zip.AddFile(userZip, "");
-                    zip.Save($"{Environment.CurrentDirectory}\\DataFiles\\HeroData.zip");
+                    zip.Save(heroZip);
                 }
             }
 
@@ -107,6 +125,7 @@ namespace HeroPecApp
             }
             FillListView();
             textBox1.Text = currentUserPassword;
+            MessageBox.Show(Properties.Settings.Default.LocalPath);
         }
 
         private void addFileButton_Click(object sender, EventArgs e)
@@ -117,18 +136,7 @@ namespace HeroPecApp
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (filesListView.SelectedItems.Count != 0)
-            {
-                using (var zip = new ZipFile(userZip))
-                {
-                    foreach (ListViewItem item in filesListView.SelectedItems)
-                    {
-                        zip.RemoveEntry(item.Text);
-                        zip.Save(userZip);
-                    }
-                }
-                FillListView();
-            }
+            DeleteFile();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
