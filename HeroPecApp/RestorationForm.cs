@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace HeroPecApp
     public partial class RestorationForm : Form
     {
         private int code = 0;
+        private Point mPoint = new Point();
         private User currentUser = new User();
         private static void SendEmail(int code, string email)
         {
@@ -56,21 +58,21 @@ namespace HeroPecApp
         {
             try
             {
-                currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
-                    u => emailLoginTextBox.Text.Contains("@") ? (u.Email == emailLoginTextBox.Text)
-                    : (u.Login == emailLoginTextBox.Text));
-                if (!(currentUser is null))
-                {
-                    var random = new Random();
-                    code = random.Next(1000, 9999);
-                    SendEmail(code, currentUser.Email);
+                //currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
+                //    u => emailLoginTextBox.Text.Contains("@") ? (u.Email == emailLoginTextBox.Text)
+                //    : (u.Login == emailLoginTextBox.Text));
+                //if (!(currentUser is null))
+                //{
+                //    var random = new Random();
+                //    code = random.Next(1000, 9999);
+                //    SendEmail(code, currentUser.Email);
                     MessageBox.Show($"На ваш почтовый ящик отправлен код подтверждения");
                     codeButton.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Пользователь не найден");
-                }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Пользователь не найден");
+                //}
             }
             catch (Exception ex)
             {
@@ -80,20 +82,15 @@ namespace HeroPecApp
 
         private void codeButton_Click(object sender, EventArgs e)
         {
-            if (code.ToString() == codeTextBox.Text)
+            if (code.ToString() == codeTextBox.Texts)
             {
-                label1.Visible = label2.Visible = emailLoginTextBox.Visible = codeTextBox.Visible = confirmButton.Visible = codeButton.Visible = false;
-                label3.Visible = label4.Visible = passwordTextBox.Visible = confirmationTextBox.Visible = showPassCheckBox.Visible = restoreButton.Visible = true;
+                codePanel.Visible = false;
+                restorationPanel.Visible = true;
             }
             else
             {
                 MessageBox.Show("Неверный код");
             }
-        }
-
-        private void showPassCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            passwordTextBox.UseSystemPasswordChar = confirmationTextBox.UseSystemPasswordChar = !showPassCheckBox.Checked;
         }
 
         private void restoreButton_Click(object sender, EventArgs e)
@@ -115,6 +112,42 @@ namespace HeroPecApp
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void showPasswordCheckBox_CheckedChanged(object sender)
+        {
+            passwordTextBox.UseChar = confirmationTextBox.UseChar = !showPasswordCheckBox.Checked;
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void wrapPictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizePictureBox_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
         }
     }

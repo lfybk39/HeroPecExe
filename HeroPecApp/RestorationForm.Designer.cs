@@ -29,175 +29,343 @@ namespace HeroPecApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.emailLoginTextBox = new System.Windows.Forms.TextBox();
+            this.confirmPasswordLabel = new System.Windows.Forms.Label();
+            this.newPasswordLabel = new System.Windows.Forms.Label();
+            this.confirmationTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.confirmButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.codeTextBox = new System.Windows.Forms.TextBox();
             this.codeButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.confirmationTextBox = new System.Windows.Forms.TextBox();
-            this.showPassCheckBox = new System.Windows.Forms.CheckBox();
+            this.codeLabel = new System.Windows.Forms.Label();
+            this.emailLoginLabel = new System.Windows.Forms.Label();
+            this.codeTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.emailLoginTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.showPasswordCheckBox = new HeroPecApp.ToggleSwitch();
             this.restoreButton = new System.Windows.Forms.Button();
+            this.codePanel = new System.Windows.Forms.Panel();
+            this.restorationPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dragPanel = new System.Windows.Forms.PictureBox();
+            this.wrapPictureBox = new System.Windows.Forms.PictureBox();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.codePanel.SuspendLayout();
+            this.restorationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // confirmPasswordLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Email/Логин";
+            this.confirmPasswordLabel.AutoSize = true;
+            this.confirmPasswordLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.confirmPasswordLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmPasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(160, 89);
+            this.confirmPasswordLabel.Name = "confirmPasswordLabel";
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(180, 18);
+            this.confirmPasswordLabel.TabIndex = 30;
+            this.confirmPasswordLabel.Text = "Подтверждение пароля";
             // 
-            // emailLoginTextBox
+            // newPasswordLabel
             // 
-            this.emailLoginTextBox.Location = new System.Drawing.Point(16, 31);
-            this.emailLoginTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.emailLoginTextBox.Name = "emailLoginTextBox";
-            this.emailLoginTextBox.Size = new System.Drawing.Size(172, 22);
-            this.emailLoginTextBox.TabIndex = 1;
-            // 
-            // confirmButton
-            // 
-            this.confirmButton.Location = new System.Drawing.Point(197, 28);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(137, 28);
-            this.confirmButton.TabIndex = 2;
-            this.confirmButton.Text = "Отправить код";
-            this.confirmButton.UseVisualStyleBackColor = true;
-            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Код подтверждения";
-            // 
-            // codeTextBox
-            // 
-            this.codeTextBox.Location = new System.Drawing.Point(19, 88);
-            this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(100, 22);
-            this.codeTextBox.TabIndex = 4;
-            // 
-            // codeButton
-            // 
-            this.codeButton.Enabled = false;
-            this.codeButton.Location = new System.Drawing.Point(125, 85);
-            this.codeButton.Name = "codeButton";
-            this.codeButton.Size = new System.Drawing.Size(122, 28);
-            this.codeButton.TabIndex = 5;
-            this.codeButton.Text = "Подтвердить";
-            this.codeButton.UseVisualStyleBackColor = true;
-            this.codeButton.Click += new System.EventHandler(this.codeButton_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Новый пароль";
-            this.label3.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Подтверждение пароля";
-            this.label4.Visible = false;
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Location = new System.Drawing.Point(21, 28);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(161, 22);
-            this.passwordTextBox.TabIndex = 8;
-            this.passwordTextBox.UseSystemPasswordChar = true;
-            this.passwordTextBox.Visible = false;
+            this.newPasswordLabel.AutoSize = true;
+            this.newPasswordLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newPasswordLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newPasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.newPasswordLabel.Location = new System.Drawing.Point(194, 31);
+            this.newPasswordLabel.Name = "newPasswordLabel";
+            this.newPasswordLabel.Size = new System.Drawing.Size(113, 18);
+            this.newPasswordLabel.TabIndex = 29;
+            this.newPasswordLabel.Text = "Новый пароль";
             // 
             // confirmationTextBox
             // 
-            this.confirmationTextBox.Location = new System.Drawing.Point(21, 72);
+            this.confirmationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.confirmationTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.confirmationTextBox.BorderSize = 3;
+            this.confirmationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.confirmationTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.confirmationTextBox.Location = new System.Drawing.Point(144, 110);
+            this.confirmationTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.confirmationTextBox.Name = "confirmationTextBox";
-            this.confirmationTextBox.Size = new System.Drawing.Size(161, 22);
-            this.confirmationTextBox.TabIndex = 9;
-            this.confirmationTextBox.UseSystemPasswordChar = true;
-            this.confirmationTextBox.Visible = false;
+            this.confirmationTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.confirmationTextBox.Size = new System.Drawing.Size(212, 31);
+            this.confirmationTextBox.TabIndex = 28;
+            this.confirmationTextBox.Texts = "";
+            this.confirmationTextBox.UnderlinedStyle = false;
+            this.confirmationTextBox.UseChar = true;
             // 
-            // showPassCheckBox
+            // passwordTextBox
             // 
-            this.showPassCheckBox.AutoSize = true;
-            this.showPassCheckBox.Location = new System.Drawing.Point(21, 100);
-            this.showPassCheckBox.Name = "showPassCheckBox";
-            this.showPassCheckBox.Size = new System.Drawing.Size(140, 20);
-            this.showPassCheckBox.TabIndex = 10;
-            this.showPassCheckBox.Text = "Показать пароль";
-            this.showPassCheckBox.UseVisualStyleBackColor = true;
-            this.showPassCheckBox.Visible = false;
-            this.showPassCheckBox.CheckedChanged += new System.EventHandler(this.showPassCheckBox_CheckedChanged);
+            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.passwordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.BorderSize = 3;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.Location = new System.Drawing.Point(144, 52);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.passwordTextBox.Size = new System.Drawing.Size(212, 31);
+            this.passwordTextBox.TabIndex = 27;
+            this.passwordTextBox.Texts = "";
+            this.passwordTextBox.UnderlinedStyle = false;
+            this.passwordTextBox.UseChar = true;
+            // 
+            // confirmButton
+            // 
+            this.confirmButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.confirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.confirmButton.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.confirmButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.confirmButton.Location = new System.Drawing.Point(156, 77);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(189, 55);
+            this.confirmButton.TabIndex = 31;
+            this.confirmButton.Text = "Отправить код";
+            this.confirmButton.UseVisualStyleBackColor = false;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
+            // 
+            // codeButton
+            // 
+            this.codeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.codeButton.Enabled = false;
+            this.codeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.codeButton.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.codeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.codeButton.Location = new System.Drawing.Point(156, 202);
+            this.codeButton.Name = "codeButton";
+            this.codeButton.Size = new System.Drawing.Size(189, 55);
+            this.codeButton.TabIndex = 32;
+            this.codeButton.Text = "Подтвердить";
+            this.codeButton.UseVisualStyleBackColor = false;
+            this.codeButton.Click += new System.EventHandler(this.codeButton_Click);
+            // 
+            // codeLabel
+            // 
+            this.codeLabel.AutoSize = true;
+            this.codeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.codeLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.codeLabel.Location = new System.Drawing.Point(174, 144);
+            this.codeLabel.Name = "codeLabel";
+            this.codeLabel.Size = new System.Drawing.Size(152, 18);
+            this.codeLabel.TabIndex = 36;
+            this.codeLabel.Text = "Код подтверждения";
+            // 
+            // emailLoginLabel
+            // 
+            this.emailLoginLabel.AutoSize = true;
+            this.emailLoginLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emailLoginLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.emailLoginLabel.Location = new System.Drawing.Point(203, 19);
+            this.emailLoginLabel.Name = "emailLoginLabel";
+            this.emailLoginLabel.Size = new System.Drawing.Size(94, 18);
+            this.emailLoginLabel.TabIndex = 35;
+            this.emailLoginLabel.Text = "Email/Логин";
+            // 
+            // codeTextBox
+            // 
+            this.codeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.codeTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.codeTextBox.BorderSize = 3;
+            this.codeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.codeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.codeTextBox.Location = new System.Drawing.Point(144, 165);
+            this.codeTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.codeTextBox.Name = "codeTextBox";
+            this.codeTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.codeTextBox.Size = new System.Drawing.Size(212, 31);
+            this.codeTextBox.TabIndex = 34;
+            this.codeTextBox.Texts = "";
+            this.codeTextBox.UnderlinedStyle = false;
+            this.codeTextBox.UseChar = true;
+            // 
+            // emailLoginTextBox
+            // 
+            this.emailLoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.emailLoginTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.BorderSize = 3;
+            this.emailLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.Location = new System.Drawing.Point(144, 40);
+            this.emailLoginTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.emailLoginTextBox.Name = "emailLoginTextBox";
+            this.emailLoginTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.emailLoginTextBox.Size = new System.Drawing.Size(212, 31);
+            this.emailLoginTextBox.TabIndex = 33;
+            this.emailLoginTextBox.Texts = "";
+            this.emailLoginTextBox.UnderlinedStyle = false;
+            this.emailLoginTextBox.UseChar = false;
+            // 
+            // showPasswordCheckBox
+            // 
+            this.showPasswordCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.showPasswordCheckBox.BackColorOFF = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.showPasswordCheckBox.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.showPasswordCheckBox.Checked = false;
+            this.showPasswordCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.showPasswordCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.showPasswordCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.showPasswordCheckBox.Location = new System.Drawing.Point(167, 147);
+            this.showPasswordCheckBox.Name = "showPasswordCheckBox";
+            this.showPasswordCheckBox.Size = new System.Drawing.Size(167, 15);
+            this.showPasswordCheckBox.TabIndex = 37;
+            this.showPasswordCheckBox.Text = "Показать пароль";
+            this.showPasswordCheckBox.TextOnChecked = "";
+            this.showPasswordCheckBox.CheckedChanged += new HeroPecApp.ToggleSwitch.OnCheckedChangedHandler(this.showPasswordCheckBox_CheckedChanged);
             // 
             // restoreButton
             // 
-            this.restoreButton.Location = new System.Drawing.Point(21, 126);
+            this.restoreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.restoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.restoreButton.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.restoreButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.restoreButton.Location = new System.Drawing.Point(156, 207);
             this.restoreButton.Name = "restoreButton";
-            this.restoreButton.Size = new System.Drawing.Size(161, 23);
-            this.restoreButton.TabIndex = 11;
+            this.restoreButton.Size = new System.Drawing.Size(189, 55);
+            this.restoreButton.TabIndex = 38;
             this.restoreButton.Text = "Восстановить";
-            this.restoreButton.UseVisualStyleBackColor = true;
-            this.restoreButton.Visible = false;
+            this.restoreButton.UseVisualStyleBackColor = false;
             this.restoreButton.Click += new System.EventHandler(this.restoreButton_Click);
+            // 
+            // codePanel
+            // 
+            this.codePanel.Controls.Add(this.emailLoginLabel);
+            this.codePanel.Controls.Add(this.codeLabel);
+            this.codePanel.Controls.Add(this.emailLoginTextBox);
+            this.codePanel.Controls.Add(this.confirmButton);
+            this.codePanel.Controls.Add(this.codeTextBox);
+            this.codePanel.Controls.Add(this.codeButton);
+            this.codePanel.Location = new System.Drawing.Point(12, 179);
+            this.codePanel.Name = "codePanel";
+            this.codePanel.Size = new System.Drawing.Size(509, 302);
+            this.codePanel.TabIndex = 39;
+            // 
+            // restorationPanel
+            // 
+            this.restorationPanel.Controls.Add(this.restoreButton);
+            this.restorationPanel.Controls.Add(this.passwordTextBox);
+            this.restorationPanel.Controls.Add(this.showPasswordCheckBox);
+            this.restorationPanel.Controls.Add(this.confirmationTextBox);
+            this.restorationPanel.Controls.Add(this.confirmPasswordLabel);
+            this.restorationPanel.Controls.Add(this.newPasswordLabel);
+            this.restorationPanel.Location = new System.Drawing.Point(12, 182);
+            this.restorationPanel.Name = "restorationPanel";
+            this.restorationPanel.Size = new System.Drawing.Size(509, 281);
+            this.restorationPanel.TabIndex = 40;
+            this.restorationPanel.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::HeroPecApp.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(179, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(174, 136);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dragPanel
+            // 
+            this.dragPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dragPanel.Location = new System.Drawing.Point(-4, 0);
+            this.dragPanel.Name = "dragPanel";
+            this.dragPanel.Size = new System.Drawing.Size(444, 29);
+            this.dragPanel.TabIndex = 55;
+            this.dragPanel.TabStop = false;
+            this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
+            this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
+            // 
+            // wrapPictureBox
+            // 
+            this.wrapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.wrapPictureBox.Image = global::HeroPecApp.Properties.Resources.wrap;
+            this.wrapPictureBox.Location = new System.Drawing.Point(446, 5);
+            this.wrapPictureBox.Name = "wrapPictureBox";
+            this.wrapPictureBox.Size = new System.Drawing.Size(24, 24);
+            this.wrapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.wrapPictureBox.TabIndex = 54;
+            this.wrapPictureBox.TabStop = false;
+            this.wrapPictureBox.Click += new System.EventHandler(this.wrapPictureBox_Click);
+            // 
+            // maximizePictureBox
+            // 
+            this.maximizePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maximizePictureBox.Image = global::HeroPecApp.Properties.Resources.maximize;
+            this.maximizePictureBox.Location = new System.Drawing.Point(476, 5);
+            this.maximizePictureBox.Name = "maximizePictureBox";
+            this.maximizePictureBox.Size = new System.Drawing.Size(24, 24);
+            this.maximizePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.maximizePictureBox.TabIndex = 53;
+            this.maximizePictureBox.TabStop = false;
+            this.maximizePictureBox.Click += new System.EventHandler(this.maximizePictureBox_Click);
+            // 
+            // exitPictureBox
+            // 
+            this.exitPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitPictureBox.Image = global::HeroPecApp.Properties.Resources.exit;
+            this.exitPictureBox.Location = new System.Drawing.Point(506, 5);
+            this.exitPictureBox.Name = "exitPictureBox";
+            this.exitPictureBox.Size = new System.Drawing.Size(24, 24);
+            this.exitPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.exitPictureBox.TabIndex = 52;
+            this.exitPictureBox.TabStop = false;
+            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
             // RestorationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 160);
-            this.Controls.Add(this.restoreButton);
-            this.Controls.Add(this.showPassCheckBox);
-            this.Controls.Add(this.confirmationTextBox);
-            this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.codeButton);
-            this.Controls.Add(this.codeTextBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.confirmButton);
-            this.Controls.Add(this.emailLoginTextBox);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.ClientSize = new System.Drawing.Size(534, 493);
+            this.Controls.Add(this.dragPanel);
+            this.Controls.Add(this.restorationPanel);
+            this.Controls.Add(this.wrapPictureBox);
+            this.Controls.Add(this.maximizePictureBox);
+            this.Controls.Add(this.exitPictureBox);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.codePanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RestorationForm";
             this.Text = "RestorationForm";
+            this.codePanel.ResumeLayout(false);
+            this.codePanel.PerformLayout();
+            this.restorationPanel.ResumeLayout(false);
+            this.restorationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox emailLoginTextBox;
+        private System.Windows.Forms.Label confirmPasswordLabel;
+        private System.Windows.Forms.Label newPasswordLabel;
+        private Controls.TextBoxControl confirmationTextBox;
+        private Controls.TextBoxControl passwordTextBox;
         private System.Windows.Forms.Button confirmButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox codeTextBox;
         private System.Windows.Forms.Button codeButton;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.TextBox confirmationTextBox;
-        private System.Windows.Forms.CheckBox showPassCheckBox;
+        private System.Windows.Forms.Label codeLabel;
+        private System.Windows.Forms.Label emailLoginLabel;
+        private Controls.TextBoxControl codeTextBox;
+        private Controls.TextBoxControl emailLoginTextBox;
+        private ToggleSwitch showPasswordCheckBox;
         private System.Windows.Forms.Button restoreButton;
+        private System.Windows.Forms.Panel codePanel;
+        private System.Windows.Forms.Panel restorationPanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox dragPanel;
+        private System.Windows.Forms.PictureBox wrapPictureBox;
+        private System.Windows.Forms.PictureBox maximizePictureBox;
+        private System.Windows.Forms.PictureBox exitPictureBox;
     }
 }

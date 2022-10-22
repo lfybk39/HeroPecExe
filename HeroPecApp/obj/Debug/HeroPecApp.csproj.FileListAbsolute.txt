@@ -69,3 +69,5 @@ C:\Users\doge2\OneDrive\Desktop\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.pdb
 C:\Users\doge2\OneDrive\Desktop\HeroPecApp\HeroPecApp\bin\Debug\MaterialSkin.dll
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\MaterialSkin.dll
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.Controls.TextBoxControl.resources
+C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.ConfigurationForm.resources
+C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.UsersForm.resources

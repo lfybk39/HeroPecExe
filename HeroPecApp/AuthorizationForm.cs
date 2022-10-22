@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,16 +17,18 @@ namespace HeroPecApp
 {
     public partial class AuthorizationForm : Form
     {
+        private Point mPoint = new Point();
+
         private void Authorize()
         {
             var currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
-                                u => emailLoginTextBox1.Text.Contains("@") ? (u.Email == emailLoginTextBox1.Text)
-                                : (u.Login == emailLoginTextBox1.Text));
-            if (currentUser == null || currentUser.Password != passwordTextBox1.Text)
+                u => emailLoginTextBox.Texts.Contains("@") ? (u.Email == emailLoginTextBox.Texts)
+                : (u.Login == emailLoginTextBox.Texts));
+            if (currentUser == null || currentUser.Password != passwordTextBox.Texts)
             {
                 throw new Exception("Неверные данные для входа.");
             }
-            SendEmail(currentUser);
+            //SendEmail(currentUser);
             MessageBox.Show("Вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
             Properties.Settings.Default.CurrentUserLogin = currentUser.Login;
             Properties.Settings.Default.CurrentUserPassword = currentUser.Password;
@@ -73,30 +76,28 @@ namespace HeroPecApp
 
         private void authorizationButton_Click(object sender, EventArgs e)
         {
-            if (emailLoginTextBox.Texts != Properties.Settings.Default.LocalAdminLogin)
+            try
             {
-                try
+                if (emailLoginTextBox.Texts != Properties.Settings.Default.LocalAdminLogin)
                 {
                     Authorize();
                     this.DialogResult = DialogResult.OK;
                     Close();
                 }
-                catch (Exception exc)
+                else if (passwordTextBox.Texts == Properties.Settings.Default.LocalAdminPassword)
                 {
-                    MessageBox.Show(exc.Message);
+                    new ConfigurationForm().Show();
                 }
             }
-            else if (passwordTextBox.Texts == Properties.Settings.Default.LocalAdminPassword)
+            catch (Exception exc)
             {
-                new ConfigurationForm().Show();
+                MessageBox.Show(exc.Message);
             }
         }
 
-
-
         private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            passwordTextBox1.UseSystemPasswordChar = !showPasswordCheckBox.Checked;
+            passwordTextBox.UseChar = !showPasswordCheckBox.Checked;
         }
 
         private void registerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -114,15 +115,52 @@ namespace HeroPecApp
             if (Properties.Settings.Default.IsRemember == true)
             {
                 stayLoggedCheckBox.Checked = true;
-                emailLoginTextBox1.Text = Properties.Settings.Default.CurrentUserLogin;
-                passwordTextBox1.Text = Properties.Settings.Default.CurrentUserPassword;
+                emailLoginTextBox.Text = Properties.Settings.Default.CurrentUserLogin;
+                passwordTextBox.Text = Properties.Settings.Default.CurrentUserPassword;
             }
         }
 
-        private void stayLoggedCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void showPasswordCheckBox_CheckedChanged(object sender)
+        {
+            passwordTextBox.UseChar = !showPasswordCheckBox.Checked;
+        }
+
+        private void stayLoggedCheckBox_CheckedChanged(object sender)
         {
             Properties.Settings.Default.IsRemember = false;
             Properties.Settings.Default.Save();
         }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void wrapPictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizePictureBox_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
     }
+
 }

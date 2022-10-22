@@ -36,16 +36,24 @@ namespace HeroPecApp
 
         private static void AnimationInvoker()
         {
-            while (IsWork)
+            try
             {
-                AnimationList.RemoveAll(a => a == null || a.Status == Animation.AnimationStatus.Completed);
-
-                Parallel.For(0, Count(), index =>
+                while (IsWork)
                 {
-                    AnimationList[index].UpdateFrame();
-                });
+                    AnimationList.RemoveAll(a => a == null || a.Status == Animation.AnimationStatus.Completed);
 
-                Thread.Sleep((int)Interval);
+                    Parallel.For(0, Count(), index =>
+                    {
+                        if (index < AnimationList.Count)
+                            AnimationList[index].UpdateFrame();
+                    });
+
+                    Thread.Sleep((int)Interval);
+                }
+            }
+            catch (System.Exception)
+            {
+
             }
         }
 

@@ -111,5 +111,11 @@ namespace HeroPecApp.Controls
             this.OnTextChanged(e);
         }
 
+        public bool UseChar
+        {
+            get { return textBox1.UseSystemPasswordChar; }
+            set { textBox1.UseSystemPasswordChar = value; }
+        }
+
     }
 }
