@@ -26,7 +26,6 @@ C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\System.Numerics.Vectors.xml
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
-C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.csproj.AssemblyReference.cache
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\DotNetZip.dll
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\DotNetZip.pdb
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\DotNetZip.xml
@@ -70,4 +69,6 @@ C:\Users\doge2\OneDrive\Desktop\HeroPecApp\HeroPecApp\bin\Debug\MaterialSkin.dll
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\bin\Debug\MaterialSkin.dll
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.Controls.TextBoxControl.resources
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.ConfigurationForm.resources
-C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.UsersForm.resources
+C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.UserForm.resources
+C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.ManageUsersForm.resources
+C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.csproj.AssemblyReference.cache

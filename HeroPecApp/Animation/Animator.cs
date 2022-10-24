@@ -23,7 +23,7 @@ namespace HeroPecApp
         public static void Start()
         {
             IsWork = true;
-            Interval = 14; // FPS ~66
+            Interval = 1; // FPS ~66
 
             AnimatorThread = new Thread(AnimationInvoker)
             {

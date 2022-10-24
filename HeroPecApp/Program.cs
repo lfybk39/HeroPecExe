@@ -23,11 +23,11 @@ namespace HeroPecApp
                                 | System.Net.SecurityProtocolType.Tls11;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new UsersForm());
+                Application.Run(new AuthorizationForm());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
     }

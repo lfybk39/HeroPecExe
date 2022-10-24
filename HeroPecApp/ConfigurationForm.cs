@@ -49,11 +49,13 @@ namespace HeroPecApp
             {
                 MessageBox.Show("Логин и пароль должны иметь длину более 8 символов");
             }
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Данные сохранены");
         }
 
         private void usersLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new UsersForm().Show();
+            new ManageUsersForm().Show();
         }
     }
 }

@@ -117,6 +117,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core.cs" />
+    <Compile Include="UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HeroPecModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,11 +161,11 @@
     <Compile Include="User.cs">
       <DependentUpon>HeroPecModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersForm.cs">
+    <Compile Include="ManageUsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsersForm.Designer.cs">
-      <DependentUpon>UsersForm.cs</DependentUpon>
+    <Compile Include="ManageUsersForm.Designer.cs">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextBoxControl.resx">
       <DependentUpon>TextBoxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -189,8 +198,8 @@
     <EmbeddedResource Include="RestorationForm.resx">
       <DependentUpon>RestorationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsersForm.resx">
-      <DependentUpon>UsersForm.cs</DependentUpon>
+    <EmbeddedResource Include="ManageUsersForm.resx">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="HeroPecModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
