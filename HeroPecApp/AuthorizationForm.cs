@@ -17,13 +17,21 @@ namespace HeroPecApp
 {
     public partial class AuthorizationForm : Form
     {
-        private Point mPoint = new Point();
+        private Point windowPoint = new Point();
 
-        private void Authorize()
+        private void ChangeState(bool enabled)
+        {
+            foreach(Control control in Controls)
+            {
+                control.Enabled = enabled;
+            }
+        }
+
+        private async Task Authorize()
         {
             var currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
-                u => emailLoginTextBox.Texts.Contains("@") ? (u.Email == emailLoginTextBox.Texts)
-                : (u.Login == emailLoginTextBox.Texts));
+            u => emailLoginTextBox.Texts.Contains("@") ? (u.Email == emailLoginTextBox.Texts)
+            : (u.Login == emailLoginTextBox.Texts));
             if (currentUser == null || currentUser.Password != passwordTextBox.Texts)
             {
                 throw new Exception("Неверные данные для входа.");
@@ -37,6 +45,15 @@ namespace HeroPecApp
                 Properties.Settings.Default.IsRemember = true;
                 Properties.Settings.Default.Save();
             }
+        }
+
+        private async Task AuthorizeAsync()
+        {
+            ChangeState(false);
+            logoPictureBox.Image = Properties.Resources.logogif;
+            await Task.Run(Authorize);
+            logoPictureBox.Image = Properties.Resources.logo;
+            ChangeState(true);
         }
 
         private static void SendEmail(User currentUser)
@@ -74,13 +91,13 @@ namespace HeroPecApp
             InitializeComponent();
         }
 
-        private void authorizationButton_Click(object sender, EventArgs e)
+        private async void authorizationButton_Click(object sender, EventArgs e)
         {
             try
             {
                 if (emailLoginTextBox.Texts != Properties.Settings.Default.LocalAdminLogin)
                 {
-                    Authorize();
+                    await AuthorizeAsync();
                     this.DialogResult = DialogResult.OK;
                     Close();
                 }
@@ -92,12 +109,9 @@ namespace HeroPecApp
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
+                logoPictureBox.Image = Properties.Resources.logo;
+                ChangeState(true);
             }
-        }
-
-        private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            passwordTextBox.UseChar = !showPasswordCheckBox.Checked;
         }
 
         private void registerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -141,25 +155,37 @@ namespace HeroPecApp
             WindowState = FormWindowState.Minimized;
         }
 
-        private void maximizePictureBox_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-                WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
-        }
-
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            mPoint = new Point(e.X, e.Y);
+            windowPoint = new Point(e.X, e.Y);
         }
 
         private void dragPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+                this.Location = new Point(this.Location.X + e.X - windowPoint.X, this.Location.Y + e.Y - windowPoint.Y);
             }
+        }
+
+        private void exitPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit_hover;
+        }
+
+        private void exitPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit;
+        }
+
+        private void wrapPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.minimize_hover;
+        }
+
+        private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.wrap;
         }
     }
 
