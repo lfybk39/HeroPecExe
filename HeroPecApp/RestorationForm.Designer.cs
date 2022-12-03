@@ -43,14 +43,14 @@ namespace HeroPecApp
             this.restoreButton = new System.Windows.Forms.Button();
             this.codePanel = new System.Windows.Forms.Panel();
             this.restorationPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.wrapPictureBox = new System.Windows.Forms.PictureBox();
             this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.codePanel.SuspendLayout();
             this.restorationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
@@ -260,15 +260,15 @@ namespace HeroPecApp
             this.restorationPanel.TabIndex = 40;
             this.restorationPanel.Visible = false;
             // 
-            // pictureBox1
+            // logoPictureBox
             // 
-            this.pictureBox1.Image = global::HeroPecApp.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(179, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(174, 136);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
+            this.logoPictureBox.Image = global::HeroPecApp.Properties.Resources.logo;
+            this.logoPictureBox.Location = new System.Drawing.Point(179, 37);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(174, 136);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 41;
+            this.logoPictureBox.TabStop = false;
             // 
             // dragPanel
             // 
@@ -329,7 +329,7 @@ namespace HeroPecApp
             this.Controls.Add(this.wrapPictureBox);
             this.Controls.Add(this.maximizePictureBox);
             this.Controls.Add(this.exitPictureBox);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.codePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RestorationForm";
@@ -338,7 +338,7 @@ namespace HeroPecApp
             this.codePanel.PerformLayout();
             this.restorationPanel.ResumeLayout(false);
             this.restorationPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
@@ -362,7 +362,7 @@ namespace HeroPecApp
         private System.Windows.Forms.Button restoreButton;
         private System.Windows.Forms.Panel codePanel;
         private System.Windows.Forms.Panel restorationPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox logoPictureBox;
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox wrapPictureBox;
         private System.Windows.Forms.PictureBox maximizePictureBox;

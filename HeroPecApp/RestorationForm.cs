@@ -20,6 +20,19 @@ namespace HeroPecApp
         private int code = 0;
         private Point mPoint = new Point();
         private User currentUser = new User();
+
+        private void ChangeState(bool enabled)
+        {
+            logoPictureBox.Image = enabled ? Properties.Resources.logo : Properties.Resources.logogif;
+            foreach (Control control in Controls)
+            {
+                if (control.GetType().Name != "PictureBox")
+                {
+                    control.Enabled = enabled;
+                }
+            }
+        }
+
         private static void SendEmail(int code, string email)
         {
             using (var smtp = new SmtpClient())

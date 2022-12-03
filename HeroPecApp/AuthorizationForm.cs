@@ -21,39 +21,58 @@ namespace HeroPecApp
 
         private void ChangeState(bool enabled)
         {
-            foreach(Control control in Controls)
+            logoPictureBox.Image = enabled ? Properties.Resources.logo : Properties.Resources.logogif;
+            foreach (Control control in Controls)
             {
-                control.Enabled = enabled;
+                if (control.GetType().Name != "PictureBox")
+                {
+                    control.Enabled = enabled;
+                }
             }
         }
 
         private async Task Authorize()
         {
-            var currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
-            u => emailLoginTextBox.Texts.Contains("@") ? (u.Email == emailLoginTextBox.Texts)
-            : (u.Login == emailLoginTextBox.Texts));
-            if (currentUser == null || currentUser.Password != passwordTextBox.Texts)
+            try
             {
-                throw new Exception("Неверные данные для входа.");
+                var currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
+                u => emailLoginTextBox.Texts.Contains("@") ? (u.Email == emailLoginTextBox.Texts)
+                : (u.Login == emailLoginTextBox.Texts));
+                if (currentUser == null || currentUser.Password != passwordTextBox.Texts)
+                {
+                    throw new Exception("Неверные данные для входа.");
+                }
+                //SendEmail(currentUser);
+                MessageBox.Show("Вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
+                Properties.Settings.Default.CurrentUserLogin = currentUser.Login;
+                Properties.Settings.Default.CurrentUserPassword = currentUser.Password;
+                if (stayLoggedCheckBox.Checked)
+                {
+                    Properties.Settings.Default.IsRemember = true;
+                    Properties.Settings.Default.Save();
+                }
             }
-            //SendEmail(currentUser);
-            MessageBox.Show("Вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
-            Properties.Settings.Default.CurrentUserLogin = currentUser.Login;
-            Properties.Settings.Default.CurrentUserPassword = currentUser.Password;
-            if (stayLoggedCheckBox.Checked)
+            catch (Exception ex)
             {
-                Properties.Settings.Default.IsRemember = true;
-                Properties.Settings.Default.Save();
+                throw new Exception(ex.Message);
             }
         }
 
-        private async Task AuthorizeAsync()
+        private async Task<bool> AuthorizeAsync()
         {
+            bool authorized = false;
             ChangeState(false);
-            logoPictureBox.Image = Properties.Resources.logogif;
-            await Task.Run(Authorize);
-            logoPictureBox.Image = Properties.Resources.logo;
+            try
+            {
+                await Task.Run(Authorize);
+                authorized = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             ChangeState(true);
+            return authorized;
         }
 
         private static void SendEmail(User currentUser)
@@ -88,29 +107,41 @@ namespace HeroPecApp
 
         public AuthorizationForm()
         {
+            var intro = new IntroForm();
+            intro.Show();
             InitializeComponent();
+            intro.Close();
         }
 
         private async void authorizationButton_Click(object sender, EventArgs e)
         {
-            try
+            if (!offlineModeToggleSwitch.Checked)
             {
-                if (emailLoginTextBox.Texts != Properties.Settings.Default.LocalAdminLogin)
+                try
                 {
-                    await AuthorizeAsync();
-                    this.DialogResult = DialogResult.OK;
-                    Close();
+                    if (emailLoginTextBox.Texts != Properties.Settings.Default.LocalAdminLogin)
+                    {
+                        if (await AuthorizeAsync())
+                        {
+                            this.DialogResult = DialogResult.OK;
+                            Close();
+                        }
+                    }
+                    else if (passwordTextBox.Texts == Properties.Settings.Default.LocalAdminPassword)
+                    {
+                        new ConfigurationForm().Show();
+                    }
                 }
-                else if (passwordTextBox.Texts == Properties.Settings.Default.LocalAdminPassword)
+                catch (Exception exc)
                 {
-                    new ConfigurationForm().Show();
+                    MessageBox.Show(exc.Message);
+                    ChangeState(true);
                 }
             }
-            catch (Exception exc)
+            else
             {
-                MessageBox.Show(exc.Message);
-                logoPictureBox.Image = Properties.Resources.logo;
-                ChangeState(true);
+                Properties.Settings.Default.CurrentUserLogin = "";
+                DialogResult = DialogResult.OK;
             }
         }
 
@@ -186,6 +217,12 @@ namespace HeroPecApp
         private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
         {
             wrapPictureBox.Image = Properties.Resources.wrap;
+        }
+
+        private void offlineModeToggleSwitch_CheckedChanged(object sender)
+        {
+            showPasswordCheckBox.Enabled = stayLoggedCheckBox.Enabled = emailLoginTextBox.Enabled 
+                = passwordTextBox.Enabled = !offlineModeToggleSwitch.Checked;
         }
     }
 

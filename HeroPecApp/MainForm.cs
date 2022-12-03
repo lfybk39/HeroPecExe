@@ -16,14 +16,13 @@ namespace HeroPecApp
 {
     public partial class MainForm : Form
     {
-        private static string currentUserLogin = Core.Context.Users.FirstOrDefault(u => Properties.Settings.Default.CurrentUserLogin.Contains("@") ?
-        u.Email == Properties.Settings.Default.CurrentUserLogin
-        : u.Login == Properties.Settings.Default.CurrentUserLogin).Login;
-        private string currentUserPassword = GetHash(Properties.Settings.Default.CurrentUserPassword);
-        private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{currentUserLogin}.zip";
-        private string heroZip = (Properties.Settings.Default.LocalPath == "" 
+        private static bool isOflline = false;
+        private static User currentUser;
+        private string currentHashPassword;
+        private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{currentUser.Login}.zip";
+        private string heroZip = (Properties.Settings.Default.LocalPath == ""
             ? $"{Environment.CurrentDirectory}\\DataFiles"
-            : Properties.Settings.Default.LocalPath) +"\\HeroData.zip";
+            : Properties.Settings.Default.LocalPath) + "\\HeroData.zip";
 
         public static string GetHash(string input)
         {
@@ -31,6 +30,32 @@ namespace HeroPecApp
             var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
 
             return Convert.ToBase64String(hash);
+        }
+
+        private void CheckDirectory()
+        {
+            if (!File.Exists(heroZip))
+            {
+                Directory.CreateDirectory(heroZip.Replace("\\HeroData.zip", ""));
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
+                    zip.Save(userZip);
+                    zip.Password = currentHashPassword;
+                    zip.AddFile(userZip, "");
+                    zip.Save(heroZip);
+                }
+            }
+
+            using (ZipFile zip = new ZipFile(heroZip))
+            {
+                zip.Password = currentHashPassword;
+                if (File.Exists(userZip))
+                {
+                    File.Delete(userZip);
+                }
+                zip.Entries.FirstOrDefault(en => en.FileName == $"{currentUser.Login}.zip").Extract($"{Environment.CurrentDirectory}\\TempData");
+            }
         }
 
         private void AddFile()
@@ -68,8 +93,8 @@ namespace HeroPecApp
         {
             using (var zip = new ZipFile(heroZip))
             {
-                zip.Password = currentUserPassword;
-                zip.RemoveEntry($"{currentUserLogin}.zip");
+                zip.Password = currentHashPassword;
+                zip.RemoveEntry($"{currentUser.Login}.zip");
                 zip.AddFile(userZip, "");
                 zip.Save(heroZip);
             }
@@ -91,41 +116,28 @@ namespace HeroPecApp
 
         public MainForm()
         {
-
-            //if (new AuthorizationForm().ShowDialog() != DialogResult.OK)
-            //{
-            //    Close();
-            //}
             InitializeComponent();
+            if (Properties.Settings.Default.CurrentUserLogin == "")
+            {
+                isOflline = true;
+                currentUser = new User { Login = "LocalHeroData" };
+                currentHashPassword = GetHash("localdb");
+            }
+            else
+            {
+                currentUser = Core.Context.Users.FirstOrDefault(u =>
+                    Properties.Settings.Default.CurrentUserLogin.Contains("@") ?
+                    u.Email == Properties.Settings.Default.CurrentUserLogin
+                    : u.Login == Properties.Settings.Default.CurrentUserLogin);
+                currentHashPassword = GetHash(currentUser.Password);
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (!File.Exists(heroZip))
-            {
-                Directory.CreateDirectory(heroZip.Replace("\\HeroData.zip", ""));
-                using (ZipFile zip = new ZipFile())
-                {
-                    zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
-                    zip.Save(userZip);
-                    zip.Password = currentUserPassword;
-                    zip.AddFile(userZip, "");
-                    zip.Save(heroZip);
-                }
-            }
-
-            using (ZipFile zip = new ZipFile(heroZip))
-            {
-                zip.Password = currentUserPassword;
-                if (File.Exists(userZip))
-                {
-                    File.Delete(userZip);
-                }
-                zip.Entries.FirstOrDefault(en => en.FileName == $"{currentUserLogin}.zip").Extract($"{Environment.CurrentDirectory}\\TempData");
-            }
+            CheckDirectory();
             FillListView();
-            textBox1.Text = currentUserPassword;
-            MessageBox.Show(Properties.Settings.Default.LocalPath);
+            textBox1.Text = currentHashPassword;
         }
 
         private void addFileButton_Click(object sender, EventArgs e)
