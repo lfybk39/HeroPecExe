@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeroPecApp.ConnectionFTP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -116,7 +117,7 @@ namespace HeroPecApp
                 }
                 else if (passwordTextBox.Text == confirmationTextBox.Text)
                 {
-                    Core.Context.Users.FirstOrDefault(u => u.IdUser == currentUser.IdUser).Password = passwordTextBox.Text;
+                    Core.Context.User.FirstOrDefault(u => u.id == currentUser.id).passwd = passwordTextBox.Text;
                     Core.Context.SaveChanges();
                     MessageBox.Show("Пароль успешно изменён");
                     Close();

@@ -11,15 +11,15 @@ using System.Windows.Forms;
 using System.IO.Compression;
 using System.IO;
 using System.Security.Cryptography;
+using HeroPecApp.ConnectionFTP;
 
 namespace HeroPecApp
 {
     public partial class MainForm : Form
     {
         private static bool isOflline = false;
-        private static User currentUser;
         private string currentHashPassword;
-        private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{currentUser.Login}.zip";
+        private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{Connection.CurrentUser.userid}.zip";
         private string heroZip = (Properties.Settings.Default.LocalPath == ""
             ? $"{Environment.CurrentDirectory}\\DataFiles"
             : Properties.Settings.Default.LocalPath) + "\\HeroData.zip";
@@ -54,7 +54,15 @@ namespace HeroPecApp
                 {
                     File.Delete(userZip);
                 }
-                zip.Entries.FirstOrDefault(en => en.FileName == $"{currentUser.Login}.zip").Extract($"{Environment.CurrentDirectory}\\TempData");
+                var uZip = zip.Entries.FirstOrDefault(en => en.FileName == $"{Connection.CurrentUser.userid}.zip");
+                if (uZip is null)
+                {
+                    zip.Save(userZip);
+                }
+                else
+                {
+                    uZip.Extract($"{Environment.CurrentDirectory}\\TempData");
+                }
             }
         }
 
@@ -75,11 +83,11 @@ namespace HeroPecApp
 
         private void DeleteFile()
         {
-            if (filesListView.SelectedItems.Count != 0)
+            if (localFilesListView.SelectedItems.Count != 0)
             {
                 using (var zip = new ZipFile(userZip))
                 {
-                    foreach (ListViewItem item in filesListView.SelectedItems)
+                    foreach (ListViewItem item in localFilesListView.SelectedItems)
                     {
                         zip.RemoveEntry(item.Text);
                         zip.Save(userZip);
@@ -94,7 +102,7 @@ namespace HeroPecApp
             using (var zip = new ZipFile(heroZip))
             {
                 zip.Password = currentHashPassword;
-                zip.RemoveEntry($"{currentUser.Login}.zip");
+                zip.RemoveEntry($"{Connection.CurrentUser.userid}.zip");
                 zip.AddFile(userZip, "");
                 zip.Save(heroZip);
             }
@@ -103,12 +111,12 @@ namespace HeroPecApp
         private void FillListView()
         {
             loadPictureBox.Visible = true;
-            filesListView.Items.Clear();
+            localFilesListView.Items.Clear();
             using (var Zip = new ZipFile(userZip))
             {
                 foreach (var entry in Zip.Entries)
                 {
-                    filesListView.Items.Add(entry.FileName);
+                    localFilesListView.Items.Add(entry.FileName);
                 }
             }
             loadPictureBox.Visible = false;
@@ -117,19 +125,15 @@ namespace HeroPecApp
         public MainForm()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.CurrentUserLogin == "")
+            if (Connection.CurrentUser.userid == "")
             {
                 isOflline = true;
-                currentUser = new User { Login = "LocalHeroData" };
+                Connection.CurrentUser = new User { userid = "LocalHeroData" };
                 currentHashPassword = GetHash("localdb");
             }
             else
             {
-                currentUser = Core.Context.Users.FirstOrDefault(u =>
-                    Properties.Settings.Default.CurrentUserLogin.Contains("@") ?
-                    u.Email == Properties.Settings.Default.CurrentUserLogin
-                    : u.Login == Properties.Settings.Default.CurrentUserLogin);
-                currentHashPassword = GetHash(currentUser.Password);
+                currentHashPassword = GetHash(Connection.CurrentUser.passwd);
             }
         }
 
@@ -155,6 +159,13 @@ namespace HeroPecApp
         {
             SaveData();
             File.Delete(userZip);
+        }
+
+        private void cloudLocalCheckBox_CheckedChanged(object sender)
+        {
+            cloudLocalCheckBox.Text = cloudLocalCheckBox.Checked ? "Облачное хранение" 
+                : "Локальное хранение";
+
         }
     }
 }

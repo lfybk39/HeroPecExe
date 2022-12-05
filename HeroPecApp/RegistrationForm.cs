@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeroPecApp.ConnectionFTP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MaterialSkin.Animations;
-using MaterialSkin.Controls;
-using MaterialSkin;
 
 namespace HeroPecApp
 {
@@ -121,15 +119,15 @@ namespace HeroPecApp
                 {
                     Subject = "Регистрация HeroPeC",
                     Body = $"<p>Вы успешно зарегистрировались в HeroPeC!!</p>" +
-                    $"<p>Ваш логин:{currentUser.Login}</p>" +
-                    $"<p>Ваш пароль:{currentUser.Password}</p>" +
+                    $"<p>Ваш логин:{currentUser.userid}</p>" +
+                    $"<p>Ваш пароль:{currentUser.passwd}</p>" +
                     $"<img src='http://tiny.cc/mmhzuz'>",
                     From = new MailAddress("heropeccompany@gmail.com"),
                     IsBodyHtml = true,
                     BodyEncoding = Encoding.UTF8
                 };
 
-                msg.To.Add(new MailAddress(currentUser.Email));
+                msg.To.Add(new MailAddress(currentUser.email));
 
                 smtp.Send(msg);
             }
@@ -142,23 +140,23 @@ namespace HeroPecApp
                 //SendEmail(new User { Login="YaViblyadok2009", Password="zZVv", Email= "pcs.91.akt@gmail.com" });
                 //MessageBox.Show("Test");
                 StringBuilder errors = new StringBuilder();
-                if (Core.Context.Users.Any(u => u.Login == user.Login) || user.Login == Properties.Settings.Default.LocalAdminLogin)
+                if (Core.Context.User.Any(u => u.userid == user.userid) || user.userid == Properties.Settings.Default.LocalAdminLogin)
                 {
                     errors.AppendLine("Логин уже зарегистрирован в системе.");
                 }
-                else if (!Regex.IsMatch(user.Login.Trim(), @"^[a-zA-Z0-9]{4,20}$") || user.Login.Contains(" "))
+                else if (!Regex.IsMatch(user.userid.Trim(), @"^[a-zA-Z0-9]{4,20}$") || user.userid.Contains(" "))
                 {
                     errors.AppendLine("Пожалуйста укажите корректный логин. Логин должен состоять из 4-20 символов, которые могут быть строчными и прописными латинского алфавита.");
                 }
-                if (!Regex.IsMatch(user.Password.Trim(), @"^[a-zA-Z0-9]{8,20}$") || user.Password.Contains(" "))
+                if (!Regex.IsMatch(user.passwd.Trim(), @"^[a-zA-Z0-9]{8,20}$") || user.passwd.Contains(" "))
                 {
                     errors.AppendLine("Пожалуйста укажите корректный пароль. Пароль должен состоять из 8-20 символов, которые могут быть строчными и прописными латинского алфавита.");
                 }
-                if (Core.Context.Users.Any(u => u.Email == user.Email))
+                if (Core.Context.User.Any(u => u.email == user.email))
                 {
                     errors.AppendLine("E-mail уже зарегистрирован в системе.");
                 }
-                if (!Regex.IsMatch(user.Email.Trim(), @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$") || user.Email.Contains(" "))
+                if (!Regex.IsMatch(user.email.Trim(), @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$") || user.email.Contains(" "))
                 {
                     errors.AppendLine("Пожалуйста укажите корректный E-mail.");
                 }
@@ -170,7 +168,7 @@ namespace HeroPecApp
                 {
                     if (captchaTextBox.Texts.ToLower() == captchaValue.ToLower())
                     {
-                        Core.Context.Users.Add(user);
+                        Core.Context.User.Add(user);
                         Core.Context.SaveChanges();
                         MessageBox.Show($"{loginTextBox.Texts}, вы успешно зарегистрированы!");
                         SendEmail(user);
@@ -206,11 +204,11 @@ namespace HeroPecApp
         {
             User user = new User
             {
-                Login = loginTextBox.Texts,
-                Email = emailTextBox.Texts,
-                Password = passwordTextBox.Texts,
-                Nickname = nicknameTextBox.Texts.Trim() == "" ? null : nicknameTextBox.Texts,
-                Phone = phoneTextBox.Texts == "+7 (   )       -" ? null : phoneTextBox.Texts
+                userid = loginTextBox.Texts,
+                email = emailTextBox.Texts,
+                passwd = passwordTextBox.Texts,
+                username = nicknameTextBox.Texts.Trim() == "" ? null : nicknameTextBox.Texts,
+                phone = phoneTextBox.Texts == "+7 (   )       -" ? null : phoneTextBox.Texts
             };
 
             Registration(user);

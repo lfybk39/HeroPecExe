@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeroPecApp.ConnectionFTP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace HeroPecApp
     {
         private void FillDataGridView()
         {
-            usersDataGridView.DataSource = Core.Context.Users.ToList();
+            usersDataGridView.DataSource = Core.Context.User.ToList();
         }
 
         public ManageUsersForm()
@@ -42,7 +43,7 @@ namespace HeroPecApp
             {
                 for (int i = 0; i < usersDataGridView.SelectedRows.Count; i++)
                 {
-                    Core.Context.Users.Remove(usersDataGridView.SelectedRows[i].DataBoundItem as User);
+                    Core.Context.User.Remove(usersDataGridView.SelectedRows[i].DataBoundItem as User);
                     Core.Context.SaveChanges();
                 }
                 MessageBox.Show($"Кол-во удаленных строк: {usersDataGridView.SelectedRows.Count}", "Успех!", MessageBoxButtons.OK);
@@ -63,7 +64,7 @@ namespace HeroPecApp
             if (usersDataGridView.SelectedRows.Count > 0)
             {
                 var user = usersDataGridView.SelectedRows[0].DataBoundItem as User;
-                if (new UserForm(Core.Context.Users.FirstOrDefault(u => u.Login == user.Login)).ShowDialog() == DialogResult.OK)
+                if (new UserForm(Core.Context.User.FirstOrDefault(u => u.userid == user.userid)).ShowDialog() == DialogResult.OK)
                 {
                     FillDataGridView();
                 }

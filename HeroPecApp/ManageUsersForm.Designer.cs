@@ -30,12 +30,12 @@ namespace HeroPecApp
         private void InitializeComponent()
         {
             this.usersDataGridView = new System.Windows.Forms.DataGridView();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,27 +55,6 @@ namespace HeroPecApp
             this.usersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.usersDataGridView.Size = new System.Drawing.Size(662, 371);
             this.usersDataGridView.TabIndex = 0;
-            // 
-            // Login
-            // 
-            this.Login.DataPropertyName = "Login";
-            this.Login.HeaderText = "Логин";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            // 
-            // EMail
-            // 
-            this.EMail.DataPropertyName = "Email";
-            this.EMail.HeaderText = "Эл. Почта";
-            this.EMail.Name = "EMail";
-            this.EMail.ReadOnly = true;
-            // 
-            // Password
-            // 
-            this.Password.DataPropertyName = "Password";
-            this.Password.HeaderText = "Пароль";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
             // 
             // addButton
             // 
@@ -106,6 +85,27 @@ namespace HeroPecApp
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // Login
+            // 
+            this.Login.DataPropertyName = "userid";
+            this.Login.HeaderText = "Логин";
+            this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
+            // 
+            // EMail
+            // 
+            this.EMail.DataPropertyName = "email";
+            this.EMail.HeaderText = "Эл. Почта";
+            this.EMail.Name = "EMail";
+            this.EMail.ReadOnly = true;
+            // 
+            // Password
+            // 
+            this.Password.DataPropertyName = "passwd";
+            this.Password.HeaderText = "Пароль";
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
             // 
             // ManageUsersForm
             // 

@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HeroPecApp.ConnectionFTP;
 using HeroPecApp.Controls;
 using HeroPecApp.Properties;
 
@@ -35,17 +36,18 @@ namespace HeroPecApp
         {
             try
             {
-                var currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
-                u => emailLoginTextBox.Texts.Contains("@") ? (u.Email == emailLoginTextBox.Texts)
-                : (u.Login == emailLoginTextBox.Texts));
-                if (currentUser == null || currentUser.Password != passwordTextBox.Texts)
+                var currentUser = Core.Context.User.AsNoTracking().FirstOrDefault(
+                u => emailLoginTextBox.Texts.Contains("@") ? (u.email == emailLoginTextBox.Texts)
+                : (u.userid == emailLoginTextBox.Texts));
+                if (currentUser == null || currentUser.passwd != passwordTextBox.Texts)
                 {
                     throw new Exception("Неверные данные для входа.");
                 }
                 //SendEmail(currentUser);
-                MessageBox.Show("Вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
-                Properties.Settings.Default.CurrentUserLogin = currentUser.Login;
-                Properties.Settings.Default.CurrentUserPassword = currentUser.Password;
+                MessageBox.Show($"{currentUser.userid}, вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
+                Connection.CurrentUser = currentUser;
+                Properties.Settings.Default.CurrentUserLogin = currentUser.userid;
+                Properties.Settings.Default.CurrentUserPassword = currentUser.passwd;
                 if (stayLoggedCheckBox.Checked)
                 {
                     Properties.Settings.Default.IsRemember = true;
@@ -92,14 +94,14 @@ namespace HeroPecApp
                 var msg = new MailMessage()
                 {
                     Subject = "Вход в приложение HeroPeC",
-                    Body = $"<p>Совершен вход в аккаунт:{currentUser.Login}</p>" +
+                    Body = $"<p>Совершен вход в аккаунт:{currentUser.userid}</p>" +
                     $"<p>Если это не вы, смените пароль</p>",
                     From = new MailAddress("heropeccompany@gmail.com"),
                     IsBodyHtml = true,
                     BodyEncoding = Encoding.UTF8
                 };
 
-                msg.To.Add(new MailAddress(currentUser.Email));
+                msg.To.Add(new MailAddress(currentUser.email));
 
                 smtp.Send(msg);
             }
@@ -160,8 +162,8 @@ namespace HeroPecApp
             if (Properties.Settings.Default.IsRemember == true)
             {
                 stayLoggedCheckBox.Checked = true;
-                emailLoginTextBox.Text = Properties.Settings.Default.CurrentUserLogin;
-                passwordTextBox.Text = Properties.Settings.Default.CurrentUserPassword;
+                emailLoginTextBox.Texts = Properties.Settings.Default.CurrentUserLogin;
+                passwordTextBox.Texts = Properties.Settings.Default.CurrentUserPassword;
             }
         }
 
