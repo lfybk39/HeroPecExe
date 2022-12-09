@@ -104,11 +104,11 @@ namespace HeroPecApp
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(613, 401);
+            this.button1.Location = new System.Drawing.Point(690, 499);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 73);
             this.button1.TabIndex = 19;
-            this.button1.Text = "button1";
+            this.button1.Text = "убери уже нахуй эту кнопку я тя прошу";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -321,6 +321,7 @@ namespace HeroPecApp
             this.captchaTextBox.TabIndex = 36;
             this.captchaTextBox.Texts = "";
             this.captchaTextBox.UnderlinedStyle = false;
+            this.captchaTextBox.UseChar = false;
             // 
             // confirmationPasswordTextBox
             // 
@@ -337,6 +338,7 @@ namespace HeroPecApp
             this.confirmationPasswordTextBox.TabIndex = 32;
             this.confirmationPasswordTextBox.Texts = "";
             this.confirmationPasswordTextBox.UnderlinedStyle = true;
+            this.confirmationPasswordTextBox.UseChar = false;
             this.confirmationPasswordTextBox.Leave += new System.EventHandler(this.confirmationPasswordTextBox_Leave);
             // 
             // passwordTextBox
@@ -354,6 +356,7 @@ namespace HeroPecApp
             this.passwordTextBox.TabIndex = 29;
             this.passwordTextBox.Texts = "";
             this.passwordTextBox.UnderlinedStyle = true;
+            this.passwordTextBox.UseChar = false;
             this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 
             // phoneTextBox
@@ -371,6 +374,7 @@ namespace HeroPecApp
             this.phoneTextBox.TabIndex = 27;
             this.phoneTextBox.Texts = "";
             this.phoneTextBox.UnderlinedStyle = true;
+            this.phoneTextBox.UseChar = false;
             // 
             // loginTextBox
             // 
@@ -387,6 +391,7 @@ namespace HeroPecApp
             this.loginTextBox.TabIndex = 25;
             this.loginTextBox.Texts = "";
             this.loginTextBox.UnderlinedStyle = true;
+            this.loginTextBox.UseChar = false;
             this.loginTextBox.Leave += new System.EventHandler(this.loginTextBox_Leave);
             // 
             // nicknameTextBox
@@ -404,6 +409,7 @@ namespace HeroPecApp
             this.nicknameTextBox.TabIndex = 23;
             this.nicknameTextBox.Texts = "";
             this.nicknameTextBox.UnderlinedStyle = true;
+            this.nicknameTextBox.UseChar = false;
             this.nicknameTextBox.Load += new System.EventHandler(this.textBoxControl1_Load);
             // 
             // emailTextBox
@@ -421,6 +427,7 @@ namespace HeroPecApp
             this.emailTextBox.TabIndex = 20;
             this.emailTextBox.Texts = "";
             this.emailTextBox.UnderlinedStyle = true;
+            this.emailTextBox.UseChar = false;
             this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             // 
             // dragPanel

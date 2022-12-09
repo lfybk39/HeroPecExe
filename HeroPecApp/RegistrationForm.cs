@@ -216,6 +216,7 @@ namespace HeroPecApp
 
         private void RegistrationForm_Load(object sender, EventArgs e)
         {
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             captchaPictureBox.Image = CreateImage(captchaPictureBox.Width, captchaPictureBox.Height);
         }
 

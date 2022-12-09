@@ -36,7 +36,7 @@ namespace HeroPecApp
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HeroPecApp.Properties.Resources.logogif;
-            this.pictureBox1.Location = new System.Drawing.Point(1, -20);
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(476, 358);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -55,6 +55,7 @@ namespace HeroPecApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "IntroForm";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.IntroForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

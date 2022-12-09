@@ -16,5 +16,10 @@ namespace HeroPecApp
         {
             InitializeComponent();
         }
+
+        private void IntroForm_Load(object sender, EventArgs e)
+        {
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
+        }
     }
 }

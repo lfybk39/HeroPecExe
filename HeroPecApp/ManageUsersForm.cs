@@ -13,6 +13,8 @@ namespace HeroPecApp
 {
     public partial class ManageUsersForm : Form
     {
+        private Point windowPoint = new Point();
+
         private void FillDataGridView()
         {
             usersDataGridView.DataSource = Core.Context.User.ToList();
@@ -22,6 +24,7 @@ namespace HeroPecApp
         {
             InitializeComponent();
             usersDataGridView.AutoGenerateColumns = false;
+            
         }
 
         private void UsersForm_Load(object sender, EventArgs e)
@@ -68,6 +71,48 @@ namespace HeroPecApp
                 {
                     FillDataGridView();
                 }
+            }
+        }
+
+        private void exitPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit_hover;
+        }
+
+        private void exitPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit;
+        }
+
+        private void wrapPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.minimize_hover;
+        }
+
+        private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.wrap;
+        }
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void wrapPictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            windowPoint = new Point(e.X, e.Y);
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - windowPoint.X, this.Location.Y + e.Y - windowPoint.Y);
             }
         }
     }

@@ -17,6 +17,8 @@ namespace HeroPecApp
 {
     public partial class MainForm : Form
     {
+
+        private Point mPoint = new Point();
         private static bool isOflline = false;
         private string currentHashPassword;
         private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{Connection.CurrentUser.userid}.zip";
@@ -139,6 +141,7 @@ namespace HeroPecApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             CheckDirectory();
             FillListView();
             textBox1.Text = currentHashPassword;
@@ -167,5 +170,57 @@ namespace HeroPecApp
                 : "Локальное хранение";
 
         }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void wrapPictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizePictureBox_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
+
+        private void exitPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit_hover;
+        }
+
+        private void exitPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit;
+        }
+
+        private void wrapPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.minimize_hover;
+        }
+
+        private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.wrap;
+        }
     }
 }
+

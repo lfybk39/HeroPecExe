@@ -159,6 +159,7 @@ namespace HeroPecApp
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             if (Properties.Settings.Default.IsRemember == true)
             {
                 stayLoggedCheckBox.Checked = true;

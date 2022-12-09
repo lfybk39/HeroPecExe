@@ -268,7 +268,15 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\folderico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\198198214.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmain.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

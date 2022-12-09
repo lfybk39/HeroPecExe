@@ -111,13 +111,13 @@ namespace HeroPecApp
         {
             try
             {
-                if (!Regex.IsMatch(passwordTextBox.Text, @"^[a-zA-Z0-9]{8,20}$") || passwordTextBox.Text.Contains(" "))
+                if (!Regex.IsMatch(passwordTextBox.Texts, @"^[a-zA-Z0-9]{8,20}$") || passwordTextBox.Texts.Contains(" "))
                 {
                     MessageBox.Show("Пожалуйста укажите корректный пароль. Пароль должен состоять из 8-20 символов, которые могут быть строчными и прописными латинского алфавита.");
                 }
-                else if (passwordTextBox.Text == confirmationTextBox.Text)
+                else if (passwordTextBox.Texts == confirmationTextBox.Texts)
                 {
-                    Core.Context.User.FirstOrDefault(u => u.id == currentUser.id).passwd = passwordTextBox.Text;
+                    Core.Context.User.FirstOrDefault(u => u.id == currentUser.id).passwd = passwordTextBox.Texts;
                     Core.Context.SaveChanges();
                     MessageBox.Show("Пароль успешно изменён");
                     Close();

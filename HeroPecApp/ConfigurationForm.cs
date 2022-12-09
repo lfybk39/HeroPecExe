@@ -12,6 +12,7 @@ namespace HeroPecApp
 {
     public partial class ConfigurationForm : Form
     {
+        private Point windowPoint = new Point();
         public ConfigurationForm()
         {
             InitializeComponent();
@@ -24,16 +25,6 @@ namespace HeroPecApp
             : Properties.Settings.Default.LocalPath;
             loginTextBox.Text = Properties.Settings.Default.LocalAdminLogin;
             passwordTextBox.Text = Properties.Settings.Default.LocalAdminPassword;
-        }
-
-        private void folderButton_Click(object sender, EventArgs e)
-        {
-            var folder = new FolderBrowserDialog();
-            folder.SelectedPath = folderTextBox.Text;
-            if(folder.ShowDialog() == DialogResult.OK)
-            {
-                folderTextBox.Text = folder.SelectedPath;
-            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -56,6 +47,59 @@ namespace HeroPecApp
         private void usersLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             new ManageUsersForm().Show();
+        }
+
+        private void folderPictureBox_Click(object sender, EventArgs e)
+        {
+            var folder = new FolderBrowserDialog();
+            folder.SelectedPath = folderTextBox.Text;
+            if (folder.ShowDialog() == DialogResult.OK)
+            {
+                folderTextBox.Text = folder.SelectedPath;
+            }
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void wrapPictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            windowPoint = new Point(e.X, e.Y);
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - windowPoint.X, this.Location.Y + e.Y - windowPoint.Y);
+            }
+        }
+
+        private void exitPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit_hover;
+        }
+
+        private void exitPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit;
+        }
+
+        private void wrapPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.minimize_hover;
+        }
+
+        private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.wrap;
         }
     }
 }
