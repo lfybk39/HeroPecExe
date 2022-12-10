@@ -17,14 +17,12 @@ namespace HeroPecApp
 {
     public partial class MainForm : Form
     {
-
+        private string address = "ftp://91.122.211.144:50021";
+        private string FtpUserid;
         private Point mPoint = new Point();
         private static bool isOflline = false;
         private string currentHashPassword;
-        private string userZip = $"{Environment.CurrentDirectory}\\TempData\\{Connection.CurrentUser.userid}.zip";
-        private string heroZip = (Properties.Settings.Default.LocalPath == ""
-            ? $"{Environment.CurrentDirectory}\\DataFiles"
-            : Properties.Settings.Default.LocalPath) + "\\HeroData.zip";
+        private string localZip;
 
         public static string GetHash(string input)
         {
@@ -36,115 +34,172 @@ namespace HeroPecApp
 
         private void CheckDirectory()
         {
-            if (!File.Exists(heroZip))
+            if (!File.Exists(localZip))
             {
-                Directory.CreateDirectory(heroZip.Replace("\\HeroData.zip", ""));
+                Directory.CreateDirectory(localZip.Replace($"\\{Connection.CurrentUser.userid}.zip", ""));
                 using (ZipFile zip = new ZipFile())
                 {
                     zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
-                    zip.Save(userZip);
                     zip.Password = currentHashPassword;
-                    zip.AddFile(userZip, "");
-                    zip.Save(heroZip);
-                }
-            }
-
-            using (ZipFile zip = new ZipFile(heroZip))
-            {
-                zip.Password = currentHashPassword;
-                if (File.Exists(userZip))
-                {
-                    File.Delete(userZip);
-                }
-                var uZip = zip.Entries.FirstOrDefault(en => en.FileName == $"{Connection.CurrentUser.userid}.zip");
-                if (uZip is null)
-                {
-                    zip.Save(userZip);
-                }
-                else
-                {
-                    uZip.Extract($"{Environment.CurrentDirectory}\\TempData");
+                    zip.Save(localZip);
                 }
             }
         }
 
         private void AddFile()
         {
-            loadPictureBox.Visible = true;
             var addFile = new OpenFileDialog();
+            addFile.Multiselect = true;
             if (addFile.ShowDialog() == DialogResult.OK)
             {
-                using (var zip = new ZipFile(userZip))
+                if (cloudLocalCheckBox.Checked)
                 {
-                    zip.AddFile(addFile.FileName, "");
-                    zip.Save(userZip);
+                    foreach (var item in addFile.FileNames)
+                    {
+                        FtpHelper.UploadFile(item, address + "/" + Path.GetFileName(item), FtpUserid, Connection.CurrentUser.passwd);
+                    }
                 }
+                else
+                {
+                    loadPictureBox.Visible = true;
+
+                    using (var zip = new ZipFile(localZip))
+                    {
+                        zip.Password = currentHashPassword;
+                        foreach (var item in addFile.FileNames)
+                        {
+                            zip.AddFile(item, "");
+                        }
+                        zip.Save(localZip);
+                    }
+
+                    loadPictureBox.Visible = false;
+                }
+                FillListView();
             }
-            loadPictureBox.Visible = false;
         }
 
         private void DeleteFile()
         {
-            if (localFilesListView.SelectedItems.Count != 0)
+            if (MessageBox.Show("Вы уверены, что хотите удалить файл?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                using (var zip = new ZipFile(userZip))
+                if (cloudLocalCheckBox.Checked)
                 {
-                    foreach (ListViewItem item in localFilesListView.SelectedItems)
+                    foreach (ListViewItem item in filesListView.SelectedItems)
                     {
-                        zip.RemoveEntry(item.Text);
-                        zip.Save(userZip);
+                        FtpHelper.DeleteFile(address + "/" + item.Text, FtpUserid, Connection.CurrentUser.passwd);
+                    }
+                }
+                else
+                {
+                    if (filesListView.SelectedItems.Count != 0)
+                    {
+                        using (var zip = new ZipFile(localZip))
+                        {
+                            foreach (ListViewItem item in filesListView.SelectedItems)
+                            {
+                                zip.Password = currentHashPassword;
+                                zip.RemoveEntry(item.Text);
+                                zip.Save(localZip);
+                            }
+                        }
                     }
                 }
                 FillListView();
             }
         }
 
-        private void SaveData()
+        private void ExtractFile()
         {
-            using (var zip = new ZipFile(heroZip))
+            var extractionFolder = new FolderBrowserDialog();
+            if (extractionFolder.ShowDialog() == DialogResult.OK)
             {
-                zip.Password = currentHashPassword;
-                zip.RemoveEntry($"{Connection.CurrentUser.userid}.zip");
-                zip.AddFile(userZip, "");
-                zip.Save(heroZip);
+                if (cloudLocalCheckBox.Checked)
+                {
+                    foreach (ListViewItem item in filesListView.SelectedItems)
+                    {
+                        FtpHelper.DownloadFile(Path.Combine(extractionFolder.SelectedPath, item.Text), address + "/" + item.Text, FtpUserid, Connection.CurrentUser.passwd);
+                    }
+                }
+                else
+                {
+                    if (filesListView.SelectedItems.Count != 0)
+                    {
+                        using (var zip = new ZipFile(localZip))
+                        {
+                            foreach (ListViewItem item in filesListView.SelectedItems)
+                            {
+                                var zipEntry = zip.SingleOrDefault(z => z.FileName == item.Text);
+                                zipEntry.ExtractWithPassword(extractionFolder.SelectedPath, currentHashPassword);
+                            }
+                        }
+                    }
+                }
+                FillListView();
             }
         }
 
         private void FillListView()
         {
-            loadPictureBox.Visible = true;
-            localFilesListView.Items.Clear();
-            using (var Zip = new ZipFile(userZip))
+            if (cloudLocalCheckBox.Checked)
             {
-                foreach (var entry in Zip.Entries)
+                try
                 {
-                    localFilesListView.Items.Add(entry.FileName);
+                    List<string> Files = FtpHelper.GetFilesList(address, FtpUserid, Connection.CurrentUser.passwd);
+                    filesListView.Items.Clear();
+                    foreach (string File in Files)
+                    {
+                        filesListView.Items.Add(File);
+                    }
+                }
+                catch (Exception)
+                {
+
                 }
             }
-            loadPictureBox.Visible = false;
+            else
+            {
+                CheckDirectory();
+                loadPictureBox.Visible = true;
+                filesListView.Items.Clear();
+                using (var Zip = new ZipFile(localZip))
+                {
+                    foreach (var entry in Zip.Entries)
+                    {
+                        filesListView.Items.Add(entry.FileName);
+                    }
+                }
+                loadPictureBox.Visible = false;
+            }
         }
 
         public MainForm()
         {
             InitializeComponent();
-            if (Connection.CurrentUser.userid == "")
+            if (Connection.CurrentUser is null)
             {
                 isOflline = true;
+                cloudLocalCheckBox.Enabled = false;
                 Connection.CurrentUser = new User { userid = "LocalHeroData" };
+                localZip = (Properties.Settings.Default.LocalPath == ""
+                    ? $"{Environment.CurrentDirectory}\\DataFiles"
+                    : $"{Properties.Settings.Default.LocalPath}\\DataFiles") + $"\\{Connection.CurrentUser.userid}.zip";
                 currentHashPassword = GetHash("localdb");
             }
             else
             {
+                localZip = (Properties.Settings.Default.LocalPath == ""
+                    ? $"{Environment.CurrentDirectory}\\DataFiles\\Users"
+                    : $"{Properties.Settings.Default.LocalPath}\\DataFiles\\Users") + $"\\{Connection.CurrentUser.userid}.zip";
                 currentHashPassword = GetHash(Connection.CurrentUser.passwd);
+                FtpUserid = Connection.CurrentUser.userid + ".5356dbd3651165dae79fb664c05f311a";
             }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Icon = HeroPecApp.Properties.Resources.iconmain;
-            CheckDirectory();
             FillListView();
-            textBox1.Text = currentHashPassword;
         }
 
         private void addFileButton_Click(object sender, EventArgs e)
@@ -158,17 +213,16 @@ namespace HeroPecApp
             DeleteFile();
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void extractFileButton_Click(object sender, EventArgs e)
         {
-            SaveData();
-            File.Delete(userZip);
+            ExtractFile();
         }
 
         private void cloudLocalCheckBox_CheckedChanged(object sender)
         {
-            cloudLocalCheckBox.Text = cloudLocalCheckBox.Checked ? "Облачное хранение" 
+            cloudLocalCheckBox.Text = cloudLocalCheckBox.Checked ? "Облачное хранение"
                 : "Локальное хранение";
-
+            FillListView();
         }
 
         private void exitPictureBox_Click(object sender, EventArgs e)

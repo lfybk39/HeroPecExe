@@ -138,3 +138,4 @@ C:\Users\doge2\OneDrive\Desktop\HeroPecExe-main\HeroPecApp\bin\Debug\System.Thre
 C:\Users\doge2\OneDrive\Desktop\HeroPecExe-main\HeroPecApp\obj\Debug\HeroPecApp.Properties.Resources.resources
 C:\Users\doge2\OneDrive\Desktop\HeroPecExe-main\HeroPecApp\obj\Debug\HeroPecApp.csproj.CoreCompileInputs.cache
 C:\Users\doge2\OneDrive\Desktop\HeroPecExe-main\HeroPecApp\obj\Debug\HeroPecApp.csproj.CopyComplete
+C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.csproj.AssemblyReference.cache

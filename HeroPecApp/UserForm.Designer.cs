@@ -299,6 +299,7 @@ namespace HeroPecApp
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.dragPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();

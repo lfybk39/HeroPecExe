@@ -29,6 +29,7 @@ namespace HeroPecApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigurationForm));
             this.usersLinkLabel = new System.Windows.Forms.LinkLabel();
             this.folderTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
@@ -256,6 +257,7 @@ namespace HeroPecApp
             this.Controls.Add(this.usersLinkLabel);
             this.Controls.Add(this.dragPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfigurationForm";
             this.Text = "ConfigurationForm";
             this.Load += new System.EventHandler(this.ConfigurationForm_Load);

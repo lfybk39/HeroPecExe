@@ -148,6 +148,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core.cs" />
+    <Compile Include="CryptoHelper.cs" />
+    <Compile Include="FtpHelper.cs" />
     <Compile Include="IntroForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +278,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconmain.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuration.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

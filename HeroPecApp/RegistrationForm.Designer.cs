@@ -32,7 +32,6 @@ namespace HeroPecApp
             this.emailLabel = new System.Windows.Forms.Label();
             this.registrationButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.loginLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
@@ -50,6 +49,8 @@ namespace HeroPecApp
             this.errorLoginTextBox = new System.Windows.Forms.Label();
             this.errorPasswordLabel = new System.Windows.Forms.Label();
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
+            this.dragPanel = new System.Windows.Forms.PictureBox();
+            this.passDifficultyLabel = new System.Windows.Forms.Label();
             this.captchaTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.confirmationPasswordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
@@ -57,7 +58,6 @@ namespace HeroPecApp
             this.loginTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.nicknameTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.emailTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.dragPanel = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
@@ -101,16 +101,6 @@ namespace HeroPecApp
             this.label5.Size = new System.Drawing.Size(131, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "* - обязательные поля";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(690, 499);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 73);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "убери уже нахуй эту кнопку я тя прошу";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // loginLabel
             // 
@@ -189,7 +179,6 @@ namespace HeroPecApp
             this.label4.Size = new System.Drawing.Size(161, 31);
             this.label4.TabIndex = 34;
             this.label4.Text = "в Heropec Cloud";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // captchaLabel
             // 
@@ -307,6 +296,28 @@ namespace HeroPecApp
             this.errorConfirmPasswordLabel.TabIndex = 46;
             this.errorConfirmPasswordLabel.Text = "Пароли не совпадают";
             // 
+            // dragPanel
+            // 
+            this.dragPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dragPanel.Location = new System.Drawing.Point(-3, -1);
+            this.dragPanel.Name = "dragPanel";
+            this.dragPanel.Size = new System.Drawing.Size(613, 29);
+            this.dragPanel.TabIndex = 47;
+            this.dragPanel.TabStop = false;
+            this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
+            this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
+            // 
+            // passDifficultyLabel
+            // 
+            this.passDifficultyLabel.AutoSize = true;
+            this.passDifficultyLabel.Location = new System.Drawing.Point(72, 302);
+            this.passDifficultyLabel.Name = "passDifficultyLabel";
+            this.passDifficultyLabel.Size = new System.Drawing.Size(32, 13);
+            this.passDifficultyLabel.TabIndex = 48;
+            this.passDifficultyLabel.Text = "samp";
+            this.passDifficultyLabel.Visible = false;
+            // 
             // captchaTextBox
             // 
             this.captchaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
@@ -410,7 +421,6 @@ namespace HeroPecApp
             this.nicknameTextBox.Texts = "";
             this.nicknameTextBox.UnderlinedStyle = true;
             this.nicknameTextBox.UseChar = false;
-            this.nicknameTextBox.Load += new System.EventHandler(this.textBoxControl1_Load);
             // 
             // emailTextBox
             // 
@@ -430,24 +440,13 @@ namespace HeroPecApp
             this.emailTextBox.UseChar = false;
             this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             // 
-            // dragPanel
-            // 
-            this.dragPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dragPanel.Location = new System.Drawing.Point(-3, -1);
-            this.dragPanel.Name = "dragPanel";
-            this.dragPanel.Size = new System.Drawing.Size(613, 29);
-            this.dragPanel.TabIndex = 47;
-            this.dragPanel.TabStop = false;
-            this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
-            this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
-            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(700, 524);
+            this.Controls.Add(this.passDifficultyLabel);
             this.Controls.Add(this.dragPanel);
             this.Controls.Add(this.errorConfirmPasswordLabel);
             this.Controls.Add(this.errorPasswordLabel);
@@ -473,7 +472,6 @@ namespace HeroPecApp
             this.Controls.Add(this.nicknameTextBox);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.emailTextBox);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.captchaPictureBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.registrationButton);
@@ -499,7 +497,6 @@ namespace HeroPecApp
         private System.Windows.Forms.Button registrationButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox captchaPictureBox;
-        private System.Windows.Forms.Button button1;
         private Controls.TextBoxControl emailTextBox;
         private Controls.TextBoxControl nicknameTextBox;
         private System.Windows.Forms.Label loginLabel;
@@ -524,5 +521,6 @@ namespace HeroPecApp
         private System.Windows.Forms.Label errorPasswordLabel;
         private System.Windows.Forms.Label errorConfirmPasswordLabel;
         private System.Windows.Forms.PictureBox dragPanel;
+        private System.Windows.Forms.Label passDifficultyLabel;
     }
 }

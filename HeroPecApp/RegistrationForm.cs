@@ -25,6 +25,7 @@ namespace HeroPecApp
         private void CheckDifficulty(string password)
         {
             passwordDifficulty = 0;
+            int length = 0;
             bool containsUpperLetter = false,
                 containsLowerLetter = false,
                 containsDigit = false;
@@ -45,11 +46,12 @@ namespace HeroPecApp
                     containsDigit = true;
                     passwordDifficulty++;
                 }
+                length++;
             }
-            MessageBox.Show((passwordDifficulty == 0 ? "Введите" 
-                    : passwordDifficulty == 1 ? "Слабый"
-                    : passwordDifficulty == 2 ? "Средний"
-                    : "Сложный") + " пароль");
+            if (length < 8)
+            {
+                passwordDifficulty = 0;
+            }
         }
 
         private Bitmap CreateImage(int Width, int Height)
@@ -114,7 +116,7 @@ namespace HeroPecApp
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
-
+                
                 var msg = new MailMessage()
                 {
                     Subject = "Регистрация HeroPeC",
@@ -210,8 +212,14 @@ namespace HeroPecApp
                 username = nicknameTextBox.Texts.Trim() == "" ? null : nicknameTextBox.Texts,
                 phone = phoneTextBox.Texts == "+7 (   )       -" ? null : phoneTextBox.Texts
             };
-
-            Registration(user);
+            if (passwordDifficulty < 2)
+            {
+                MessageBox.Show("Слабый пароль");
+            }
+            else
+            {
+                Registration(user);
+            }
         }
 
         private void RegistrationForm_Load(object sender, EventArgs e)
@@ -223,17 +231,6 @@ namespace HeroPecApp
         private void changeCaptchaLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             captchaPictureBox.Image = CreateImage(captchaPictureBox.Width, captchaPictureBox.Height);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CheckDifficulty(passwordTextBox.Texts);
-        }
-
-
-        private void textBoxControl1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void refreshCaptchaPictureBox_Click(object sender, EventArgs e)
@@ -317,16 +314,43 @@ namespace HeroPecApp
             }
         }
 
-
+        /*ВО ГРИШАНЯЯ ВОТ ТУТА ПОРАБОТАТЬ НАДО ЧТОБЫ ЧЕРКАШ ПОД ТЕКСТБОКСАМ ПАРОЛА ЦВЕТ
+         * МЕНЯЛ ОТ СЛОЖНОСТИ И ЧТБЫЭ ПИСАЛО СЛОЖНЫЙ ЧИ НЕ
+         *                                   .-.
+                (___________________________()6 `-,
+                (   ______________________   /''"`
+                //\\                      //\\
+                "" ""                     "" ""
+        */
         private void passwordTextBox_Leave(object sender, EventArgs e)
         {
             if (Regex.IsMatch(passwordTextBox.Texts.Trim(), @"^[a-zA-Z0-9]{8,20}$"))
             {
                 passwordLabel.ForeColor = Color.FromArgb(255, 77, 255, 186);
                 errorPasswordLabel.Visible = false;
+                CheckDifficulty(passwordTextBox.Texts);
+                if (passwordDifficulty == 1)
+                {
+                    passwordLabel.ForeColor = Color.Red;
+                    passDifficultyLabel.Visible = true;
+                    passDifficultyLabel.Text = "Слабый пароль";
+                }
+                else if (passwordDifficulty == 2)
+                {
+                    passwordLabel.ForeColor = Color.Yellow;
+                    passDifficultyLabel.Visible = true;
+                    passDifficultyLabel.Text = "Средний пароль";
+                }
+                else
+                {
+                    passwordLabel.ForeColor = Color.Green;
+                    passDifficultyLabel.Visible = true;
+                    passDifficultyLabel.Text = "Сильный пароль";
+                }
             }
             else
             {
+                passDifficultyLabel.Visible = false;
                 passwordLabel.ForeColor = Color.Red;
                 errorPasswordLabel.Visible = true;
             }
@@ -348,11 +372,6 @@ namespace HeroPecApp
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Еблан?");
-        }
-
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)
         {
             mPoint = new Point(e.X, e.Y);
@@ -360,7 +379,7 @@ namespace HeroPecApp
 
         private void dragPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
