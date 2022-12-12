@@ -16,11 +16,11 @@ namespace HeroPecApp.ConnectionFTP
         static public string StrConnection()
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Database = "ftp";
-            builder.UserID = "heropecadmin";
-            builder.Password = "5356dbd3651165dae79fb664c05f311a";
-            builder.Server = "91.122.211.144";
-            builder.Port = 53306;
+            builder.Database = Properties.Settings.Default.Database;
+            builder.UserID = Properties.Settings.Default.DBUserID;
+            builder.Password = Properties.Settings.Default.DBUserPassword;
+            builder.Server = Properties.Settings.Default.ServerIP;
+            builder.Port = Properties.Settings.Default.ServerPort;
             return builder.ConnectionString;
         }
         public HeroPeCContext(string conStr) : base(new MySqlConnection(conStr), true)

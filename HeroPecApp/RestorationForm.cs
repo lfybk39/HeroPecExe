@@ -65,32 +65,42 @@ namespace HeroPecApp
 
         public RestorationForm()
         {
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             InitializeComponent();
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            try
+            if (emailLoginTextBox.Texts.Contains("@") 
+                ? (Regex.IsMatch(emailLoginTextBox.Texts.Trim(), @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$")) 
+                : (Regex.IsMatch(emailLoginTextBox.Texts.Trim(), @"^[a-zA-Z0-9]{4,20}$")))
             {
-                //currentUser = Core.Context.Users.AsNoTracking().FirstOrDefault(
-                //    u => emailLoginTextBox.Text.Contains("@") ? (u.Email == emailLoginTextBox.Text)
-                //    : (u.Login == emailLoginTextBox.Text));
-                //if (!(currentUser is null))
-                //{
-                //    var random = new Random();
-                //    code = random.Next(1000, 9999);
-                //    SendEmail(code, currentUser.Email);
-                    MessageBox.Show($"На ваш почтовый ящик отправлен код подтверждения");
-                    codeButton.Enabled = true;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Пользователь не найден");
-                //}
+                try
+                {
+                    currentUser = Core.Context.User.AsNoTracking().FirstOrDefault(
+                        u => emailLoginTextBox.Texts.Contains("@") ? (u.email == emailLoginTextBox.Texts)
+                        : (u.userid == emailLoginTextBox.Texts));
+                    if (!(currentUser is null))
+                    {
+                        var random = new Random();
+                        code = random.Next(1000, 9999);
+                        SendEmail(code, currentUser.email);
+                        MessageBox.Show($"На ваш почтовый ящик отправлен код подтверждения");
+                        codeButton.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пользователь не найден");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Введите логин или E-mail");
             }
         }
 
@@ -144,12 +154,24 @@ namespace HeroPecApp
             WindowState = FormWindowState.Minimized;
         }
 
-        private void maximizePictureBox_Click(object sender, EventArgs e)
+        private void exitPictureBox_MouseHover(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-                WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
+            exitPictureBox.Image = Properties.Resources.exit_hover;
+        }
+
+        private void exitPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit;
+        }
+
+        private void wrapPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.minimize_hover;
+        }
+
+        private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.wrap;
         }
 
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)

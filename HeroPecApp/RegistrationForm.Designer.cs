@@ -41,12 +41,11 @@ namespace HeroPecApp
             this.label4 = new System.Windows.Forms.Label();
             this.captchaLabel = new System.Windows.Forms.Label();
             this.wrapPictureBox = new System.Windows.Forms.PictureBox();
-            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.refreshCaptchaPictureBox = new System.Windows.Forms.PictureBox();
             this.captchaPictureBox = new System.Windows.Forms.PictureBox();
-            this.errorEmailTextBox = new System.Windows.Forms.Label();
-            this.errorLoginTextBox = new System.Windows.Forms.Label();
+            this.errorEmailLabel = new System.Windows.Forms.Label();
+            this.errorLoginLabel = new System.Windows.Forms.Label();
             this.errorPasswordLabel = new System.Windows.Forms.Label();
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
             this.dragPanel = new System.Windows.Forms.PictureBox();
@@ -59,7 +58,6 @@ namespace HeroPecApp
             this.nicknameTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.emailTextBox = new HeroPecApp.Controls.TextBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).BeginInit();
@@ -195,7 +193,7 @@ namespace HeroPecApp
             // 
             this.wrapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wrapPictureBox.Image = global::HeroPecApp.Properties.Resources.wrap;
-            this.wrapPictureBox.Location = new System.Drawing.Point(613, 4);
+            this.wrapPictureBox.Location = new System.Drawing.Point(643, 4);
             this.wrapPictureBox.Name = "wrapPictureBox";
             this.wrapPictureBox.Size = new System.Drawing.Size(24, 24);
             this.wrapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -204,20 +202,6 @@ namespace HeroPecApp
             this.wrapPictureBox.Click += new System.EventHandler(this.wrapPictureBox_Click);
             this.wrapPictureBox.MouseLeave += new System.EventHandler(this.wrapPictureBox_MouseLeave);
             this.wrapPictureBox.MouseHover += new System.EventHandler(this.wrapPictureBox_MouseHover);
-            // 
-            // maximizePictureBox
-            // 
-            this.maximizePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maximizePictureBox.Image = global::HeroPecApp.Properties.Resources.maximize;
-            this.maximizePictureBox.Location = new System.Drawing.Point(643, 4);
-            this.maximizePictureBox.Name = "maximizePictureBox";
-            this.maximizePictureBox.Size = new System.Drawing.Size(24, 24);
-            this.maximizePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.maximizePictureBox.TabIndex = 39;
-            this.maximizePictureBox.TabStop = false;
-            this.maximizePictureBox.Click += new System.EventHandler(this.maximizePictureBox_Click);
-            this.maximizePictureBox.MouseLeave += new System.EventHandler(this.maximizePictureBox_MouseLeave);
-            this.maximizePictureBox.MouseHover += new System.EventHandler(this.maximizePictureBox_MouseHover);
             // 
             // exitPictureBox
             // 
@@ -252,27 +236,27 @@ namespace HeroPecApp
             this.captchaPictureBox.TabIndex = 15;
             this.captchaPictureBox.TabStop = false;
             // 
-            // errorEmailTextBox
+            // errorEmailLabel
             // 
-            this.errorEmailTextBox.AutoSize = true;
-            this.errorEmailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.errorEmailTextBox.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.errorEmailTextBox.Location = new System.Drawing.Point(183, 141);
-            this.errorEmailTextBox.Name = "errorEmailTextBox";
-            this.errorEmailTextBox.Size = new System.Drawing.Size(152, 17);
-            this.errorEmailTextBox.TabIndex = 41;
-            this.errorEmailTextBox.Text = "Введите корректный Email!";
+            this.errorEmailLabel.AutoSize = true;
+            this.errorEmailLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.errorEmailLabel.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.errorEmailLabel.Location = new System.Drawing.Point(183, 141);
+            this.errorEmailLabel.Name = "errorEmailLabel";
+            this.errorEmailLabel.Size = new System.Drawing.Size(152, 17);
+            this.errorEmailLabel.TabIndex = 41;
+            this.errorEmailLabel.Text = "Введите корректный Email!";
             // 
-            // errorLoginTextBox
+            // errorLoginLabel
             // 
-            this.errorLoginTextBox.AutoSize = true;
-            this.errorLoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.errorLoginTextBox.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.errorLoginTextBox.Location = new System.Drawing.Point(187, 198);
-            this.errorLoginTextBox.Name = "errorLoginTextBox";
-            this.errorLoginTextBox.Size = new System.Drawing.Size(155, 17);
-            this.errorLoginTextBox.TabIndex = 42;
-            this.errorLoginTextBox.Text = "Введите корректный логин!";
+            this.errorLoginLabel.AutoSize = true;
+            this.errorLoginLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.errorLoginLabel.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.errorLoginLabel.Location = new System.Drawing.Point(187, 198);
+            this.errorLoginLabel.Name = "errorLoginLabel";
+            this.errorLoginLabel.Size = new System.Drawing.Size(155, 17);
+            this.errorLoginLabel.TabIndex = 42;
+            this.errorLoginLabel.Text = "Введите корректный логин!";
             // 
             // errorPasswordLabel
             // 
@@ -302,7 +286,7 @@ namespace HeroPecApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dragPanel.Location = new System.Drawing.Point(-3, -1);
             this.dragPanel.Name = "dragPanel";
-            this.dragPanel.Size = new System.Drawing.Size(613, 29);
+            this.dragPanel.Size = new System.Drawing.Size(708, 29);
             this.dragPanel.TabIndex = 47;
             this.dragPanel.TabStop = false;
             this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
@@ -447,13 +431,11 @@ namespace HeroPecApp
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(700, 524);
             this.Controls.Add(this.passDifficultyLabel);
-            this.Controls.Add(this.dragPanel);
             this.Controls.Add(this.errorConfirmPasswordLabel);
             this.Controls.Add(this.errorPasswordLabel);
-            this.Controls.Add(this.errorLoginTextBox);
-            this.Controls.Add(this.errorEmailTextBox);
+            this.Controls.Add(this.errorLoginLabel);
+            this.Controls.Add(this.errorEmailLabel);
             this.Controls.Add(this.wrapPictureBox);
-            this.Controls.Add(this.maximizePictureBox);
             this.Controls.Add(this.exitPictureBox);
             this.Controls.Add(this.captchaLabel);
             this.Controls.Add(this.captchaTextBox);
@@ -475,13 +457,13 @@ namespace HeroPecApp
             this.Controls.Add(this.captchaPictureBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.registrationButton);
+            this.Controls.Add(this.dragPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(700, 450);
             this.Name = "RegistrationForm";
-            this.Text = "RegistrationForm";
+            this.Text = "HeroPec Регистрация";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).EndInit();
@@ -514,10 +496,9 @@ namespace HeroPecApp
         private Controls.TextBoxControl captchaTextBox;
         private System.Windows.Forms.Label captchaLabel;
         private System.Windows.Forms.PictureBox exitPictureBox;
-        private System.Windows.Forms.PictureBox maximizePictureBox;
         private System.Windows.Forms.PictureBox wrapPictureBox;
-        private System.Windows.Forms.Label errorEmailTextBox;
-        private System.Windows.Forms.Label errorLoginTextBox;
+        private System.Windows.Forms.Label errorEmailLabel;
+        private System.Windows.Forms.Label errorLoginLabel;
         private System.Windows.Forms.Label errorPasswordLabel;
         private System.Windows.Forms.Label errorConfirmPasswordLabel;
         private System.Windows.Forms.PictureBox dragPanel;

@@ -176,6 +176,7 @@ namespace HeroPecApp
         public MainForm()
         {
             InitializeComponent();
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             if (Connection.CurrentUser is null)
             {
                 isOflline = true;
@@ -198,7 +199,6 @@ namespace HeroPecApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             FillListView();
         }
 
@@ -225,24 +225,6 @@ namespace HeroPecApp
             FillListView();
         }
 
-        private void exitPictureBox_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void wrapPictureBox_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void maximizePictureBox_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-                WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
-        }
-
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)
         {
             mPoint = new Point(e.X, e.Y);
@@ -254,6 +236,16 @@ namespace HeroPecApp
             {
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void wrapPictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
 
         private void exitPictureBox_MouseHover(object sender, EventArgs e)

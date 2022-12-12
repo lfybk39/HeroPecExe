@@ -79,7 +79,7 @@ namespace HeroPecApp
             this.usersDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.usersDataGridView.EnableHeadersVisualStyles = false;
             this.usersDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
-            this.usersDataGridView.Location = new System.Drawing.Point(12, 41);
+            this.usersDataGridView.Location = new System.Drawing.Point(12, 32);
             this.usersDataGridView.Name = "usersDataGridView";
             this.usersDataGridView.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -92,7 +92,7 @@ namespace HeroPecApp
             this.usersDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.usersDataGridView.RowHeadersVisible = false;
             this.usersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.usersDataGridView.Size = new System.Drawing.Size(662, 371);
+            this.usersDataGridView.Size = new System.Drawing.Size(662, 380);
             this.usersDataGridView.TabIndex = 0;
             // 
             // Login
@@ -162,7 +162,7 @@ namespace HeroPecApp
             // 
             this.wrapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wrapPictureBox.Image = global::HeroPecApp.Properties.Resources.wrap;
-            this.wrapPictureBox.Location = new System.Drawing.Point(624, 10);
+            this.wrapPictureBox.Location = new System.Drawing.Point(628, 2);
             this.wrapPictureBox.Name = "wrapPictureBox";
             this.wrapPictureBox.Size = new System.Drawing.Size(24, 24);
             this.wrapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -176,7 +176,7 @@ namespace HeroPecApp
             // 
             this.exitPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.exitPictureBox.Image = global::HeroPecApp.Properties.Resources.exit;
-            this.exitPictureBox.Location = new System.Drawing.Point(654, 10);
+            this.exitPictureBox.Location = new System.Drawing.Point(658, 2);
             this.exitPictureBox.Name = "exitPictureBox";
             this.exitPictureBox.Size = new System.Drawing.Size(24, 24);
             this.exitPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -190,9 +190,9 @@ namespace HeroPecApp
             // 
             this.dragPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dragPanel.Location = new System.Drawing.Point(-26, 6);
+            this.dragPanel.Location = new System.Drawing.Point(-19, -8);
             this.dragPanel.Name = "dragPanel";
-            this.dragPanel.Size = new System.Drawing.Size(712, 29);
+            this.dragPanel.Size = new System.Drawing.Size(712, 34);
             this.dragPanel.TabIndex = 60;
             this.dragPanel.TabStop = false;
             this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
@@ -214,7 +214,7 @@ namespace HeroPecApp
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManageUsersForm";
-            this.Text = "s";
+            this.Text = "HeroPec Управление пользователями";
             this.Load += new System.EventHandler(this.UsersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();

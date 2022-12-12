@@ -15,7 +15,7 @@ namespace HeroPecApp
     public partial class UserForm : Form
     {
         private bool isEdit = false;
-
+        private Point mPoint = new Point();
         private string selectedUserLogin;
 
         void SaveUser(User user)
@@ -87,24 +87,66 @@ namespace HeroPecApp
             this.selectedUserLogin = selectedUser.userid;
             confirmButton.Text = "Изменить пользователя";
             isEdit = true;
-            loginTextBox.Text = selectedUser.userid;
-            passwordTextBox.Text = selectedUser.passwd;
-            eMailTextBox.Text = selectedUser.email;
-            nicknameTextBox.Text = selectedUser.username;
-            phoneTextBox.Text = selectedUser.phone;
+            loginTextBox.Texts = selectedUser.userid;
+            passwordTextBox.Texts = selectedUser.passwd;
+            eMailTextBox.Texts = selectedUser.email;
+            nicknameTextBox.Texts = selectedUser.username;
+            phoneTextBox.Texts = selectedUser.phone;
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
             SaveUser(new User
             {
-                userid = loginTextBox.Text,
-                email = eMailTextBox.Text,
-                passwd = passwordTextBox.Text,
-                username = nicknameTextBox.Text,
-                phone = phoneTextBox.Text == "+7 (   )       -" || phoneTextBox.Text.Trim() == "" ? null : phoneTextBox.Text
+                userid = loginTextBox.Texts,
+                email = eMailTextBox.Texts,
+                passwd = passwordTextBox.Texts,
+                username = nicknameTextBox.Texts,
+                phone = phoneTextBox.Texts == "+7 (   )       -" || phoneTextBox.Texts.Trim() == "" ? null : phoneTextBox.Texts
             });
         }
 
+        private void dragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void dragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void wrapPictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void exitPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit_hover;
+        }
+
+        private void exitPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            exitPictureBox.Image = Properties.Resources.exit;
+        }
+
+        private void wrapPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.minimize_hover;
+        }
+
+        private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            wrapPictureBox.Image = Properties.Resources.wrap;
+        }
     }
 }

@@ -109,6 +109,7 @@ namespace HeroPecApp
 
         public AuthorizationForm()
         {
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             var intro = new IntroForm();
             intro.Show();
             InitializeComponent();
@@ -121,17 +122,10 @@ namespace HeroPecApp
             {
                 try
                 {
-                    if (emailLoginTextBox.Texts != Properties.Settings.Default.LocalAdminLogin)
+                    if (await AuthorizeAsync())
                     {
-                        if (await AuthorizeAsync())
-                        {
-                            this.DialogResult = DialogResult.OK;
-                            Close();
-                        }
-                    }
-                    else if (passwordTextBox.Texts == Properties.Settings.Default.LocalAdminPassword)
-                    {
-                        new ConfigurationForm().Show();
+                        this.DialogResult = DialogResult.OK;
+                        Close();
                     }
                 }
                 catch (Exception exc)
@@ -149,17 +143,20 @@ namespace HeroPecApp
 
         private void registerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new RegistrationForm().Show();
+            this.Hide();
+            new RegistrationForm().ShowDialog();
+            this.Show();
         }
 
         private void restoreLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new RestorationForm().Show();
+            this.Hide();
+            new RestorationForm().ShowDialog();
+            this.Show();
         }
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             if (Properties.Settings.Default.IsRemember == true)
             {
                 stayLoggedCheckBox.Checked = true;
@@ -224,8 +221,18 @@ namespace HeroPecApp
 
         private void offlineModeToggleSwitch_CheckedChanged(object sender)
         {
-            showPasswordCheckBox.Enabled = stayLoggedCheckBox.Enabled = emailLoginTextBox.Enabled 
+            showPasswordCheckBox.Enabled = stayLoggedCheckBox.Enabled = emailLoginTextBox.Enabled
                 = passwordTextBox.Enabled = !offlineModeToggleSwitch.Checked;
+        }
+
+        private void configurationPictureBox_Click(object sender, EventArgs e)
+        {
+            Hide();
+            if (new AuthorizeAdminForm().ShowDialog() == DialogResult.OK)
+            {
+                new ConfigurationForm().ShowDialog();
+            }
+            Show();
         }
     }
 

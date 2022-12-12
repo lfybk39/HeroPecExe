@@ -45,7 +45,14 @@ namespace HeroPecApp
                     Parallel.For(0, Count(), index =>
                     {
                         if (index < AnimationList.Count)
-                            AnimationList[index].UpdateFrame();
+                        {
+                            try
+                            {
+                                AnimationList[index].UpdateFrame();
+                            }
+                            catch (System.Exception)
+                            { }
+                        }
                     });
 
                     Thread.Sleep((int)Interval);

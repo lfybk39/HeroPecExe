@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace HeroPecApp
     public partial class ConfigurationForm : Form
     {
         private Point windowPoint = new Point();
+
         public ConfigurationForm()
         {
             InitializeComponent();
@@ -20,33 +22,61 @@ namespace HeroPecApp
 
         private void ConfigurationForm_Load(object sender, EventArgs e)
         {
-            folderTextBox.Text = Properties.Settings.Default.LocalPath == ""
+            folderTextBox.Texts = Properties.Settings.Default.LocalPath == ""
             ? $"{Environment.CurrentDirectory}\\DataFiles"
             : Properties.Settings.Default.LocalPath;
-            loginTextBox.Text = Properties.Settings.Default.LocalAdminLogin;
-            passwordTextBox.Text = Properties.Settings.Default.LocalAdminPassword;
+            passwordTextBox.Texts = Properties.Settings.Default.LocalAdminPassword;
+            databaseTextBox.Texts = Properties.Settings.Default.Database;
+            userIDTextBox.Texts = Properties.Settings.Default.DBUserID;
+            userPasswordTextBox.Texts = Properties.Settings.Default.DBUserPassword;
+            serverIPTextBox.Texts = Properties.Settings.Default.ServerIP;
+            serverPortTextBox.Texts = Properties.Settings.Default.ServerPort.ToString();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.LocalPath = folderTextBox.Text == $"{Environment.CurrentDirectory}\\DataFiles" 
-                ? "" : folderTextBox.Text;
-            if(loginTextBox.Text.Trim().Length >= 8 && passwordTextBox.Text.Trim().Length >= 8)
+            StringBuilder errors = new StringBuilder();
+            if (!Directory.Exists(folderTextBox.Texts))
             {
-                Properties.Settings.Default.LocalAdminLogin = loginTextBox.Text.Trim();
-                Properties.Settings.Default.LocalAdminPassword = passwordTextBox.Text.Trim();
+                errors.AppendLine("Указан неверный путь для локального хранения");
+            }
+            if (passwordTextBox.Texts.Trim().Length == 0)
+            {
+                errors.AppendLine("Пароль администратора не может быть пустым");
+            }
+            try
+            {
+                Properties.Settings.Default.Database = databaseTextBox.Texts;
+                Properties.Settings.Default.DBUserID = userIDTextBox.Texts;
+                Properties.Settings.Default.DBUserPassword = userPasswordTextBox.Texts;
+                Properties.Settings.Default.ServerIP = serverIPTextBox.Texts;
+                Properties.Settings.Default.ServerPort = uint.Parse(serverPortTextBox.Texts);
+                Core.Context.User.ToList();
+            }
+            catch (Exception)
+            {
+                errors.AppendLine("Неверные данные для подключения БД");
+            }
+            if (errors.Length == 0)
+            {
+                Properties.Settings.Default.LocalPath = folderTextBox.Texts ==
+                    $"{Environment.CurrentDirectory}\\DataFiles"
+                    ? "" : folderTextBox.Texts;
+                Properties.Settings.Default.LocalAdminPassword = passwordTextBox.Texts.Trim();
+                Properties.Settings.Default.Save();
+                MessageBox.Show("Данные сохранены");
             }
             else
             {
-                MessageBox.Show("Логин и пароль должны иметь длину более 8 символов");
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Properties.Settings.Default.Save();
-            MessageBox.Show("Данные сохранены");
         }
 
         private void usersLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new ManageUsersForm().Show();
+            this.Hide();
+            new ManageUsersForm().ShowDialog();
+            this.Show();
         }
 
         private void folderPictureBox_Click(object sender, EventArgs e)
@@ -100,6 +130,11 @@ namespace HeroPecApp
         private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
         {
             wrapPictureBox.Image = Properties.Resources.wrap;
+        }
+
+        private void showPasswordCheckBox_CheckedChanged(object sender)
+        {
+            passwordTextBox.UseChar = !showPasswordCheckBox.Checked;
         }
     }
 }

@@ -44,10 +44,12 @@ namespace HeroPecApp
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.wrapPictureBox = new System.Windows.Forms.PictureBox();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.configurationPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurationPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // registerLinkLabel
@@ -257,12 +259,24 @@ namespace HeroPecApp
             this.exitPictureBox.MouseLeave += new System.EventHandler(this.wrapPictureBox_MouseLeave);
             this.exitPictureBox.MouseHover += new System.EventHandler(this.wrapPictureBox_MouseHover);
             // 
+            // configurationPictureBox
+            // 
+            this.configurationPictureBox.Image = global::HeroPecApp.Properties.Resources.conf;
+            this.configurationPictureBox.Location = new System.Drawing.Point(661, 443);
+            this.configurationPictureBox.Name = "configurationPictureBox";
+            this.configurationPictureBox.Size = new System.Drawing.Size(29, 33);
+            this.configurationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.configurationPictureBox.TabIndex = 58;
+            this.configurationPictureBox.TabStop = false;
+            this.configurationPictureBox.Click += new System.EventHandler(this.configurationPictureBox_Click);
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(702, 488);
+            this.Controls.Add(this.configurationPictureBox);
             this.Controls.Add(this.wrapPictureBox);
             this.Controls.Add(this.exitPictureBox);
             this.Controls.Add(this.authorizationButton);
@@ -285,6 +299,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurationPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,5 +320,6 @@ namespace HeroPecApp
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox wrapPictureBox;
         private System.Windows.Forms.PictureBox exitPictureBox;
+        private System.Windows.Forms.PictureBox configurationPictureBox;
     }
 }

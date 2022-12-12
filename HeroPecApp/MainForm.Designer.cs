@@ -216,7 +216,7 @@ namespace HeroPecApp
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "HeroPec Cloud";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();

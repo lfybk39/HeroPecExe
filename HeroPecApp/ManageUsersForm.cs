@@ -15,6 +15,14 @@ namespace HeroPecApp
     {
         private Point windowPoint = new Point();
 
+        private void ChangeState(bool enabled)
+        {
+            foreach (Control control in Controls)
+            {
+                control.Enabled = enabled;
+            }
+        }
+
         private void FillDataGridView()
         {
             usersDataGridView.DataSource = Core.Context.User.ToList();
@@ -56,21 +64,25 @@ namespace HeroPecApp
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            ChangeState(false);
             if (new UserForm().ShowDialog() == DialogResult.OK)
             {
                 FillDataGridView();
             }
+            ChangeState(true);
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
             if (usersDataGridView.SelectedRows.Count > 0)
             {
+                ChangeState(false);
                 var user = usersDataGridView.SelectedRows[0].DataBoundItem as User;
                 if (new UserForm(Core.Context.User.FirstOrDefault(u => u.userid == user.userid)).ShowDialog() == DialogResult.OK)
                 {
                     FillDataGridView();
                 }
+                ChangeState(true);
             }
         }
 

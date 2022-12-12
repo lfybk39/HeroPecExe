@@ -26,5 +26,20 @@
     <Setting Name="LocalPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Database" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ftp</Value>
+    </Setting>
+    <Setting Name="DBUserID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">heropecadmin</Value>
+    </Setting>
+    <Setting Name="DBUserPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5356dbd3651165dae79fb664c05f311a</Value>
+    </Setting>
+    <Setting Name="ServerIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">91.122.211.144</Value>
+    </Setting>
+    <Setting Name="ServerPort" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">53306</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

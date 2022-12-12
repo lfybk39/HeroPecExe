@@ -31,29 +31,27 @@ namespace HeroPecApp
         {
             this.confirmPasswordLabel = new System.Windows.Forms.Label();
             this.newPasswordLabel = new System.Windows.Forms.Label();
-            this.confirmationTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.confirmButton = new System.Windows.Forms.Button();
             this.codeButton = new System.Windows.Forms.Button();
             this.codeLabel = new System.Windows.Forms.Label();
             this.emailLoginLabel = new System.Windows.Forms.Label();
-            this.codeTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.emailLoginTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.showPasswordCheckBox = new HeroPecApp.ToggleSwitch();
             this.restoreButton = new System.Windows.Forms.Button();
             this.codePanel = new System.Windows.Forms.Panel();
+            this.emailLoginTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.codeTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.restorationPanel = new System.Windows.Forms.Panel();
+            this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.showPasswordCheckBox = new HeroPecApp.ToggleSwitch();
+            this.confirmationTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.wrapPictureBox = new System.Windows.Forms.PictureBox();
-            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.codePanel.SuspendLayout();
             this.restorationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,40 +78,6 @@ namespace HeroPecApp
             this.newPasswordLabel.Size = new System.Drawing.Size(113, 18);
             this.newPasswordLabel.TabIndex = 29;
             this.newPasswordLabel.Text = "Новый пароль";
-            // 
-            // confirmationTextBox
-            // 
-            this.confirmationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.confirmationTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.confirmationTextBox.BorderSize = 3;
-            this.confirmationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.confirmationTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.confirmationTextBox.Location = new System.Drawing.Point(144, 110);
-            this.confirmationTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.confirmationTextBox.Name = "confirmationTextBox";
-            this.confirmationTextBox.Padding = new System.Windows.Forms.Padding(7);
-            this.confirmationTextBox.Size = new System.Drawing.Size(212, 31);
-            this.confirmationTextBox.TabIndex = 28;
-            this.confirmationTextBox.Texts = "";
-            this.confirmationTextBox.UnderlinedStyle = false;
-            this.confirmationTextBox.UseChar = true;
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.passwordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.passwordTextBox.BorderSize = 3;
-            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.passwordTextBox.Location = new System.Drawing.Point(144, 52);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(7);
-            this.passwordTextBox.Size = new System.Drawing.Size(212, 31);
-            this.passwordTextBox.TabIndex = 27;
-            this.passwordTextBox.Texts = "";
-            this.passwordTextBox.UnderlinedStyle = false;
-            this.passwordTextBox.UseChar = true;
             // 
             // confirmButton
             // 
@@ -168,57 +132,6 @@ namespace HeroPecApp
             this.emailLoginLabel.TabIndex = 35;
             this.emailLoginLabel.Text = "Email/Логин";
             // 
-            // codeTextBox
-            // 
-            this.codeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.codeTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.codeTextBox.BorderSize = 3;
-            this.codeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.codeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.codeTextBox.Location = new System.Drawing.Point(144, 165);
-            this.codeTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Padding = new System.Windows.Forms.Padding(7);
-            this.codeTextBox.Size = new System.Drawing.Size(212, 31);
-            this.codeTextBox.TabIndex = 34;
-            this.codeTextBox.Texts = "";
-            this.codeTextBox.UnderlinedStyle = false;
-            this.codeTextBox.UseChar = true;
-            // 
-            // emailLoginTextBox
-            // 
-            this.emailLoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.emailLoginTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.emailLoginTextBox.BorderSize = 3;
-            this.emailLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailLoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.emailLoginTextBox.Location = new System.Drawing.Point(144, 40);
-            this.emailLoginTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.emailLoginTextBox.Name = "emailLoginTextBox";
-            this.emailLoginTextBox.Padding = new System.Windows.Forms.Padding(7);
-            this.emailLoginTextBox.Size = new System.Drawing.Size(212, 31);
-            this.emailLoginTextBox.TabIndex = 33;
-            this.emailLoginTextBox.Texts = "";
-            this.emailLoginTextBox.UnderlinedStyle = false;
-            this.emailLoginTextBox.UseChar = false;
-            // 
-            // showPasswordCheckBox
-            // 
-            this.showPasswordCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.showPasswordCheckBox.BackColorOFF = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.showPasswordCheckBox.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.showPasswordCheckBox.Checked = false;
-            this.showPasswordCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.showPasswordCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.showPasswordCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.showPasswordCheckBox.Location = new System.Drawing.Point(167, 147);
-            this.showPasswordCheckBox.Name = "showPasswordCheckBox";
-            this.showPasswordCheckBox.Size = new System.Drawing.Size(167, 15);
-            this.showPasswordCheckBox.TabIndex = 37;
-            this.showPasswordCheckBox.Text = "Показать пароль";
-            this.showPasswordCheckBox.TextOnChecked = "";
-            this.showPasswordCheckBox.CheckedChanged += new HeroPecApp.ToggleSwitch.OnCheckedChangedHandler(this.showPasswordCheckBox_CheckedChanged);
-            // 
             // restoreButton
             // 
             this.restoreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
@@ -246,6 +159,40 @@ namespace HeroPecApp
             this.codePanel.Size = new System.Drawing.Size(509, 302);
             this.codePanel.TabIndex = 39;
             // 
+            // emailLoginTextBox
+            // 
+            this.emailLoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.emailLoginTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.BorderSize = 3;
+            this.emailLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.Location = new System.Drawing.Point(144, 40);
+            this.emailLoginTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.emailLoginTextBox.Name = "emailLoginTextBox";
+            this.emailLoginTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.emailLoginTextBox.Size = new System.Drawing.Size(212, 31);
+            this.emailLoginTextBox.TabIndex = 33;
+            this.emailLoginTextBox.Texts = "";
+            this.emailLoginTextBox.UnderlinedStyle = false;
+            this.emailLoginTextBox.UseChar = false;
+            // 
+            // codeTextBox
+            // 
+            this.codeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.codeTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.codeTextBox.BorderSize = 3;
+            this.codeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.codeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.codeTextBox.Location = new System.Drawing.Point(144, 165);
+            this.codeTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.codeTextBox.Name = "codeTextBox";
+            this.codeTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.codeTextBox.Size = new System.Drawing.Size(212, 31);
+            this.codeTextBox.TabIndex = 34;
+            this.codeTextBox.Texts = "";
+            this.codeTextBox.UnderlinedStyle = false;
+            this.codeTextBox.UseChar = false;
+            // 
             // restorationPanel
             // 
             this.restorationPanel.Controls.Add(this.restoreButton);
@@ -254,11 +201,62 @@ namespace HeroPecApp
             this.restorationPanel.Controls.Add(this.confirmationTextBox);
             this.restorationPanel.Controls.Add(this.confirmPasswordLabel);
             this.restorationPanel.Controls.Add(this.newPasswordLabel);
-            this.restorationPanel.Location = new System.Drawing.Point(12, 182);
+            this.restorationPanel.Location = new System.Drawing.Point(12, 179);
             this.restorationPanel.Name = "restorationPanel";
             this.restorationPanel.Size = new System.Drawing.Size(509, 281);
             this.restorationPanel.TabIndex = 40;
             this.restorationPanel.Visible = false;
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.passwordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.BorderSize = 3;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.Location = new System.Drawing.Point(144, 52);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.passwordTextBox.Size = new System.Drawing.Size(212, 31);
+            this.passwordTextBox.TabIndex = 27;
+            this.passwordTextBox.Texts = "";
+            this.passwordTextBox.UnderlinedStyle = false;
+            this.passwordTextBox.UseChar = true;
+            // 
+            // showPasswordCheckBox
+            // 
+            this.showPasswordCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.showPasswordCheckBox.BackColorOFF = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.showPasswordCheckBox.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.showPasswordCheckBox.Checked = false;
+            this.showPasswordCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.showPasswordCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.showPasswordCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.showPasswordCheckBox.Location = new System.Drawing.Point(167, 147);
+            this.showPasswordCheckBox.Name = "showPasswordCheckBox";
+            this.showPasswordCheckBox.Size = new System.Drawing.Size(167, 15);
+            this.showPasswordCheckBox.TabIndex = 37;
+            this.showPasswordCheckBox.Text = "Показать пароль";
+            this.showPasswordCheckBox.TextOnChecked = "";
+            this.showPasswordCheckBox.CheckedChanged += new HeroPecApp.ToggleSwitch.OnCheckedChangedHandler(this.showPasswordCheckBox_CheckedChanged);
+            // 
+            // confirmationTextBox
+            // 
+            this.confirmationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.confirmationTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.confirmationTextBox.BorderSize = 3;
+            this.confirmationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.confirmationTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.confirmationTextBox.Location = new System.Drawing.Point(144, 110);
+            this.confirmationTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.confirmationTextBox.Name = "confirmationTextBox";
+            this.confirmationTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.confirmationTextBox.Size = new System.Drawing.Size(212, 31);
+            this.confirmationTextBox.TabIndex = 28;
+            this.confirmationTextBox.Texts = "";
+            this.confirmationTextBox.UnderlinedStyle = false;
+            this.confirmationTextBox.UseChar = true;
             // 
             // logoPictureBox
             // 
@@ -276,7 +274,7 @@ namespace HeroPecApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dragPanel.Location = new System.Drawing.Point(-4, 0);
             this.dragPanel.Name = "dragPanel";
-            this.dragPanel.Size = new System.Drawing.Size(444, 29);
+            this.dragPanel.Size = new System.Drawing.Size(544, 29);
             this.dragPanel.TabIndex = 55;
             this.dragPanel.TabStop = false;
             this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
@@ -286,25 +284,15 @@ namespace HeroPecApp
             // 
             this.wrapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wrapPictureBox.Image = global::HeroPecApp.Properties.Resources.wrap;
-            this.wrapPictureBox.Location = new System.Drawing.Point(446, 5);
+            this.wrapPictureBox.Location = new System.Drawing.Point(476, 5);
             this.wrapPictureBox.Name = "wrapPictureBox";
             this.wrapPictureBox.Size = new System.Drawing.Size(24, 24);
             this.wrapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.wrapPictureBox.TabIndex = 54;
             this.wrapPictureBox.TabStop = false;
             this.wrapPictureBox.Click += new System.EventHandler(this.wrapPictureBox_Click);
-            // 
-            // maximizePictureBox
-            // 
-            this.maximizePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maximizePictureBox.Image = global::HeroPecApp.Properties.Resources.maximize;
-            this.maximizePictureBox.Location = new System.Drawing.Point(476, 5);
-            this.maximizePictureBox.Name = "maximizePictureBox";
-            this.maximizePictureBox.Size = new System.Drawing.Size(24, 24);
-            this.maximizePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.maximizePictureBox.TabIndex = 53;
-            this.maximizePictureBox.TabStop = false;
-            this.maximizePictureBox.Click += new System.EventHandler(this.maximizePictureBox_Click);
+            this.wrapPictureBox.MouseLeave += new System.EventHandler(this.wrapPictureBox_MouseLeave);
+            this.wrapPictureBox.MouseHover += new System.EventHandler(this.wrapPictureBox_MouseHover);
             // 
             // exitPictureBox
             // 
@@ -317,6 +305,8 @@ namespace HeroPecApp
             this.exitPictureBox.TabIndex = 52;
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
+            this.exitPictureBox.MouseLeave += new System.EventHandler(this.exitPictureBox_MouseLeave);
+            this.exitPictureBox.MouseHover += new System.EventHandler(this.exitPictureBox_MouseHover);
             // 
             // RestorationForm
             // 
@@ -324,16 +314,15 @@ namespace HeroPecApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(534, 493);
-            this.Controls.Add(this.dragPanel);
             this.Controls.Add(this.restorationPanel);
             this.Controls.Add(this.wrapPictureBox);
-            this.Controls.Add(this.maximizePictureBox);
             this.Controls.Add(this.exitPictureBox);
             this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.codePanel);
+            this.Controls.Add(this.dragPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RestorationForm";
-            this.Text = "RestorationForm";
+            this.Text = "HeroPec Восстановление пароля";
             this.codePanel.ResumeLayout(false);
             this.codePanel.PerformLayout();
             this.restorationPanel.ResumeLayout(false);
@@ -341,7 +330,6 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -365,7 +353,6 @@ namespace HeroPecApp
         private System.Windows.Forms.PictureBox logoPictureBox;
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox wrapPictureBox;
-        private System.Windows.Forms.PictureBox maximizePictureBox;
         private System.Windows.Forms.PictureBox exitPictureBox;
     }
 }

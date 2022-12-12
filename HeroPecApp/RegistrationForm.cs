@@ -116,7 +116,7 @@ namespace HeroPecApp
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
-                
+
                 var msg = new MailMessage()
                 {
                     Subject = "Регистрация HeroPeC",
@@ -139,8 +139,6 @@ namespace HeroPecApp
         {
             try
             {
-                //SendEmail(new User { Login="YaViblyadok2009", Password="zZVv", Email= "pcs.91.akt@gmail.com" });
-                //MessageBox.Show("Test");
                 StringBuilder errors = new StringBuilder();
                 if (Core.Context.User.Any(u => u.userid == user.userid) || user.userid == Properties.Settings.Default.LocalAdminLogin)
                 {
@@ -194,9 +192,10 @@ namespace HeroPecApp
 
         public RegistrationForm()
         {
+            this.Icon = HeroPecApp.Properties.Resources.iconmain;
             InitializeComponent();
-            errorEmailTextBox.Visible = false;
-            errorLoginTextBox.Visible = false;
+            errorEmailLabel.Visible = false;
+            errorLoginLabel.Visible = false;
             errorConfirmPasswordLabel.Visible = false;
             errorPasswordLabel.Visible = false;
 
@@ -204,31 +203,34 @@ namespace HeroPecApp
 
         private void registrationButton_Click(object sender, EventArgs e)
         {
-            User user = new User
+            if (errorEmailLabel.Visible || errorLoginLabel.Visible || errorPasswordLabel.Visible ||
+                errorConfirmPasswordLabel.Visible || emailTextBox.Texts == "" || loginTextBox.Texts == "" ||
+                passwordTextBox.Texts == "" || confirmationPasswordTextBox.Texts == "")
             {
-                userid = loginTextBox.Texts,
-                email = emailTextBox.Texts,
-                passwd = passwordTextBox.Texts,
-                username = nicknameTextBox.Texts.Trim() == "" ? null : nicknameTextBox.Texts,
-                phone = phoneTextBox.Texts == "+7 (   )       -" ? null : phoneTextBox.Texts
-            };
-            if (passwordDifficulty < 2)
-            {
-                MessageBox.Show("Слабый пароль");
+                MessageBox.Show("Заполните обязательные поля");
             }
             else
             {
-                Registration(user);
+                User user = new User
+                {
+                    userid = loginTextBox.Texts,
+                    email = emailTextBox.Texts,
+                    passwd = passwordTextBox.Texts,
+                    username = nicknameTextBox.Texts.Trim() == "" ? null : nicknameTextBox.Texts,
+                    phone = phoneTextBox.Texts == "+7 (   )       -" ? null : phoneTextBox.Texts
+                };
+                if (passwordDifficulty < 2)
+                {
+                    MessageBox.Show("Слабый пароль");
+                }
+                else
+                {
+                    Registration(user);
+                }
             }
         }
 
         private void RegistrationForm_Load(object sender, EventArgs e)
-        {
-            this.Icon = HeroPecApp.Properties.Resources.iconmain;
-            captchaPictureBox.Image = CreateImage(captchaPictureBox.Width, captchaPictureBox.Height);
-        }
-
-        private void changeCaptchaLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             captchaPictureBox.Image = CreateImage(captchaPictureBox.Width, captchaPictureBox.Height);
         }
@@ -266,16 +268,6 @@ namespace HeroPecApp
             exitPictureBox.Image = Properties.Resources.exit;
         }
 
-        private void maximizePictureBox_MouseHover(object sender, EventArgs e)
-        {
-            maximizePictureBox.Image = Properties.Resources.maximize_hover;
-        }
-
-        private void maximizePictureBox_MouseLeave(object sender, EventArgs e)
-        {
-            maximizePictureBox.Image = Properties.Resources.maximize;
-        }
-
         private void wrapPictureBox_MouseHover(object sender, EventArgs e)
         {
             wrapPictureBox.Image = Properties.Resources.minimize_hover;
@@ -291,12 +283,12 @@ namespace HeroPecApp
             if (Regex.IsMatch(emailTextBox.Texts.Trim(), @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$"))
             {
                 emailLabel.ForeColor = Color.FromArgb(255, 77, 255, 186);
-                errorEmailTextBox.Visible = false;
+                errorEmailLabel.Visible = false;
             }
             else
             {
                 emailLabel.ForeColor = Color.Red;
-                errorEmailTextBox.Visible = true;
+                errorEmailLabel.Visible = true;
             }
         }
 
@@ -305,12 +297,12 @@ namespace HeroPecApp
             if (Regex.IsMatch(loginTextBox.Texts.Trim(), @"^[a-zA-Z0-9]{4,20}$"))
             {
                 loginLabel.ForeColor = Color.FromArgb(255, 77, 255, 186);
-                errorLoginTextBox.Visible = false;
+                errorLoginLabel.Visible = false;
             }
             else
             {
                 loginLabel.ForeColor = Color.Red;
-                errorLoginTextBox.Visible = true;
+                errorLoginLabel.Visible = true;
             }
         }
 

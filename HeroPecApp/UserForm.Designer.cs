@@ -43,12 +43,10 @@ namespace HeroPecApp
             this.confirmButton = new System.Windows.Forms.Button();
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.wrapPictureBox = new System.Windows.Forms.PictureBox();
-            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -231,28 +229,22 @@ namespace HeroPecApp
             this.dragPanel.Size = new System.Drawing.Size(802, 29);
             this.dragPanel.TabIndex = 56;
             this.dragPanel.TabStop = false;
+            this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
+            this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
             // 
             // wrapPictureBox
             // 
             this.wrapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wrapPictureBox.Image = global::HeroPecApp.Properties.Resources.wrap;
-            this.wrapPictureBox.Location = new System.Drawing.Point(715, 1);
+            this.wrapPictureBox.Location = new System.Drawing.Point(745, 1);
             this.wrapPictureBox.Name = "wrapPictureBox";
             this.wrapPictureBox.Size = new System.Drawing.Size(24, 24);
             this.wrapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.wrapPictureBox.TabIndex = 55;
             this.wrapPictureBox.TabStop = false;
-            // 
-            // maximizePictureBox
-            // 
-            this.maximizePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maximizePictureBox.Image = global::HeroPecApp.Properties.Resources.maximize_hover;
-            this.maximizePictureBox.Location = new System.Drawing.Point(745, 1);
-            this.maximizePictureBox.Name = "maximizePictureBox";
-            this.maximizePictureBox.Size = new System.Drawing.Size(24, 24);
-            this.maximizePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.maximizePictureBox.TabIndex = 54;
-            this.maximizePictureBox.TabStop = false;
+            this.wrapPictureBox.Click += new System.EventHandler(this.wrapPictureBox_Click);
+            this.wrapPictureBox.MouseLeave += new System.EventHandler(this.wrapPictureBox_MouseLeave);
+            this.wrapPictureBox.MouseHover += new System.EventHandler(this.wrapPictureBox_MouseHover);
             // 
             // exitPictureBox
             // 
@@ -264,6 +256,9 @@ namespace HeroPecApp
             this.exitPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.exitPictureBox.TabIndex = 53;
             this.exitPictureBox.TabStop = false;
+            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
+            this.exitPictureBox.MouseLeave += new System.EventHandler(this.exitPictureBox_MouseLeave);
+            this.exitPictureBox.MouseHover += new System.EventHandler(this.exitPictureBox_MouseHover);
             // 
             // logoPictureBox
             // 
@@ -283,7 +278,6 @@ namespace HeroPecApp
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.wrapPictureBox);
-            this.Controls.Add(this.maximizePictureBox);
             this.Controls.Add(this.exitPictureBox);
             this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.confirmButton);
@@ -304,7 +298,6 @@ namespace HeroPecApp
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -326,7 +319,6 @@ namespace HeroPecApp
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox wrapPictureBox;
-        private System.Windows.Forms.PictureBox maximizePictureBox;
         private System.Windows.Forms.PictureBox exitPictureBox;
         private System.Windows.Forms.PictureBox logoPictureBox;
     }
