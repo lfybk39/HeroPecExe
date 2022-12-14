@@ -50,6 +50,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\iconmain.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
@@ -116,6 +119,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
     <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.31\lib\net48\ZstdNet.dll</HintPath>
     </Reference>
@@ -155,13 +159,21 @@
     </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="CryptoHelper.cs" />
+    <Compile Include="CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomMessageBox.Designer.cs">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="FtpHelper.cs" />
+    <Compile Include="HeroMessageBox.cs" />
     <Compile Include="IntroForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IntroForm.Designer.cs">
       <DependentUpon>IntroForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailHelper.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
@@ -206,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextBoxControl.resx">
       <DependentUpon>TextBoxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IntroForm.resx">
       <DependentUpon>IntroForm.cs</DependentUpon>
@@ -294,6 +309,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\configuration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shesterenkablyat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\optionicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdficon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\txticon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zipicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exeicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zipicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exeicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdficon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\txticon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

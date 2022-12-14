@@ -10,24 +10,54 @@ using System.Windows.Forms;
 
 namespace HeroPecApp
 {
-    public partial class AuthorizeAdminForm : Form
+    internal partial class CustomMessageBox : Form
     {
         private Point windowPoint = new Point();
 
-        public AuthorizeAdminForm()
+        public CustomMessageBox()
         {
-            this.Icon = HeroPecApp.Properties.Resources.optionicon;
             InitializeComponent();
+            this.Icon = HeroPecApp.Properties.Resources.optionicon;
         }
 
-        private void exitPictureBox_Click(object sender, EventArgs e)
+        public CustomMessageBox(string message, string header= "Heropec Cloud")
+        {
+            InitializeComponent();
+            this.Icon = HeroPecApp.Properties.Resources.optionicon;
+            this.messageLabel.Text = message;
+            this.headerLabel.Text = header;
+            this.okButton.Visible = true;
+        }
+
+        public CustomMessageBox(string message, MessageBoxButtons buttons)
+        {
+            InitializeComponent();
+            this.Icon = HeroPecApp.Properties.Resources.optionicon;
+            this.messageLabel.Text = message;
+            this.yesButton.Visible = noButton.Visible = true;
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void wrapPictureBox_Click(object sender, EventArgs e)
+        private void yesButton_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            DialogResult = DialogResult.Yes;
+            Close();
+        }
+
+        private void noButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.No;
+            Close();
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.No;
+            Close();
         }
 
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)
@@ -52,28 +82,6 @@ namespace HeroPecApp
         {
             exitPictureBox.Image = Properties.Resources.exit;
         }
-
-        private void wrapPictureBox_MouseHover(object sender, EventArgs e)
-        {
-            wrapPictureBox.Image = Properties.Resources.minimize_hover;
-        }
-
-        private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
-        {
-            wrapPictureBox.Image = Properties.Resources.wrap;
-        }
-
-        private void enterButton_Click(object sender, EventArgs e)
-        {
-            if(passwordTextBox.Texts == Properties.Settings.Default.LocalAdminPassword)
-            {
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Неверный пароль");
-            }
-        }
     }
+
 }

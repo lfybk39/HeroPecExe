@@ -17,7 +17,21 @@ namespace HeroPecApp
 
         public ConfigurationForm()
         {
+            this.Icon = HeroPecApp.Properties.Resources.optionicon;
             InitializeComponent();
+        }
+
+        private void ChangeState(bool enabled)
+        {
+            string[] ctrls = { "exitPictureBox", "wrapPictureBox", "dragPanel" };
+            foreach (Control control in Controls)
+            {
+                if (!ctrls.Contains(control.Name))
+                {
+                    control.Enabled = enabled;
+                }
+            }
+            loadPictureBox.Enabled = loadPictureBox.Visible = !enabled;
         }
 
         private void ConfigurationForm_Load(object sender, EventArgs e)
@@ -33,7 +47,14 @@ namespace HeroPecApp
             serverPortTextBox.Texts = Properties.Settings.Default.ServerPort.ToString();
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private async void saveButton_Click(object sender, EventArgs e)
+        {
+            ChangeState(false);
+            await Task.Run(()=> Save());
+            ChangeState(true);
+        }
+
+        private void Save()
         {
             StringBuilder errors = new StringBuilder();
             if (!Directory.Exists(folderTextBox.Texts))
@@ -64,11 +85,11 @@ namespace HeroPecApp
                     ? "" : folderTextBox.Texts;
                 Properties.Settings.Default.LocalAdminPassword = passwordTextBox.Texts.Trim();
                 Properties.Settings.Default.Save();
-                MessageBox.Show("Данные сохранены");
+                HeroMessageBox.Show("Данные сохранены");
             }
             else
             {
-                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                HeroMessageBox.Show(errors.ToString(), "Ошибка!");
             }
         }
 

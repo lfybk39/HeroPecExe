@@ -275,7 +275,7 @@ namespace HeroPecApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.wrapPictureBox);
             this.Controls.Add(this.exitPictureBox);
@@ -295,7 +295,7 @@ namespace HeroPecApp
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserForm";
-            this.Text = "Form1";
+            this.Text = "HeroPec пользователь";
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();

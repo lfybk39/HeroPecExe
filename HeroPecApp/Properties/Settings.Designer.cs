@@ -85,18 +85,6 @@ namespace HeroPecApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("LocalHeroAdmin")]
-        public string LocalAdminLogin {
-            get {
-                return ((string)(this["LocalAdminLogin"]));
-            }
-            set {
-                this["LocalAdminLogin"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("pass1234")]
         public string LocalAdminPassword {
             get {

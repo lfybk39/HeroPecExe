@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,72 +18,97 @@ namespace HeroPecApp
 
         private void ChangeState(bool enabled)
         {
+            string[] ctrls = { "usersDataGridView", "exitPictureBox", "wrapPictureBox", "dragPanel" };
             foreach (Control control in Controls)
             {
-                control.Enabled = enabled;
+                if (!ctrls.Contains(control.Name))
+                {
+                    control.Enabled = enabled;
+                }
             }
+            loadPictureBox.Enabled = loadPictureBox.Visible = !enabled;
         }
 
-        private void FillDataGridView()
+        private List<User> FillDataGridView()
         {
-            usersDataGridView.DataSource = Core.Context.User.ToList();
+            try
+            {
+                return Core.Context.User.ToList();
+            }
+            catch (Exception ex)
+            {
+                HeroMessageBox.Show(ex.Message);
+                return null;
+            }
         }
 
         public ManageUsersForm()
         {
+            var intro = new IntroForm();
+            intro.Show();
             InitializeComponent();
+            intro.Close();
+            this.Icon = HeroPecApp.Properties.Resources.optionicon;
             usersDataGridView.AutoGenerateColumns = false;
-            
         }
 
-        private void UsersForm_Load(object sender, EventArgs e)
+        private async void UsersForm_Load(object sender, EventArgs e)
         {
             try
             {
-                FillDataGridView();
+                ChangeState(false);
+                usersDataGridView.DataSource = await Task.Run(() => FillDataGridView());
+                ChangeState(true);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                HeroMessageBox.Show(ex.Message);
                 Close();
             }
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            if (usersDataGridView.SelectedRows.Count > 0)
-            {
-                for (int i = 0; i < usersDataGridView.SelectedRows.Count; i++)
-                {
-                    Core.Context.User.Remove(usersDataGridView.SelectedRows[i].DataBoundItem as User);
-                    Core.Context.SaveChanges();
-                }
-                MessageBox.Show($"Кол-во удаленных строк: {usersDataGridView.SelectedRows.Count}", "Успех!", MessageBoxButtons.OK);
-                FillDataGridView();
-            }
-        }
-
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            ChangeState(false);
-            if (new UserForm().ShowDialog() == DialogResult.OK)
-            {
-                FillDataGridView();
-            }
-            ChangeState(true);
-        }
-
-        private void editButton_Click(object sender, EventArgs e)
+        private async void deleteButton_Click(object sender, EventArgs e)
         {
             if (usersDataGridView.SelectedRows.Count > 0)
             {
                 ChangeState(false);
+                await Task.Run(() => DeleteUser());
+                usersDataGridView.DataSource = await Task.Run(() => FillDataGridView());
+                ChangeState(true);
+            }
+        }
+
+        private void DeleteUser()
+        {
+            for (int i = 0; i < usersDataGridView.SelectedRows.Count; i++)
+            {
+                Core.Context.User.Remove(usersDataGridView.SelectedRows[i].DataBoundItem as User);
+                Core.Context.SaveChanges();
+            }
+            HeroMessageBox.Show($"Кол-во удаленных строк: {usersDataGridView.SelectedRows.Count}", "Успех!");
+        }
+
+        private async void addButton_Click(object sender, EventArgs e)
+        {
+            if (new UserForm().ShowDialog() == DialogResult.OK)
+            {
+                ChangeState(false);
+                usersDataGridView.DataSource = await Task.Run(() => FillDataGridView());
+                ChangeState(true);
+            }
+        }
+
+        private async void editButton_Click(object sender, EventArgs e)
+        {
+            if (usersDataGridView.SelectedRows.Count > 0)
+            {
                 var user = usersDataGridView.SelectedRows[0].DataBoundItem as User;
                 if (new UserForm(Core.Context.User.FirstOrDefault(u => u.userid == user.userid)).ShowDialog() == DialogResult.OK)
                 {
-                    FillDataGridView();
+                    ChangeState(false);
+                    usersDataGridView.DataSource = await Task.Run(() => FillDataGridView());
+                    ChangeState(true);
                 }
-                ChangeState(true);
             }
         }
 

@@ -22,6 +22,19 @@ namespace HeroPecApp
 
         private Point mPoint = new Point();
 
+        private void ChangeState(bool enabled)
+        {
+            string[] ctrls = { "usersDataGridView", "exitPictureBox", "wrapPictureBox", "dragPanel" };
+            foreach (Control control in Controls)
+            {
+                if (!ctrls.Contains(control.Name))
+                {
+                    control.Enabled = enabled;
+                }
+            }
+            loadPictureBox.Enabled = loadPictureBox.Visible = !enabled;
+        }
+
         private void CheckDifficulty(string password)
         {
             passwordDifficulty = 0;
@@ -120,10 +133,7 @@ namespace HeroPecApp
                 var msg = new MailMessage()
                 {
                     Subject = "Регистрация HeroPeC",
-                    Body = $"<p>Вы успешно зарегистрировались в HeroPeC!!</p>" +
-                    $"<p>Ваш логин:{currentUser.userid}</p>" +
-                    $"<p>Ваш пароль:{currentUser.passwd}</p>" +
-                    $"<img src='http://tiny.cc/mmhzuz'>",
+                    Body = MailHelper.Registration(currentUser.userid),
                     From = new MailAddress("heropeccompany@gmail.com"),
                     IsBodyHtml = true,
                     BodyEncoding = Encoding.UTF8
@@ -135,12 +145,12 @@ namespace HeroPecApp
             }
         }
 
-        public void Registration(User user)
+        public bool Registration(User user)
         {
             try
             {
                 StringBuilder errors = new StringBuilder();
-                if (Core.Context.User.Any(u => u.userid == user.userid) || user.userid == Properties.Settings.Default.LocalAdminLogin)
+                if (Core.Context.User.Any(u => u.userid == user.userid))
                 {
                     errors.AppendLine("Логин уже зарегистрирован в системе.");
                 }
@@ -170,24 +180,25 @@ namespace HeroPecApp
                     {
                         Core.Context.User.Add(user);
                         Core.Context.SaveChanges();
-                        MessageBox.Show($"{loginTextBox.Texts}, вы успешно зарегистрированы!");
+                        HeroMessageBox.Show($"{loginTextBox.Texts}, вы успешно зарегистрированы!");
                         SendEmail(user);
-                        Close();
+                        return true;
                     }
                     else
                     {
-                        MessageBox.Show("Неверная капча");
+                        HeroMessageBox.Show("Неверная капча");
                     }
                 }
                 else
                 {
-                    MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    HeroMessageBox.Show(errors.ToString(), "Ошибка!");
                 }
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
+            return false;
         }
 
         public RegistrationForm()
@@ -201,13 +212,13 @@ namespace HeroPecApp
 
         }
 
-        private void registrationButton_Click(object sender, EventArgs e)
+        private async void registrationButton_Click(object sender, EventArgs e)
         {
             if (errorEmailLabel.Visible || errorLoginLabel.Visible || errorPasswordLabel.Visible ||
                 errorConfirmPasswordLabel.Visible || emailTextBox.Texts == "" || loginTextBox.Texts == "" ||
                 passwordTextBox.Texts == "" || confirmationPasswordTextBox.Texts == "")
             {
-                MessageBox.Show("Заполните обязательные поля");
+                HeroMessageBox.Show("Заполните обязательные поля");
             }
             else
             {
@@ -221,11 +232,16 @@ namespace HeroPecApp
                 };
                 if (passwordDifficulty < 2)
                 {
-                    MessageBox.Show("Слабый пароль");
+                    HeroMessageBox.Show("Слабый пароль");
                 }
                 else
                 {
-                    Registration(user);
+                    ChangeState(false);
+                    if(await Task.Run(() => Registration(user)))
+                    {
+                        Close();
+                    }
+                    ChangeState(true);
                 }
             }
         }
@@ -248,14 +264,6 @@ namespace HeroPecApp
         private void wrapPictureBox_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-        }
-
-        private void maximizePictureBox_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-                WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
         }
 
         private void exitPictureBox_MouseHover(object sender, EventArgs e)
@@ -321,28 +329,9 @@ namespace HeroPecApp
                 passwordLabel.ForeColor = Color.FromArgb(255, 77, 255, 186);
                 errorPasswordLabel.Visible = false;
                 CheckDifficulty(passwordTextBox.Texts);
-                if (passwordDifficulty == 1)
-                {
-                    passwordLabel.ForeColor = Color.Red;
-                    passDifficultyLabel.Visible = true;
-                    passDifficultyLabel.Text = "Слабый пароль";
-                }
-                else if (passwordDifficulty == 2)
-                {
-                    passwordLabel.ForeColor = Color.Yellow;
-                    passDifficultyLabel.Visible = true;
-                    passDifficultyLabel.Text = "Средний пароль";
-                }
-                else
-                {
-                    passwordLabel.ForeColor = Color.Green;
-                    passDifficultyLabel.Visible = true;
-                    passDifficultyLabel.Text = "Сильный пароль";
-                }
             }
             else
             {
-                passDifficultyLabel.Visible = false;
                 passwordLabel.ForeColor = Color.Red;
                 errorPasswordLabel.Visible = true;
             }

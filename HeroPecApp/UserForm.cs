@@ -18,12 +18,26 @@ namespace HeroPecApp
         private Point mPoint = new Point();
         private string selectedUserLogin;
 
-        void SaveUser(User user)
+        private void ChangeState(bool enabled)
+        {
+            string[] ctrls = { "logoPictureBox", "exitPictureBox", "wrapPictureBox", "dragPanel" };
+            foreach (Control control in Controls)
+            {
+                if (!ctrls.Contains(control.Name))
+                {
+                    control.Enabled = enabled;
+                }
+            }
+            logoPictureBox.Image = enabled ? Properties.Resources.logo : Properties.Resources.logogif;
+        }
+
+        DialogResult SaveUser(User user)
         {
             try
             {
                 StringBuilder errors = new StringBuilder();
-                if ((Core.Context.User.Any(u => u.userid == user.userid) && !isEdit) || user.userid == Properties.Settings.Default.LocalAdminLogin)
+                if ((Core.Context.User.Any(u => u.userid == user.userid) && !isEdit)
+                    || (Core.Context.User.Any(u => u.userid == user.userid && u.id != user.id) && isEdit))
                 {
                     errors.AppendLine("Логин уже зарегистрирован в системе.");
                 }
@@ -35,8 +49,8 @@ namespace HeroPecApp
                 {
                     errors.AppendLine("Пожалуйста укажите корректный пароль. Пароль должен состоять из 8-20 символов, которые могут быть строчными и прописными латинского алфавита.");
                 }
-                if ((Core.Context.User.Any(u => u.email == user.email) && !isEdit) 
-                    || (Core.Context.User.Any(u => u.email == user.email && u.userid != user.userid) && isEdit))
+                if ((Core.Context.User.Any(u => u.email == user.email) && !isEdit)
+                    || (Core.Context.User.Any(u => u.email == user.email && u.id != user.id) && isEdit))
                 {
                     errors.AppendLine("E-mail уже зарегистрирован в системе.");
                 }
@@ -61,24 +75,25 @@ namespace HeroPecApp
                         Core.Context.User.Add(user);
                         Core.Context.SaveChanges();
                     }
-                    MessageBox.Show("Успешно!");
-                    DialogResult = DialogResult.OK;
-                    Close();
+                    HeroMessageBox.Show("Успешно!");
+                    return DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    HeroMessageBox.Show(errors.ToString());
                 }
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
+            return DialogResult.None;
         }
 
         public UserForm()
         {
             InitializeComponent();
+            this.Icon = HeroPecApp.Properties.Resources.optionicon;
         }
 
         public UserForm(User selectedUser)
@@ -94,16 +109,23 @@ namespace HeroPecApp
             phoneTextBox.Texts = selectedUser.phone;
         }
 
-        private void confirmButton_Click(object sender, EventArgs e)
+        private async void confirmButton_Click(object sender, EventArgs e)
         {
-            SaveUser(new User
+            ChangeState(false);
+            DialogResult = await Task.Run(() => SaveUser(new User
             {
+                id = Core.Context.User.FirstOrDefault(u => u.userid == selectedUserLogin).id,
                 userid = loginTextBox.Texts,
                 email = eMailTextBox.Texts,
                 passwd = passwordTextBox.Texts,
                 username = nicknameTextBox.Texts,
                 phone = phoneTextBox.Texts == "+7 (   )       -" || phoneTextBox.Texts.Trim() == "" ? null : phoneTextBox.Texts
-            });
+            }));
+            ChangeState(true);
+            if (DialogResult == DialogResult.OK)
+            {
+                Close();
+            }
         }
 
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)

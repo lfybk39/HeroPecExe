@@ -49,7 +49,7 @@ namespace HeroPecApp
             this.errorPasswordLabel = new System.Windows.Forms.Label();
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
             this.dragPanel = new System.Windows.Forms.PictureBox();
-            this.passDifficultyLabel = new System.Windows.Forms.Label();
+            this.loadPictureBox = new System.Windows.Forms.PictureBox();
             this.captchaTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.confirmationPasswordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
@@ -62,6 +62,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // emailLabel
@@ -292,19 +293,20 @@ namespace HeroPecApp
             this.dragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseDown);
             this.dragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dragPanel_MouseMove);
             // 
-            // passDifficultyLabel
+            // loadPictureBox
             // 
-            this.passDifficultyLabel.AutoSize = true;
-            this.passDifficultyLabel.Location = new System.Drawing.Point(72, 302);
-            this.passDifficultyLabel.Name = "passDifficultyLabel";
-            this.passDifficultyLabel.Size = new System.Drawing.Size(32, 13);
-            this.passDifficultyLabel.TabIndex = 48;
-            this.passDifficultyLabel.Text = "samp";
-            this.passDifficultyLabel.Visible = false;
+            this.loadPictureBox.Image = global::HeroPecApp.Properties.Resources.logogif;
+            this.loadPictureBox.Location = new System.Drawing.Point(12, 139);
+            this.loadPictureBox.Name = "loadPictureBox";
+            this.loadPictureBox.Size = new System.Drawing.Size(676, 274);
+            this.loadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loadPictureBox.TabIndex = 72;
+            this.loadPictureBox.TabStop = false;
+            this.loadPictureBox.Visible = false;
             // 
             // captchaTextBox
             // 
-            this.captchaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.captchaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.captchaTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.captchaTextBox.BorderSize = 2;
             this.captchaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -320,7 +322,7 @@ namespace HeroPecApp
             // 
             // confirmationPasswordTextBox
             // 
-            this.confirmationPasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.confirmationPasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.confirmationPasswordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.confirmationPasswordTextBox.BorderSize = 2;
             this.confirmationPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -338,7 +340,7 @@ namespace HeroPecApp
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.passwordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.passwordTextBox.BorderSize = 2;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -356,7 +358,7 @@ namespace HeroPecApp
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.phoneTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.phoneTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.phoneTextBox.BorderSize = 2;
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -373,7 +375,7 @@ namespace HeroPecApp
             // 
             // loginTextBox
             // 
-            this.loginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.loginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.loginTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.loginTextBox.BorderSize = 2;
             this.loginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -391,7 +393,7 @@ namespace HeroPecApp
             // 
             // nicknameTextBox
             // 
-            this.nicknameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.nicknameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.nicknameTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.nicknameTextBox.BorderSize = 2;
             this.nicknameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -408,7 +410,7 @@ namespace HeroPecApp
             // 
             // emailTextBox
             // 
-            this.emailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.emailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.emailTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.emailTextBox.BorderSize = 2;
             this.emailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -428,9 +430,9 @@ namespace HeroPecApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(700, 524);
-            this.Controls.Add(this.passDifficultyLabel);
+            this.Controls.Add(this.loadPictureBox);
             this.Controls.Add(this.errorConfirmPasswordLabel);
             this.Controls.Add(this.errorPasswordLabel);
             this.Controls.Add(this.errorLoginLabel);
@@ -468,6 +470,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,6 +505,6 @@ namespace HeroPecApp
         private System.Windows.Forms.Label errorPasswordLabel;
         private System.Windows.Forms.Label errorConfirmPasswordLabel;
         private System.Windows.Forms.PictureBox dragPanel;
-        private System.Windows.Forms.Label passDifficultyLabel;
+        private System.Windows.Forms.PictureBox loadPictureBox;
     }
 }

@@ -34,7 +34,7 @@ namespace HeroPecApp
             }
         }
 
-        private static void SendEmail(int code, string email)
+        private static void SendEmail(int code, User curUser)
         {
             using (var smtp = new SmtpClient())
             {
@@ -50,14 +50,14 @@ namespace HeroPecApp
 
                 var msg = new MailMessage()
                 {
-                    Subject = email,
-                    Body = code.ToString(),
+                    Subject = curUser.email,
+                    Body = MailHelper.Restoration(code, curUser.userid),
                     From = new MailAddress("heropeccompany@gmail.com"),
                     IsBodyHtml = true,
                     BodyEncoding = Encoding.UTF8
                 };
 
-                msg.To.Add(new MailAddress(email));
+                msg.To.Add(new MailAddress(curUser.email));
 
                 smtp.Send(msg);
             }
@@ -84,7 +84,7 @@ namespace HeroPecApp
                     {
                         var random = new Random();
                         code = random.Next(1000, 9999);
-                        SendEmail(code, currentUser.email);
+                        SendEmail(code, currentUser);
                         MessageBox.Show($"На ваш почтовый ящик отправлен код подтверждения");
                         codeButton.Enabled = true;
                     }

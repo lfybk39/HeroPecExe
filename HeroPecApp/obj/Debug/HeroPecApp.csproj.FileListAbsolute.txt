@@ -140,3 +140,4 @@ C:\Users\doge2\OneDrive\Desktop\HeroPecExe-main\HeroPecApp\obj\Debug\HeroPecApp.
 C:\Users\doge2\OneDrive\Desktop\HeroPecExe-main\HeroPecApp\obj\Debug\HeroPecApp.csproj.CopyComplete
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.csproj.AssemblyReference.cache
 C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.AuthorizeAdminForm.resources
+C:\Temp\HeroPecEXE\HeroPecApp\HeroPecApp\obj\Debug\HeroPecApp.CustomMessageBox.resources

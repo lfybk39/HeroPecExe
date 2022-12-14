@@ -262,9 +262,9 @@ namespace HeroPecApp
             // configurationPictureBox
             // 
             this.configurationPictureBox.Image = global::HeroPecApp.Properties.Resources.conf;
-            this.configurationPictureBox.Location = new System.Drawing.Point(661, 443);
+            this.configurationPictureBox.Location = new System.Drawing.Point(642, 449);
             this.configurationPictureBox.Name = "configurationPictureBox";
-            this.configurationPictureBox.Size = new System.Drawing.Size(29, 33);
+            this.configurationPictureBox.Size = new System.Drawing.Size(54, 33);
             this.configurationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.configurationPictureBox.TabIndex = 58;
             this.configurationPictureBox.TabStop = false;
@@ -293,7 +293,8 @@ namespace HeroPecApp
             this.Controls.Add(this.dragPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AuthorizationForm";
-            this.Text = "AuthorizationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "HeroPec Авторизация";
             this.Load += new System.EventHandler(this.AuthorizationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();

@@ -17,9 +17,6 @@
     <Setting Name="IsRemember" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="LocalAdminLogin" Type="System.String" Scope="User">
-      <Value Profile="(Default)">LocalHeroAdmin</Value>
-    </Setting>
     <Setting Name="LocalAdminPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)">pass1234</Value>
     </Setting>

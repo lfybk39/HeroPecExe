@@ -88,7 +88,7 @@ namespace HeroPecApp
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.label5.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.label5.Location = new System.Drawing.Point(177, 74);
+            this.label5.Location = new System.Drawing.Point(177, 63);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(114, 31);
             this.label5.TabIndex = 62;
@@ -100,7 +100,7 @@ namespace HeroPecApp
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.label4.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 20.2F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.label4.Location = new System.Drawing.Point(161, 43);
+            this.label4.Location = new System.Drawing.Point(161, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 31);
             this.label4.TabIndex = 61;
@@ -113,7 +113,7 @@ namespace HeroPecApp
             this.passwordTextBox.BorderSize = 3;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.passwordTextBox.Location = new System.Drawing.Point(39, 140);
+            this.passwordTextBox.Location = new System.Drawing.Point(95, 121);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Padding = new System.Windows.Forms.Padding(7);
@@ -128,7 +128,7 @@ namespace HeroPecApp
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.passwordLabel.Location = new System.Drawing.Point(36, 122);
+            this.passwordLabel.Location = new System.Drawing.Point(120, 103);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(228, 15);
             this.passwordLabel.TabIndex = 64;
@@ -140,7 +140,7 @@ namespace HeroPecApp
             this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterButton.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enterButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.enterButton.Location = new System.Drawing.Point(324, 140);
+            this.enterButton.Location = new System.Drawing.Point(171, 158);
             this.enterButton.Name = "enterButton";
             this.enterButton.Size = new System.Drawing.Size(120, 31);
             this.enterButton.TabIndex = 65;
@@ -164,7 +164,7 @@ namespace HeroPecApp
             this.Controls.Add(this.dragPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AuthorizeAdminForm";
-            this.Text = "AuthorizeAdminForm";
+            this.Text = "HeroPec настройки";
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();

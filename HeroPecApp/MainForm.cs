@@ -81,7 +81,7 @@ namespace HeroPecApp
 
         private void DeleteFile()
         {
-            if (MessageBox.Show("Вы уверены, что хотите удалить файл?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (HeroMessageBox.Show("Вы уверены, что хотите удалить файл?", MessageBoxButtons.YesNo))
             {
                 if (cloudLocalCheckBox.Checked)
                 {
@@ -193,7 +193,7 @@ namespace HeroPecApp
                     ? $"{Environment.CurrentDirectory}\\DataFiles\\Users"
                     : $"{Properties.Settings.Default.LocalPath}\\DataFiles\\Users") + $"\\{Connection.CurrentUser.userid}.zip";
                 currentHashPassword = GetHash(Connection.CurrentUser.passwd);
-                FtpUserid = Connection.CurrentUser.userid + ".5356dbd3651165dae79fb664c05f311a";
+                FtpUserid = Connection.CurrentUser.userid + $".{Properties.Settings.Default.DBUserPassword}";
             }
         }
 
@@ -210,12 +210,18 @@ namespace HeroPecApp
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            DeleteFile();
+            if(filesListView.SelectedItems.Count>0)
+            {
+                DeleteFile();
+            }
         }
 
         private void extractFileButton_Click(object sender, EventArgs e)
         {
-            ExtractFile();
+            if (filesListView.SelectedItems.Count > 0)
+            {
+                ExtractFile();
+            }
         }
 
         private void cloudLocalCheckBox_CheckedChanged(object sender)

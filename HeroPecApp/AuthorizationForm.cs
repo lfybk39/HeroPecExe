@@ -43,8 +43,8 @@ namespace HeroPecApp
                 {
                     throw new Exception("Неверные данные для входа.");
                 }
-                //SendEmail(currentUser);
-                MessageBox.Show($"{currentUser.userid}, вы успешно авторизовались!", "Успешный вход!", MessageBoxButtons.OK);
+                SendEmail(currentUser);
+                HeroMessageBox.Show($"{currentUser.userid}, вы успешно авторизовались!");
                 Connection.CurrentUser = currentUser;
                 Properties.Settings.Default.CurrentUserLogin = currentUser.userid;
                 Properties.Settings.Default.CurrentUserPassword = currentUser.passwd;
@@ -71,7 +71,7 @@ namespace HeroPecApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                HeroMessageBox.Show(ex.Message);
             }
             ChangeState(true);
             return authorized;
@@ -94,8 +94,7 @@ namespace HeroPecApp
                 var msg = new MailMessage()
                 {
                     Subject = "Вход в приложение HeroPeC",
-                    Body = $"<p>Совершен вход в аккаунт:{currentUser.userid}</p>" +
-                    $"<p>Если это не вы, смените пароль</p>",
+                    Body = MailHelper.Authorization(currentUser.userid),
                     From = new MailAddress("heropeccompany@gmail.com"),
                     IsBodyHtml = true,
                     BodyEncoding = Encoding.UTF8
@@ -120,18 +119,26 @@ namespace HeroPecApp
         {
             if (!offlineModeToggleSwitch.Checked)
             {
-                try
+                if (emailLoginTextBox.Texts.Trim().Length > 3
+                    && passwordTextBox.Texts.Trim().Length > 7)
                 {
-                    if (await AuthorizeAsync())
+                    try
                     {
-                        this.DialogResult = DialogResult.OK;
-                        Close();
+                        if (await AuthorizeAsync())
+                        {
+                            this.DialogResult = DialogResult.OK;
+                            Close();
+                        }
+                    }
+                    catch (Exception exc)
+                    {
+                        HeroMessageBox.Show(exc.Message, "Ошибка!");
+                        ChangeState(true);
                     }
                 }
-                catch (Exception exc)
+                else
                 {
-                    MessageBox.Show(exc.Message);
-                    ChangeState(true);
+                    HeroMessageBox.Show("Заполните поля ввода");
                 }
             }
             else
