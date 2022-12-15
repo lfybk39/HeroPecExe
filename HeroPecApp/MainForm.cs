@@ -24,6 +24,20 @@ namespace HeroPecApp
         private string currentHashPassword;
         private string localZip;
 
+        private void ChangeState(bool enabled)
+        {
+            string[] ctrls = { "filesDataGridView", "exitPictureBox", "wrapPictureBox", "dragPanel" };
+            foreach (Control control in Controls)
+            {
+                if (!ctrls.Contains(control.Name))
+                {
+                    control.Enabled = enabled;
+                }
+            }
+            cloudLocalCheckBox.Enabled = isOflline ? false : enabled;
+            loadPictureBox.Enabled = loadPictureBox.Visible = !enabled;
+        }
+
         public static string GetHash(string input)
         {
             var md5 = MD5.Create();
@@ -46,36 +60,27 @@ namespace HeroPecApp
             }
         }
 
-        private void AddFile()
+        private void AddFile(string[] files)
         {
-            var addFile = new OpenFileDialog();
-            addFile.Multiselect = true;
-            if (addFile.ShowDialog() == DialogResult.OK)
+
+            if (cloudLocalCheckBox.Checked)
             {
-                if (cloudLocalCheckBox.Checked)
+                foreach (var item in files)
                 {
-                    foreach (var item in addFile.FileNames)
-                    {
-                        FtpHelper.UploadFile(item, address + "/" + Path.GetFileName(item), FtpUserid, Connection.CurrentUser.passwd);
-                    }
+                    FtpHelper.UploadFile(item, address + "/" + Path.GetFileName(item), FtpUserid, Connection.CurrentUser.passwd);
                 }
-                else
+            }
+            else
+            {
+                using (var zip = new ZipFile(localZip))
                 {
-                    loadPictureBox.Visible = true;
-
-                    using (var zip = new ZipFile(localZip))
+                    zip.Password = currentHashPassword;
+                    foreach (var item in files)
                     {
-                        zip.Password = currentHashPassword;
-                        foreach (var item in addFile.FileNames)
-                        {
-                            zip.AddFile(item, "");
-                        }
-                        zip.Save(localZip);
+                        zip.AddFile(item, "");
                     }
-
-                    loadPictureBox.Visible = false;
+                    zip.Save(localZip);
                 }
-                FillListView();
             }
         }
 
@@ -105,7 +110,6 @@ namespace HeroPecApp
                         }
                     }
                 }
-                FillListView();
             }
         }
 
@@ -139,37 +143,37 @@ namespace HeroPecApp
             }
         }
 
-        private void FillListView()
+        private ListViewItem[] FillListView()
         {
             if (cloudLocalCheckBox.Checked)
             {
                 try
                 {
-                    List<string> Files = FtpHelper.GetFilesList(address, FtpUserid, Connection.CurrentUser.passwd);
-                    filesListView.Items.Clear();
-                    foreach (string File in Files)
+                    var f = FtpHelper.GetFilesList(address, FtpUserid, Connection.CurrentUser.passwd).ToArray();
+                    ListViewItem[] Files = new ListViewItem[0];
+                    foreach (var file in f)
                     {
-                        filesListView.Items.Add(File);
+                        Files.Append(new ListViewItem { Text =  file});
                     }
+                    return Files;
                 }
                 catch (Exception)
                 {
-
+                    return null;
                 }
             }
             else
             {
                 CheckDirectory();
-                loadPictureBox.Visible = true;
-                filesListView.Items.Clear();
                 using (var Zip = new ZipFile(localZip))
                 {
+                    ListViewItem[] Files = new ListViewItem[0];
                     foreach (var entry in Zip.Entries)
                     {
-                        filesListView.Items.Add(entry.FileName);
+                        Files.Append(new ListViewItem { Text = entry.FileName });
                     }
+                    return Files;
                 }
-                loadPictureBox.Visible = false;
             }
         }
 
@@ -180,7 +184,6 @@ namespace HeroPecApp
             if (Connection.CurrentUser is null)
             {
                 isOflline = true;
-                cloudLocalCheckBox.Enabled = false;
                 Connection.CurrentUser = new User { userid = "LocalHeroData" };
                 localZip = (Properties.Settings.Default.LocalPath == ""
                     ? $"{Environment.CurrentDirectory}\\DataFiles"
@@ -197,38 +200,54 @@ namespace HeroPecApp
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
-            FillListView();
+            ChangeState(false);
+            filesListView.Items.AddRange(await Task.Run(() => FillListView()));
+            ChangeState(true);
         }
 
-        private void addFileButton_Click(object sender, EventArgs e)
+        private async void addFileButton_Click(object sender, EventArgs e)
         {
-            AddFile();
-            FillListView();
-        }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            if(filesListView.SelectedItems.Count>0)
+            ChangeState(false);
+            var addFile = new OpenFileDialog();
+            addFile.Multiselect = true;
+            if (addFile.ShowDialog() == DialogResult.OK)
             {
-                DeleteFile();
+                await Task.Run(() => AddFile(addFile.FileNames));
             }
+            filesListView.Items.AddRange(await Task.Run(() => FillListView()));
+            ChangeState(true);
         }
 
-        private void extractFileButton_Click(object sender, EventArgs e)
+        private async void deleteButton_Click(object sender, EventArgs e)
         {
             if (filesListView.SelectedItems.Count > 0)
             {
-                ExtractFile();
+                ChangeState(false);
+                await Task.Run(() => DeleteFile());
+                filesListView.Items.AddRange(await Task.Run(() => FillListView()));
+                ChangeState(true);
             }
         }
 
-        private void cloudLocalCheckBox_CheckedChanged(object sender)
+        private async void extractFileButton_Click(object sender, EventArgs e)
+        {
+            if (filesListView.SelectedItems.Count > 0)
+            {
+                ChangeState(false);
+                await Task.Run(() => ExtractFile());
+                ChangeState(true);
+            }
+        }
+
+        private async void cloudLocalCheckBox_CheckedChanged(object sender)
         {
             cloudLocalCheckBox.Text = cloudLocalCheckBox.Checked ? "Облачное хранение"
                 : "Локальное хранение";
-            FillListView();
+            ChangeState(false);
+            filesListView.Items.AddRange(await Task.Run(() => FillListView()));
+            ChangeState(true);
         }
 
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)

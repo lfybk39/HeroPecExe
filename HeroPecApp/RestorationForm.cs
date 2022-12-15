@@ -25,9 +25,10 @@ namespace HeroPecApp
         private void ChangeState(bool enabled)
         {
             logoPictureBox.Image = enabled ? Properties.Resources.logo : Properties.Resources.logogif;
+            string[] ctrls = { "logoPictureBox", "exitPictureBox", "wrapPictureBox", "dragPanel" };
             foreach (Control control in Controls)
             {
-                if (control.GetType().Name != "PictureBox")
+                if (!ctrls.Contains(control.Name))
                 {
                     control.Enabled = enabled;
                 }
@@ -69,7 +70,7 @@ namespace HeroPecApp
             InitializeComponent();
         }
 
-        private void confirmButton_Click(object sender, EventArgs e)
+        private async void confirmButton_Click(object sender, EventArgs e)
         {
             if (emailLoginTextBox.Texts.Contains("@") 
                 ? (Regex.IsMatch(emailLoginTextBox.Texts.Trim(), @"^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$")) 
@@ -84,23 +85,25 @@ namespace HeroPecApp
                     {
                         var random = new Random();
                         code = random.Next(1000, 9999);
-                        SendEmail(code, currentUser);
-                        MessageBox.Show($"На ваш почтовый ящик отправлен код подтверждения");
+                        ChangeState(false);
+                        await Task.Run(()=>SendEmail(code, currentUser));
+                        ChangeState(true);
+                        HeroMessageBox.Show($"На ваш почтовый ящик отправлен код подтверждения");
                         codeButton.Enabled = true;
                     }
                     else
                     {
-                        MessageBox.Show("Пользователь не найден");
+                        HeroMessageBox.Show("Пользователь не найден");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    HeroMessageBox.Show(ex.Message);
                 }
             }
             else
             {
-                MessageBox.Show("Введите логин или E-mail");
+                HeroMessageBox.Show("Введите логин или E-mail");
             }
         }
 
@@ -113,29 +116,48 @@ namespace HeroPecApp
             }
             else
             {
-                MessageBox.Show("Неверный код");
+                HeroMessageBox.Show("Неверный код");
             }
         }
 
-        private void restoreButton_Click(object sender, EventArgs e)
+        private async void restoreButton_Click(object sender, EventArgs e)
         {
             try
             {
                 if (!Regex.IsMatch(passwordTextBox.Texts, @"^[a-zA-Z0-9]{8,20}$") || passwordTextBox.Texts.Contains(" "))
                 {
-                    MessageBox.Show("Пожалуйста укажите корректный пароль. Пароль должен состоять из 8-20 символов, которые могут быть строчными и прописными латинского алфавита.");
+                    HeroMessageBox.Show("Пожалуйста укажите корректный пароль. Пароль должен состоять из 8-20 символов, которые могут быть строчными и прописными латинского алфавита.");
                 }
                 else if (passwordTextBox.Texts == confirmationTextBox.Texts)
                 {
-                    Core.Context.User.FirstOrDefault(u => u.id == currentUser.id).passwd = passwordTextBox.Texts;
-                    Core.Context.SaveChanges();
-                    MessageBox.Show("Пароль успешно изменён");
-                    Close();
+                    ChangeState(false);
+                    var changed = await Task.Run(()=>SaveChanges());
+                    ChangeState(true);
+                    if(changed)
+                    {
+                        HeroMessageBox.Show("Пароль успешно изменён");
+                        Close();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                HeroMessageBox.Show(ex.Message);
+            }
+        }
+
+        private bool SaveChanges()
+        {
+            try
+            {
+                Core.Context.User.FirstOrDefault(u => u.id == currentUser.id).passwd = passwordTextBox.Texts;
+                Core.Context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                HeroMessageBox.Show(ex.Message);
+                return false;
             }
         }
 

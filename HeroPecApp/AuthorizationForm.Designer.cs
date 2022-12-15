@@ -256,8 +256,8 @@ namespace HeroPecApp
             this.exitPictureBox.TabIndex = 54;
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
-            this.exitPictureBox.MouseLeave += new System.EventHandler(this.wrapPictureBox_MouseLeave);
-            this.exitPictureBox.MouseHover += new System.EventHandler(this.wrapPictureBox_MouseHover);
+            this.exitPictureBox.MouseLeave += new System.EventHandler(this.exitPictureBox_MouseLeave);
+            this.exitPictureBox.MouseHover += new System.EventHandler(this.exitPictureBox_MouseHover);
             // 
             // configurationPictureBox
             // 

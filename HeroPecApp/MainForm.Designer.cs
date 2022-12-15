@@ -147,9 +147,9 @@ namespace HeroPecApp
             // 
             this.loadPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.loadPictureBox.Image = global::HeroPecApp.Properties.Resources.logogif;
-            this.loadPictureBox.Location = new System.Drawing.Point(332, 96);
+            this.loadPictureBox.Location = new System.Drawing.Point(272, 35);
             this.loadPictureBox.Name = "loadPictureBox";
-            this.loadPictureBox.Size = new System.Drawing.Size(348, 339);
+            this.loadPictureBox.Size = new System.Drawing.Size(451, 494);
             this.loadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadPictureBox.TabIndex = 42;
             this.loadPictureBox.TabStop = false;

@@ -116,6 +116,7 @@
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.messageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.messageLabel.Location = new System.Drawing.Point(12, 39);
+            this.messageLabel.MaximumSize = new System.Drawing.Size(320, 0);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(72, 16);
             this.messageLabel.TabIndex = 2;

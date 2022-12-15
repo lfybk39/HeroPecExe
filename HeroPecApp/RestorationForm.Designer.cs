@@ -312,7 +312,7 @@ namespace HeroPecApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(534, 493);
             this.Controls.Add(this.restorationPanel);
             this.Controls.Add(this.wrapPictureBox);
