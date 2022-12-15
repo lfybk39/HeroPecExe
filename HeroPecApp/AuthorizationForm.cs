@@ -133,8 +133,8 @@ namespace HeroPecApp
                     catch (Exception exc)
                     {
                         HeroMessageBox.Show(exc.Message, "Ошибка!");
-                        ChangeState(true);
                     }
+                    ChangeState(true);
                 }
                 else
                 {

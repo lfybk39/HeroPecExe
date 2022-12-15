@@ -148,7 +148,7 @@
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logowithoutbgtext.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="folderico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HeroFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folderico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconmain" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -169,37 +169,37 @@
   <data name="exeicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exeicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exeicon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HeroEXE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exeicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fileicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fileicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fileicon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HeroFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fileicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pdficon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pdficon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pdficon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HeroPDF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pdficon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pictureicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pictureicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pictureicon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HeroPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pictureicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="txticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\txticon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="txticon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HeroTXT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\txticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zipicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zipicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="zipicon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HeroZIP" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zipicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

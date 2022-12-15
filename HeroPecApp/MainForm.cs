@@ -12,6 +12,7 @@ using System.IO.Compression;
 using System.IO;
 using System.Security.Cryptography;
 using HeroPecApp.ConnectionFTP;
+using System.Runtime.Serialization;
 
 namespace HeroPecApp
 {
@@ -23,10 +24,11 @@ namespace HeroPecApp
         private static bool isOflline = false;
         private string currentHashPassword;
         private string localZip;
+        private ImageList icoImageList = new ImageList();
 
         private void ChangeState(bool enabled)
         {
-            string[] ctrls = { "filesDataGridView", "exitPictureBox", "wrapPictureBox", "dragPanel" };
+            string[] ctrls = { "filesListView", "exitPictureBox", "wrapPictureBox", "dragPanel" };
             foreach (Control control in Controls)
             {
                 if (!ctrls.Contains(control.Name))
@@ -44,6 +46,37 @@ namespace HeroPecApp
             var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
 
             return Convert.ToBase64String(hash);
+        }
+
+        private int GetIcoIndex(string file)
+        {
+            switch (Path.GetExtension(file).ToLower().Replace(".", ""))
+            {
+                case "pdf":
+                    return 1;
+
+                case "jpg":
+                case "png":
+                case "jpeg":
+                case "gif":
+                case "bmp":
+                    return 2;
+
+                case "txt":
+                case "text":
+                    return 3;
+
+                case "zip":
+                case "rar":
+                case "7z":
+                    return 4;
+
+                case "exe":
+                    return 5;
+
+                default:
+                    return 0;
+            }
         }
 
         private void CheckDirectory()
@@ -72,75 +105,76 @@ namespace HeroPecApp
             }
             else
             {
-                using (var zip = new ZipFile(localZip))
+                using (var zip = new ZipFile(localZip, Encoding.UTF8))
                 {
                     zip.Password = currentHashPassword;
                     foreach (var item in files)
                     {
-                        zip.AddFile(item, "");
+                        if (!zip.EntryFileNames.Contains(Path.GetFileName(item)))
+                        {
+                            zip.AddFile(item, "");
+                        }
+                        else if (HeroMessageBox.Show($"В базе уже есть файл:\n{item}\nЗаменить?", MessageBoxButtons.YesNo))
+                        {
+                            zip.RemoveEntry(Path.GetFileName(item));
+                            zip.AddFile(item, "");
+                        }
                     }
                     zip.Save(localZip);
                 }
             }
+            HeroMessageBox.Show($"Кол-во добавленных файлов: {files.Length}");
         }
 
-        private void DeleteFile()
+        private void DeleteFile(ListViewItem[] selection)
         {
             if (HeroMessageBox.Show("Вы уверены, что хотите удалить файл?", MessageBoxButtons.YesNo))
             {
                 if (cloudLocalCheckBox.Checked)
                 {
-                    foreach (ListViewItem item in filesListView.SelectedItems)
+                    foreach (ListViewItem item in selection)
                     {
                         FtpHelper.DeleteFile(address + "/" + item.Text, FtpUserid, Connection.CurrentUser.passwd);
                     }
                 }
                 else
                 {
-                    if (filesListView.SelectedItems.Count != 0)
+                    using (var zip = new ZipFile(localZip, Encoding.UTF8))
                     {
-                        using (var zip = new ZipFile(localZip))
+                        foreach (ListViewItem item in selection)
                         {
-                            foreach (ListViewItem item in filesListView.SelectedItems)
-                            {
-                                zip.Password = currentHashPassword;
-                                zip.RemoveEntry(item.Text);
-                                zip.Save(localZip);
-                            }
+                            zip.Password = currentHashPassword;
+                            zip.RemoveEntry(item.Text);
+                            zip.Save(localZip);
                         }
                     }
                 }
             }
+            HeroMessageBox.Show($"Кол-во удаленных файлов: {selection.Length}");
         }
 
-        private void ExtractFile()
+        private void ExtractFile(string path, ListViewItem[] selection)
         {
-            var extractionFolder = new FolderBrowserDialog();
-            if (extractionFolder.ShowDialog() == DialogResult.OK)
+
+            if (cloudLocalCheckBox.Checked)
             {
-                if (cloudLocalCheckBox.Checked)
+                foreach (ListViewItem item in selection)
                 {
-                    foreach (ListViewItem item in filesListView.SelectedItems)
-                    {
-                        FtpHelper.DownloadFile(Path.Combine(extractionFolder.SelectedPath, item.Text), address + "/" + item.Text, FtpUserid, Connection.CurrentUser.passwd);
-                    }
+                    FtpHelper.DownloadFile(Path.Combine(path, item.Text), address + "/" + item.Text, FtpUserid, Connection.CurrentUser.passwd);
                 }
-                else
-                {
-                    if (filesListView.SelectedItems.Count != 0)
-                    {
-                        using (var zip = new ZipFile(localZip))
-                        {
-                            foreach (ListViewItem item in filesListView.SelectedItems)
-                            {
-                                var zipEntry = zip.SingleOrDefault(z => z.FileName == item.Text);
-                                zipEntry.ExtractWithPassword(extractionFolder.SelectedPath, currentHashPassword);
-                            }
-                        }
-                    }
-                }
-                FillListView();
             }
+            else
+            {
+                using (var zip = new ZipFile(localZip))
+                {
+                    foreach (ListViewItem item in selection)
+                    {
+                        var zipEntry = zip.SingleOrDefault(z => z.FileName == item.Text);
+                        zipEntry.ExtractWithPassword(path, currentHashPassword);
+                    }
+                }
+            }
+            HeroMessageBox.Show($"Кол-во извлеченных файлов: {selection.Length}");
         }
 
         private ListViewItem[] FillListView()
@@ -149,11 +183,11 @@ namespace HeroPecApp
             {
                 try
                 {
-                    var f = FtpHelper.GetFilesList(address, FtpUserid, Connection.CurrentUser.passwd).ToArray();
-                    ListViewItem[] Files = new ListViewItem[0];
-                    foreach (var file in f)
+                    var files = FtpHelper.GetFilesList(address, FtpUserid, Connection.CurrentUser.passwd).ToArray();
+                    ListViewItem[] Files = new ListViewItem[files.Length];
+                    for (int i = 0; i < files.Length; i++)
                     {
-                        Files.Append(new ListViewItem { Text =  file});
+                        Files[i] = new ListViewItem(files[i], GetIcoIndex(files[i]));
                     }
                     return Files;
                 }
@@ -165,12 +199,15 @@ namespace HeroPecApp
             else
             {
                 CheckDirectory();
-                using (var Zip = new ZipFile(localZip))
+                using (var zip = new ZipFile(localZip, Encoding.UTF8))
                 {
-                    ListViewItem[] Files = new ListViewItem[0];
-                    foreach (var entry in Zip.Entries)
+                    zip.AlternateEncodingUsage = ZipOption.Always;
+                    zip.AlternateEncoding = Encoding.UTF8;
+                    ListViewItem[] Files = new ListViewItem[zip.Entries.Count];
+                    for (int i = 0; i < zip.Entries.Count; i++)
                     {
-                        Files.Append(new ListViewItem { Text = entry.FileName });
+                        Files[i] = new ListViewItem(zip.Entries.ToArray()[i].FileName.ToString(),
+                            GetIcoIndex(zip.Entries.ToArray()[i].FileName));
                     }
                     return Files;
                 }
@@ -181,6 +218,18 @@ namespace HeroPecApp
         {
             InitializeComponent();
             this.Icon = HeroPecApp.Properties.Resources.iconmain;
+            icoImageList.Images.AddRange(new Image[]
+            {
+                Properties.Resources.HeroFile as Bitmap,
+                Properties.Resources.HeroPDF as Bitmap,
+                Properties.Resources.HeroPicture as Bitmap,
+                Properties.Resources.HeroTXT as Bitmap,
+                Properties.Resources.HeroZIP as Bitmap,
+                Properties.Resources.HeroEXE as Bitmap
+            });
+            icoImageList.ImageSize = new Size(48, 48);
+            filesListView.LargeImageList = icoImageList;
+
             if (Connection.CurrentUser is null)
             {
                 isOflline = true;
@@ -215,8 +264,9 @@ namespace HeroPecApp
             if (addFile.ShowDialog() == DialogResult.OK)
             {
                 await Task.Run(() => AddFile(addFile.FileNames));
+                filesListView.Clear();
+                filesListView.Items.AddRange(await Task.Run(() => FillListView()));
             }
-            filesListView.Items.AddRange(await Task.Run(() => FillListView()));
             ChangeState(true);
         }
 
@@ -225,7 +275,13 @@ namespace HeroPecApp
             if (filesListView.SelectedItems.Count > 0)
             {
                 ChangeState(false);
-                await Task.Run(() => DeleteFile());
+                var selection = new ListViewItem[filesListView.SelectedItems.Count];
+                for (int i = 0; i < filesListView.SelectedItems.Count; i++)
+                {
+                    selection[i] = filesListView.SelectedItems[i];
+                }
+                await Task.Run(() => DeleteFile(selection));
+                filesListView.Clear();
                 filesListView.Items.AddRange(await Task.Run(() => FillListView()));
                 ChangeState(true);
             }
@@ -235,9 +291,18 @@ namespace HeroPecApp
         {
             if (filesListView.SelectedItems.Count > 0)
             {
-                ChangeState(false);
-                await Task.Run(() => ExtractFile());
-                ChangeState(true);
+                var extractionFolder = new FolderBrowserDialog();
+                if (extractionFolder.ShowDialog() == DialogResult.OK)
+                {
+                    var selection = new ListViewItem[filesListView.SelectedItems.Count];
+                    for (int i = 0; i < filesListView.SelectedItems.Count; i++)
+                    {
+                        selection[i] = filesListView.SelectedItems[i];
+                    }
+                    ChangeState(false);
+                    await Task.Run(() => ExtractFile(extractionFolder.SelectedPath, selection));
+                    ChangeState(true);
+                }
             }
         }
 
@@ -246,6 +311,7 @@ namespace HeroPecApp
             cloudLocalCheckBox.Text = cloudLocalCheckBox.Checked ? "Облачное хранение"
                 : "Локальное хранение";
             ChangeState(false);
+            filesListView.Clear();
             filesListView.Items.AddRange(await Task.Run(() => FillListView()));
             ChangeState(true);
         }

@@ -142,7 +142,7 @@ namespace HeroPecApp
             // 
             // folderPictureBox
             // 
-            this.folderPictureBox.Image = global::HeroPecApp.Properties.Resources.folderico;
+            this.folderPictureBox.Image = global::HeroPecApp.Properties.Resources.HeroFolder;
             this.folderPictureBox.Location = new System.Drawing.Point(186, 41);
             this.folderPictureBox.Name = "folderPictureBox";
             this.folderPictureBox.Size = new System.Drawing.Size(36, 31);

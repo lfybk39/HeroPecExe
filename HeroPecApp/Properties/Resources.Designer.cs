@@ -19,7 +19,7 @@ namespace HeroPecApp.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -103,16 +103,6 @@ namespace HeroPecApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap exeicon1 {
-            get {
-                object obj = ResourceManager.GetObject("exeicon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap exit {
             get {
                 object obj = ResourceManager.GetObject("exit", resourceCulture);
@@ -153,9 +143,9 @@ namespace HeroPecApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fileicon1 {
+        internal static System.Drawing.Bitmap HeroEXE {
             get {
-                object obj = ResourceManager.GetObject("fileicon1", resourceCulture);
+                object obj = ResourceManager.GetObject("HeroEXE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +153,59 @@ namespace HeroPecApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folderico {
+        internal static System.Drawing.Bitmap HeroFile {
             get {
-                object obj = ResourceManager.GetObject("folderico", resourceCulture);
+                object obj = ResourceManager.GetObject("HeroFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HeroFolder {
+            get {
+                object obj = ResourceManager.GetObject("HeroFolder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HeroPDF {
+            get {
+                object obj = ResourceManager.GetObject("HeroPDF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HeroPicture {
+            get {
+                object obj = ResourceManager.GetObject("HeroPicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HeroTXT {
+            get {
+                object obj = ResourceManager.GetObject("HeroTXT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HeroZIP {
+            get {
+                object obj = ResourceManager.GetObject("HeroZIP", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -251,32 +291,12 @@ namespace HeroPecApp.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pdficon1 {
-            get {
-                object obj = ResourceManager.GetObject("pdficon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
         /// </summary>
         internal static System.Drawing.Icon pictureicon {
             get {
                 object obj = ResourceManager.GetObject("pictureicon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pictureicon1 {
-            get {
-                object obj = ResourceManager.GetObject("pictureicon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -303,16 +323,6 @@ namespace HeroPecApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap txticon1 {
-            get {
-                object obj = ResourceManager.GetObject("txticon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap wrap {
             get {
                 object obj = ResourceManager.GetObject("wrap", resourceCulture);
@@ -327,16 +337,6 @@ namespace HeroPecApp.Properties {
             get {
                 object obj = ResourceManager.GetObject("zipicon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap zipicon1 {
-            get {
-                object obj = ResourceManager.GetObject("zipicon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

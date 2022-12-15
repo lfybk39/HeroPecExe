@@ -50,7 +50,7 @@ namespace HeroPecApp
                             {
                                 AnimationList[index].UpdateFrame();
                             }
-                            catch (System.Exception)
+                            catch (System.NullReferenceException)
                             { }
                         }
                     });

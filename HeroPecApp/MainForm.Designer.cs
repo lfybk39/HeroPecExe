@@ -49,15 +49,17 @@ namespace HeroPecApp
             // 
             // filesListView
             // 
+            this.filesListView.Alignment = System.Windows.Forms.ListViewAlignment.Default;
             this.filesListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filesListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.filesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.filesListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.filesListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
             this.filesListView.HideSelection = false;
             this.filesListView.Location = new System.Drawing.Point(272, 35);
             this.filesListView.Name = "filesListView";
             this.filesListView.Size = new System.Drawing.Size(451, 494);
+            this.filesListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.filesListView.TabIndex = 0;
             this.filesListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -147,7 +149,7 @@ namespace HeroPecApp
             // 
             this.loadPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.loadPictureBox.Image = global::HeroPecApp.Properties.Resources.logogif;
-            this.loadPictureBox.Location = new System.Drawing.Point(272, 35);
+            this.loadPictureBox.Location = new System.Drawing.Point(272, 58);
             this.loadPictureBox.Name = "loadPictureBox";
             this.loadPictureBox.Size = new System.Drawing.Size(451, 494);
             this.loadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
