@@ -50,6 +50,7 @@ namespace HeroPecApp
             this.errorConfirmPasswordLabel = new System.Windows.Forms.Label();
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.loadPictureBox = new System.Windows.Forms.PictureBox();
+            this.passwordDifficultyLabel = new System.Windows.Forms.Label();
             this.captchaTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.confirmationPasswordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
@@ -57,12 +58,14 @@ namespace HeroPecApp
             this.loginTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.nicknameTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.emailTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.infoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // emailLabel
@@ -82,7 +85,7 @@ namespace HeroPecApp
             this.registrationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registrationButton.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registrationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.registrationButton.Location = new System.Drawing.Point(259, 419);
+            this.registrationButton.Location = new System.Drawing.Point(259, 441);
             this.registrationButton.Name = "registrationButton";
             this.registrationButton.Size = new System.Drawing.Size(189, 55);
             this.registrationButton.TabIndex = 8;
@@ -95,7 +98,7 @@ namespace HeroPecApp
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.label5.Location = new System.Drawing.Point(317, 477);
+            this.label5.Location = new System.Drawing.Point(317, 499);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 17);
             this.label5.TabIndex = 9;
@@ -139,7 +142,7 @@ namespace HeroPecApp
             this.confirmPasswordLabel.AutoSize = true;
             this.confirmPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.confirmPasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.confirmPasswordLabel.Location = new System.Drawing.Point(122, 320);
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(122, 340);
             this.confirmPasswordLabel.Name = "confirmPasswordLabel";
             this.confirmPasswordLabel.Size = new System.Drawing.Size(200, 20);
             this.confirmPasswordLabel.TabIndex = 31;
@@ -275,7 +278,7 @@ namespace HeroPecApp
             this.errorConfirmPasswordLabel.AutoSize = true;
             this.errorConfirmPasswordLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.errorConfirmPasswordLabel.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.errorConfirmPasswordLabel.Location = new System.Drawing.Point(210, 375);
+            this.errorConfirmPasswordLabel.Location = new System.Drawing.Point(210, 395);
             this.errorConfirmPasswordLabel.Name = "errorConfirmPasswordLabel";
             this.errorConfirmPasswordLabel.Size = new System.Drawing.Size(127, 17);
             this.errorConfirmPasswordLabel.TabIndex = 46;
@@ -296,13 +299,24 @@ namespace HeroPecApp
             // loadPictureBox
             // 
             this.loadPictureBox.Image = global::HeroPecApp.Properties.Resources.logogif;
-            this.loadPictureBox.Location = new System.Drawing.Point(12, 139);
+            this.loadPictureBox.Location = new System.Drawing.Point(12, 130);
             this.loadPictureBox.Name = "loadPictureBox";
-            this.loadPictureBox.Size = new System.Drawing.Size(676, 274);
+            this.loadPictureBox.Size = new System.Drawing.Size(676, 282);
             this.loadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loadPictureBox.TabIndex = 72;
             this.loadPictureBox.TabStop = false;
             this.loadPictureBox.Visible = false;
+            // 
+            // passwordDifficultyLabel
+            // 
+            this.passwordDifficultyLabel.AutoSize = true;
+            this.passwordDifficultyLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
+            this.passwordDifficultyLabel.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordDifficultyLabel.Location = new System.Drawing.Point(125, 318);
+            this.passwordDifficultyLabel.Name = "passwordDifficultyLabel";
+            this.passwordDifficultyLabel.Size = new System.Drawing.Size(94, 17);
+            this.passwordDifficultyLabel.TabIndex = 73;
+            this.passwordDifficultyLabel.Text = "Введите пароль";
             // 
             // captchaTextBox
             // 
@@ -327,7 +341,7 @@ namespace HeroPecApp
             this.confirmationPasswordTextBox.BorderSize = 2;
             this.confirmationPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.confirmationPasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.confirmationPasswordTextBox.Location = new System.Drawing.Point(125, 341);
+            this.confirmationPasswordTextBox.Location = new System.Drawing.Point(125, 361);
             this.confirmationPasswordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.confirmationPasswordTextBox.Name = "confirmationPasswordTextBox";
             this.confirmationPasswordTextBox.Padding = new System.Windows.Forms.Padding(7);
@@ -354,6 +368,7 @@ namespace HeroPecApp
             this.passwordTextBox.Texts = "";
             this.passwordTextBox.UnderlinedStyle = true;
             this.passwordTextBox.UseChar = false;
+            this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTextBox_KeyDown);
             this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 
             // phoneTextBox
@@ -426,13 +441,26 @@ namespace HeroPecApp
             this.emailTextBox.UseChar = false;
             this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             // 
+            // infoPictureBox
+            // 
+            this.infoPictureBox.Image = global::HeroPecApp.Properties.Resources.HeroQuestion;
+            this.infoPictureBox.Location = new System.Drawing.Point(12, 478);
+            this.infoPictureBox.Name = "infoPictureBox";
+            this.infoPictureBox.Size = new System.Drawing.Size(40, 38);
+            this.infoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.infoPictureBox.TabIndex = 74;
+            this.infoPictureBox.TabStop = false;
+            this.infoPictureBox.Click += new System.EventHandler(this.infoPictureBox_Click);
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(700, 524);
+            this.Controls.Add(this.infoPictureBox);
             this.Controls.Add(this.loadPictureBox);
+            this.Controls.Add(this.passwordDifficultyLabel);
             this.Controls.Add(this.errorConfirmPasswordLabel);
             this.Controls.Add(this.errorPasswordLabel);
             this.Controls.Add(this.errorLoginLabel);
@@ -471,6 +499,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.captchaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,5 +535,7 @@ namespace HeroPecApp
         private System.Windows.Forms.Label errorConfirmPasswordLabel;
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox loadPictureBox;
+        private System.Windows.Forms.Label passwordDifficultyLabel;
+        private System.Windows.Forms.PictureBox infoPictureBox;
     }
 }

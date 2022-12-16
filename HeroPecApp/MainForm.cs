@@ -36,7 +36,7 @@ namespace HeroPecApp
                     control.Enabled = enabled;
                 }
             }
-            cloudLocalCheckBox.Enabled = isOflline ? false : enabled;
+            cloudLocalToggleSwitch.Enabled = isOflline ? false : enabled;
             loadPictureBox.Enabled = loadPictureBox.Visible = !enabled;
         }
 
@@ -74,6 +74,13 @@ namespace HeroPecApp
                 case "exe":
                     return 5;
 
+                case "psd":
+                    return 6;
+
+                case "doc":
+                case "docx":
+                    return 7;
+
                 default:
                     return 0;
             }
@@ -84,7 +91,7 @@ namespace HeroPecApp
             if (!File.Exists(localZip))
             {
                 Directory.CreateDirectory(localZip.Replace($"\\{Connection.CurrentUser.userid}.zip", ""));
-                using (ZipFile zip = new ZipFile())
+                using (ZipFile zip = new ZipFile(Encoding.UTF8))
                 {
                     zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
                     zip.Password = currentHashPassword;
@@ -96,7 +103,7 @@ namespace HeroPecApp
         private void AddFile(string[] files)
         {
 
-            if (cloudLocalCheckBox.Checked)
+            if (cloudLocalToggleSwitch.Checked)
             {
                 foreach (var item in files)
                 {
@@ -130,7 +137,7 @@ namespace HeroPecApp
         {
             if (HeroMessageBox.Show("Вы уверены, что хотите удалить файл?", MessageBoxButtons.YesNo))
             {
-                if (cloudLocalCheckBox.Checked)
+                if (cloudLocalToggleSwitch.Checked)
                 {
                     foreach (ListViewItem item in selection)
                     {
@@ -156,7 +163,7 @@ namespace HeroPecApp
         private void ExtractFile(string path, ListViewItem[] selection)
         {
 
-            if (cloudLocalCheckBox.Checked)
+            if (cloudLocalToggleSwitch.Checked)
             {
                 foreach (ListViewItem item in selection)
                 {
@@ -165,7 +172,7 @@ namespace HeroPecApp
             }
             else
             {
-                using (var zip = new ZipFile(localZip))
+                using (var zip = new ZipFile(localZip, Encoding.UTF8))
                 {
                     foreach (ListViewItem item in selection)
                     {
@@ -179,7 +186,7 @@ namespace HeroPecApp
 
         private ListViewItem[] FillListView()
         {
-            if (cloudLocalCheckBox.Checked)
+            if (cloudLocalToggleSwitch.Checked)
             {
                 try
                 {
@@ -218,6 +225,7 @@ namespace HeroPecApp
         {
             InitializeComponent();
             this.Icon = HeroPecApp.Properties.Resources.iconmain;
+            cloudLocalToggleSwitch.Checked = false;
             icoImageList.Images.AddRange(new Image[]
             {
                 Properties.Resources.HeroFile as Bitmap,
@@ -225,7 +233,9 @@ namespace HeroPecApp
                 Properties.Resources.HeroPicture as Bitmap,
                 Properties.Resources.HeroTXT as Bitmap,
                 Properties.Resources.HeroZIP as Bitmap,
-                Properties.Resources.HeroEXE as Bitmap
+                Properties.Resources.HeroEXE as Bitmap,
+                Properties.Resources.HeroPSD as Bitmap,
+                Properties.Resources.HeroDoc as Bitmap
             });
             icoImageList.ImageSize = new Size(48, 48);
             filesListView.LargeImageList = icoImageList;
@@ -306,16 +316,6 @@ namespace HeroPecApp
             }
         }
 
-        private async void cloudLocalCheckBox_CheckedChanged(object sender)
-        {
-            cloudLocalCheckBox.Text = cloudLocalCheckBox.Checked ? "Облачное хранение"
-                : "Локальное хранение";
-            ChangeState(false);
-            filesListView.Clear();
-            filesListView.Items.AddRange(await Task.Run(() => FillListView()));
-            ChangeState(true);
-        }
-
         private void dragPanel_MouseDown(object sender, MouseEventArgs e)
         {
             mPoint = new Point(e.X, e.Y);
@@ -357,6 +357,29 @@ namespace HeroPecApp
         private void wrapPictureBox_MouseLeave(object sender, EventArgs e)
         {
             wrapPictureBox.Image = Properties.Resources.wrap;
+        }
+
+        private async void cloudLocalToggleSwitch_CheckedChanged()
+        {
+            ChangeState(false);
+            filesListView.Clear();
+            filesListView.Items.AddRange(await Task.Run(() => FillListView()));
+            ChangeState(true);
+        }
+
+        private void backPictureBox_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void backPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            backPictureBox.Image = Properties.Resources.HeroBackIcon_hover;
+        }
+
+        private void backPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            backPictureBox.Image = Properties.Resources.HeroBackIcon;
         }
     }
 }

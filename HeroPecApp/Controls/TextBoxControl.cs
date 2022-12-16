@@ -117,5 +117,9 @@ namespace HeroPecApp.Controls
             set { textBox1.UseSystemPasswordChar = value; }
         }
 
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.OnKeyDown(e);
+        }
     }
 }

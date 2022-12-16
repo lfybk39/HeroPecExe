@@ -42,8 +42,8 @@ namespace HeroPecApp
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential
                 {
-                    Password = Properties.Settings.Default.GoogleMailPassword,
-                    UserName = Properties.Settings.Default.GoogleMailName
+                    Password = "ioboqiqrrhxhkgfi",
+                    UserName = "heropecgroup@gmail.com"
                 };
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com";
@@ -68,6 +68,7 @@ namespace HeroPecApp
         {
             this.Icon = HeroPecApp.Properties.Resources.iconmain;
             InitializeComponent();
+            showPasswordPictureBox.Tag = "Unchecked";
         }
 
         private async void confirmButton_Click(object sender, EventArgs e)
@@ -161,11 +162,6 @@ namespace HeroPecApp
             }
         }
 
-        private void showPasswordCheckBox_CheckedChanged(object sender)
-        {
-            passwordTextBox.UseChar = confirmationTextBox.UseChar = !showPasswordCheckBox.Checked;
-        }
-
         private void exitPictureBox_Click(object sender, EventArgs e)
         {
             Close();
@@ -206,6 +202,22 @@ namespace HeroPecApp
             if (e.Button == MouseButtons.Left)
             {
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
+
+        private void showPasswordPictureBox_Click(object sender, EventArgs e)
+        {
+            if (showPasswordPictureBox.Tag.ToString() == "Unchecked")
+            {
+                showPasswordPictureBox.Image = HeroPecApp.Properties.Resources.toggleswitchon;
+                showPasswordPictureBox.Tag = "Checked";
+                passwordTextBox.UseChar = confirmationTextBox.UseChar = false;
+            }
+            else if (showPasswordPictureBox.Tag.ToString() == "Checked")
+            {
+                showPasswordPictureBox.Image = HeroPecApp.Properties.Resources.toggleswitchoff;
+                showPasswordPictureBox.Tag = "Unchecked";
+                passwordTextBox.UseChar = confirmationTextBox.UseChar = true;
             }
         }
     }

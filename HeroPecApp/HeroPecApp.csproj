@@ -125,8 +125,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animation\Animation.cs" />
-    <Compile Include="Animation\Animator.cs" />
     <Compile Include="AuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,14 +146,17 @@
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionFTP\Connect.cs" />
     <Compile Include="ConnectionFTP\FtpUser.cs" />
+    <Compile Include="Controls\HeroToggleSwitch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HeroToggleSwitch.Designer.cs">
+      <DependentUpon>HeroToggleSwitch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextBoxControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\TextBoxControl.Designer.cs">
       <DependentUpon>TextBoxControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ToggleSwitchHeroPec.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="CryptoHelper.cs" />
@@ -215,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigurationForm.resx">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HeroToggleSwitch.resx">
+      <DependentUpon>HeroToggleSwitch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextBoxControl.resx">
       <DependentUpon>TextBoxControl.cs</DependentUpon>
@@ -341,9 +345,6 @@
     <None Include="Resources\exeicon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fileicon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\pdficon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +352,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\txticon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\docfileicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PSDFILEICON.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileicon %281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroPSD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroFile_v2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroBackIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroQuestion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggleswitchoff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggleswitchon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroBackIcon_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\docfileicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PSDFILEICON.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -35,7 +35,7 @@ namespace HeroPecApp
             loadPictureBox.Enabled = loadPictureBox.Visible = !enabled;
         }
 
-        private void CheckDifficulty(string password)
+        private int CheckDifficulty(string password)
         {
             passwordDifficulty = 0;
             int length = 0;
@@ -65,6 +65,7 @@ namespace HeroPecApp
             {
                 passwordDifficulty = 0;
             }
+            return passwordDifficulty;
         }
 
         private Bitmap CreateImage(int Width, int Height)
@@ -123,8 +124,8 @@ namespace HeroPecApp
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential
                 {
-                    Password = "yrzsdlzcdivsdpcd",
-                    UserName = "heropeccompany@gmail.com"
+                    Password = "ioboqiqrrhxhkgfi",
+                    UserName = "heropecgroup@gmail.com"
                 };
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com";
@@ -209,12 +210,13 @@ namespace HeroPecApp
             errorLoginLabel.Visible = false;
             errorConfirmPasswordLabel.Visible = false;
             errorPasswordLabel.Visible = false;
+            passwordDifficultyLabel.Visible = false;
 
         }
 
         private async void registrationButton_Click(object sender, EventArgs e)
         {
-            if (errorEmailLabel.Visible || errorLoginLabel.Visible || errorPasswordLabel.Visible ||
+            if (passwordDifficultyLabel.Visible || errorEmailLabel.Visible || errorLoginLabel.Visible || errorPasswordLabel.Visible ||
                 errorConfirmPasswordLabel.Visible || emailTextBox.Texts == "" || loginTextBox.Texts == "" ||
                 passwordTextBox.Texts == "" || confirmationPasswordTextBox.Texts == "")
             {
@@ -364,6 +366,35 @@ namespace HeroPecApp
             {
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
+        }
+
+        private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            passwordDifficultyLabel.Visible = true;
+            if (CheckDifficulty(passwordTextBox.Texts) <= 1)
+            {
+                passwordTextBox.BorderColor = Color.FromArgb(255, 198, 198, 214);
+                passwordDifficultyLabel.BackColor = Color.FromArgb(255, 198, 198, 214);
+                passwordDifficultyLabel.Text = "Слабый пароль";
+            }
+            else if (CheckDifficulty(passwordTextBox.Texts) == 2)
+            {
+
+                passwordTextBox.BorderColor = Color.FromArgb(255, 198, 198, 214);
+                passwordDifficultyLabel.BackColor = Color.FromArgb(255, 198, 198, 214);
+                passwordDifficultyLabel.Text = "Средний пароль";
+            }
+            else if (CheckDifficulty(passwordTextBox.Texts) == 3)
+            {
+                passwordTextBox.BorderColor = Color.FromArgb(255, 77, 255, 186);
+                passwordDifficultyLabel.BackColor = Color.FromArgb(255, 77, 255, 186);
+                passwordDifficultyLabel.Text = "Сложный пароль";
+            }
+        }
+
+        private void infoPictureBox_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start($@"{Environment.CurrentDirectory}\HeroPecInfo.pdf");
         }
     }
 }

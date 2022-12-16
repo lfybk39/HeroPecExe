@@ -172,9 +172,6 @@
   <data name="HeroEXE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exeicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fileicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fileicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="HeroFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fileicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -201,5 +198,35 @@
   </data>
   <data name="HeroZIP" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zipicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="docfileicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\docfileicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fileicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fileicon (1).ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroBackIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroBackIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroDoc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroDoc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroPSD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroPSD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroQuestion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroQuestion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="psdicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PSDFILEICON.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="toggleswitchoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\toggleswitchoff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="toggleswitchon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\toggleswitchon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroBackIcon_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroBackIcon_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

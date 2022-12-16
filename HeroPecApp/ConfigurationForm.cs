@@ -153,9 +153,9 @@ namespace HeroPecApp
             wrapPictureBox.Image = Properties.Resources.wrap;
         }
 
-        private void showPasswordCheckBox_CheckedChanged(object sender)
+        private void showPasswordToggleSwitch_CheckedChanged()
         {
-            passwordTextBox.UseChar = !showPasswordCheckBox.Checked;
+            passwordTextBox.UseChar = !showPasswordToggleSwitch.Checked;
         }
     }
 }

@@ -34,22 +34,24 @@ namespace HeroPecApp
             this.restoreLinkLabel = new System.Windows.Forms.LinkLabel();
             this.loginLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.offlineModeToggleSwitch = new HeroPecApp.ToggleSwitch();
-            this.stayLoggedCheckBox = new HeroPecApp.ToggleSwitch();
-            this.showPasswordCheckBox = new HeroPecApp.ToggleSwitch();
-            this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.emailLoginTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.authorizationButton = new System.Windows.Forms.Button();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.wrapPictureBox = new System.Windows.Forms.PictureBox();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.configurationPictureBox = new System.Windows.Forms.PictureBox();
+            this.offlineModeToggleSwitch = new HeroPecApp.Controls.HeroToggleSwitch();
+            this.stayLoggedToggleSwitch = new HeroPecApp.Controls.HeroToggleSwitch();
+            this.showPasswordToggleSwitch = new HeroPecApp.Controls.HeroToggleSwitch();
+            this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.emailLoginTextBox = new HeroPecApp.Controls.TextBoxControl();
+            this.infoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurationPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // registerLinkLabel
@@ -57,7 +59,7 @@ namespace HeroPecApp
             this.registerLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.registerLinkLabel.AutoSize = true;
             this.registerLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.registerLinkLabel.Location = new System.Drawing.Point(276, 462);
+            this.registerLinkLabel.Location = new System.Drawing.Point(276, 468);
             this.registerLinkLabel.Name = "registerLinkLabel";
             this.registerLinkLabel.Size = new System.Drawing.Size(72, 13);
             this.registerLinkLabel.TabIndex = 6;
@@ -70,7 +72,7 @@ namespace HeroPecApp
             this.restoreLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.restoreLinkLabel.AutoSize = true;
             this.restoreLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.restoreLinkLabel.Location = new System.Drawing.Point(276, 449);
+            this.restoreLinkLabel.Location = new System.Drawing.Point(276, 455);
             this.restoreLinkLabel.Name = "restoreLinkLabel";
             this.restoreLinkLabel.Size = new System.Drawing.Size(117, 13);
             this.restoreLinkLabel.TabIndex = 7;
@@ -104,103 +106,13 @@ namespace HeroPecApp
             this.label3.TabIndex = 26;
             this.label3.Text = "Пароль";
             // 
-            // offlineModeToggleSwitch
-            // 
-            this.offlineModeToggleSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.offlineModeToggleSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.offlineModeToggleSwitch.BackColorOFF = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.offlineModeToggleSwitch.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.offlineModeToggleSwitch.Checked = false;
-            this.offlineModeToggleSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.offlineModeToggleSwitch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.offlineModeToggleSwitch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.offlineModeToggleSwitch.Location = new System.Drawing.Point(268, 380);
-            this.offlineModeToggleSwitch.Name = "offlineModeToggleSwitch";
-            this.offlineModeToggleSwitch.Size = new System.Drawing.Size(182, 15);
-            this.offlineModeToggleSwitch.TabIndex = 52;
-            this.offlineModeToggleSwitch.Text = "Автономный режим";
-            this.offlineModeToggleSwitch.TextOnChecked = "";
-            this.offlineModeToggleSwitch.CheckedChanged += new HeroPecApp.ToggleSwitch.OnCheckedChangedHandler(this.offlineModeToggleSwitch_CheckedChanged);
-            // 
-            // stayLoggedCheckBox
-            // 
-            this.stayLoggedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.stayLoggedCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.stayLoggedCheckBox.BackColorOFF = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.stayLoggedCheckBox.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.stayLoggedCheckBox.Checked = false;
-            this.stayLoggedCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stayLoggedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.stayLoggedCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.stayLoggedCheckBox.Location = new System.Drawing.Point(268, 359);
-            this.stayLoggedCheckBox.Name = "stayLoggedCheckBox";
-            this.stayLoggedCheckBox.Size = new System.Drawing.Size(163, 15);
-            this.stayLoggedCheckBox.TabIndex = 28;
-            this.stayLoggedCheckBox.Text = "Запомнить меня";
-            this.stayLoggedCheckBox.TextOnChecked = "";
-            this.stayLoggedCheckBox.CheckedChanged += new HeroPecApp.ToggleSwitch.OnCheckedChangedHandler(this.stayLoggedCheckBox_CheckedChanged);
-            // 
-            // showPasswordCheckBox
-            // 
-            this.showPasswordCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.showPasswordCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.showPasswordCheckBox.BackColorOFF = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
-            this.showPasswordCheckBox.BackColorON = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.showPasswordCheckBox.Checked = false;
-            this.showPasswordCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.showPasswordCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.showPasswordCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.showPasswordCheckBox.Location = new System.Drawing.Point(268, 338);
-            this.showPasswordCheckBox.Name = "showPasswordCheckBox";
-            this.showPasswordCheckBox.Size = new System.Drawing.Size(167, 15);
-            this.showPasswordCheckBox.TabIndex = 27;
-            this.showPasswordCheckBox.Text = "Показать пароль";
-            this.showPasswordCheckBox.TextOnChecked = "";
-            this.showPasswordCheckBox.CheckedChanged += new HeroPecApp.ToggleSwitch.OnCheckedChangedHandler(this.showPasswordCheckBox_CheckedChanged);
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.passwordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.passwordTextBox.BorderSize = 3;
-            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.passwordTextBox.Location = new System.Drawing.Point(245, 301);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(7);
-            this.passwordTextBox.Size = new System.Drawing.Size(212, 31);
-            this.passwordTextBox.TabIndex = 22;
-            this.passwordTextBox.Texts = "";
-            this.passwordTextBox.UnderlinedStyle = false;
-            this.passwordTextBox.UseChar = true;
-            // 
-            // emailLoginTextBox
-            // 
-            this.emailLoginTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailLoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.emailLoginTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.emailLoginTextBox.BorderSize = 3;
-            this.emailLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailLoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.emailLoginTextBox.Location = new System.Drawing.Point(245, 243);
-            this.emailLoginTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.emailLoginTextBox.Name = "emailLoginTextBox";
-            this.emailLoginTextBox.Padding = new System.Windows.Forms.Padding(7);
-            this.emailLoginTextBox.Size = new System.Drawing.Size(212, 31);
-            this.emailLoginTextBox.TabIndex = 21;
-            this.emailLoginTextBox.Texts = "";
-            this.emailLoginTextBox.UnderlinedStyle = false;
-            this.emailLoginTextBox.UseChar = false;
-            // 
             // authorizationButton
             // 
             this.authorizationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(214)))));
             this.authorizationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.authorizationButton.Font = new System.Drawing.Font("Bebas Neue Cyrillic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.authorizationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
-            this.authorizationButton.Location = new System.Drawing.Point(279, 403);
+            this.authorizationButton.Location = new System.Drawing.Point(279, 409);
             this.authorizationButton.Name = "authorizationButton";
             this.authorizationButton.Size = new System.Drawing.Size(139, 45);
             this.authorizationButton.TabIndex = 53;
@@ -270,20 +182,98 @@ namespace HeroPecApp
             this.configurationPictureBox.TabStop = false;
             this.configurationPictureBox.Click += new System.EventHandler(this.configurationPictureBox_Click);
             // 
+            // offlineModeToggleSwitch
+            // 
+            this.offlineModeToggleSwitch.Checked = false;
+            this.offlineModeToggleSwitch.Location = new System.Drawing.Point(268, 382);
+            this.offlineModeToggleSwitch.Name = "offlineModeToggleSwitch";
+            this.offlineModeToggleSwitch.Size = new System.Drawing.Size(189, 16);
+            this.offlineModeToggleSwitch.TabIndex = 67;
+            this.offlineModeToggleSwitch.Texts = "Автономный режим";
+            this.offlineModeToggleSwitch.CheckedChanged += new System.Action(this.offlineModeToggleSwitch_CheckedChanged);
+            // 
+            // stayLoggedToggleSwitch
+            // 
+            this.stayLoggedToggleSwitch.Checked = false;
+            this.stayLoggedToggleSwitch.Location = new System.Drawing.Point(268, 360);
+            this.stayLoggedToggleSwitch.Name = "stayLoggedToggleSwitch";
+            this.stayLoggedToggleSwitch.Size = new System.Drawing.Size(175, 16);
+            this.stayLoggedToggleSwitch.TabIndex = 66;
+            this.stayLoggedToggleSwitch.Texts = "Запомнить меня";
+            this.stayLoggedToggleSwitch.CheckedChanged += new System.Action(this.stayLoggedToggleSwitch_CheckedChanged);
+            // 
+            // showPasswordToggleSwitch
+            // 
+            this.showPasswordToggleSwitch.Checked = false;
+            this.showPasswordToggleSwitch.Location = new System.Drawing.Point(268, 338);
+            this.showPasswordToggleSwitch.Name = "showPasswordToggleSwitch";
+            this.showPasswordToggleSwitch.Size = new System.Drawing.Size(175, 16);
+            this.showPasswordToggleSwitch.TabIndex = 65;
+            this.showPasswordToggleSwitch.Texts = "Показать пароль";
+            this.showPasswordToggleSwitch.CheckedChanged += new System.Action(this.showPasswordToggleSwitch_CheckedChanged);
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.passwordTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.BorderSize = 3;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.passwordTextBox.Location = new System.Drawing.Point(245, 301);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.passwordTextBox.Size = new System.Drawing.Size(212, 31);
+            this.passwordTextBox.TabIndex = 22;
+            this.passwordTextBox.Texts = "";
+            this.passwordTextBox.UnderlinedStyle = false;
+            this.passwordTextBox.UseChar = true;
+            // 
+            // emailLoginTextBox
+            // 
+            this.emailLoginTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.emailLoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
+            this.emailLoginTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.BorderSize = 3;
+            this.emailLoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
+            this.emailLoginTextBox.Location = new System.Drawing.Point(245, 243);
+            this.emailLoginTextBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.emailLoginTextBox.Name = "emailLoginTextBox";
+            this.emailLoginTextBox.Padding = new System.Windows.Forms.Padding(7);
+            this.emailLoginTextBox.Size = new System.Drawing.Size(212, 31);
+            this.emailLoginTextBox.TabIndex = 21;
+            this.emailLoginTextBox.Texts = "";
+            this.emailLoginTextBox.UnderlinedStyle = false;
+            this.emailLoginTextBox.UseChar = false;
+            // 
+            // infoPictureBox
+            // 
+            this.infoPictureBox.Image = global::HeroPecApp.Properties.Resources.HeroQuestion;
+            this.infoPictureBox.Location = new System.Drawing.Point(12, 444);
+            this.infoPictureBox.Name = "infoPictureBox";
+            this.infoPictureBox.Size = new System.Drawing.Size(40, 38);
+            this.infoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.infoPictureBox.TabIndex = 71;
+            this.infoPictureBox.TabStop = false;
+            this.infoPictureBox.Click += new System.EventHandler(this.infoPictureBox_Click);
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(702, 488);
+            this.Controls.Add(this.infoPictureBox);
+            this.Controls.Add(this.offlineModeToggleSwitch);
+            this.Controls.Add(this.stayLoggedToggleSwitch);
+            this.Controls.Add(this.showPasswordToggleSwitch);
             this.Controls.Add(this.configurationPictureBox);
             this.Controls.Add(this.wrapPictureBox);
             this.Controls.Add(this.exitPictureBox);
             this.Controls.Add(this.authorizationButton);
-            this.Controls.Add(this.offlineModeToggleSwitch);
             this.Controls.Add(this.logoPictureBox);
-            this.Controls.Add(this.stayLoggedCheckBox);
-            this.Controls.Add(this.showPasswordCheckBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.passwordTextBox);
@@ -301,6 +291,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurationPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,14 +304,15 @@ namespace HeroPecApp
         private Controls.TextBoxControl passwordTextBox;
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Label label3;
-        private ToggleSwitch showPasswordCheckBox;
-        private ToggleSwitch stayLoggedCheckBox;
         private System.Windows.Forms.PictureBox logoPictureBox;
-        private ToggleSwitch offlineModeToggleSwitch;
         private System.Windows.Forms.Button authorizationButton;
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox wrapPictureBox;
         private System.Windows.Forms.PictureBox exitPictureBox;
         private System.Windows.Forms.PictureBox configurationPictureBox;
+        private Controls.HeroToggleSwitch showPasswordToggleSwitch;
+        private Controls.HeroToggleSwitch stayLoggedToggleSwitch;
+        private Controls.HeroToggleSwitch offlineModeToggleSwitch;
+        private System.Windows.Forms.PictureBox infoPictureBox;
     }
 }

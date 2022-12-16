@@ -48,7 +48,7 @@ namespace HeroPecApp
                 Connection.CurrentUser = currentUser;
                 Properties.Settings.Default.CurrentUserLogin = currentUser.userid;
                 Properties.Settings.Default.CurrentUserPassword = currentUser.passwd;
-                if (stayLoggedCheckBox.Checked)
+                if (stayLoggedToggleSwitch.Checked)
                 {
                     Properties.Settings.Default.IsRemember = true;
                     Properties.Settings.Default.Save();
@@ -84,8 +84,8 @@ namespace HeroPecApp
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential
                 {
-                    Password = "yrzsdlzcdivsdpcd",
-                    UserName = "heropeccompany@gmail.com"
+                    Password = "ioboqiqrrhxhkgfi",
+                    UserName = "heropecgroup@gmail.com"
                 };
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com";
@@ -111,7 +111,19 @@ namespace HeroPecApp
             this.Icon = HeroPecApp.Properties.Resources.iconmain;
             var intro = new IntroForm();
             intro.Show();
+            //if (Properties.Settings.Default.IsRemember == true)
+            //{
+            //    stayLoggedToggleSwitch.Checked = true;
+            //    emailLoginTextBox.Texts = Properties.Settings.Default.CurrentUserLogin;
+            //    passwordTextBox.Texts = Properties.Settings.Default.CurrentUserPassword;
+            //}
             InitializeComponent();
+            if (Properties.Settings.Default.IsRemember == true)
+            {
+                stayLoggedToggleSwitch.Checked = true;
+                emailLoginTextBox.Texts = Properties.Settings.Default.CurrentUserLogin;
+                passwordTextBox.Texts = Properties.Settings.Default.CurrentUserPassword;
+            }
             intro.Close();
         }
 
@@ -164,23 +176,7 @@ namespace HeroPecApp
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.IsRemember == true)
-            {
-                stayLoggedCheckBox.Checked = true;
-                emailLoginTextBox.Texts = Properties.Settings.Default.CurrentUserLogin;
-                passwordTextBox.Texts = Properties.Settings.Default.CurrentUserPassword;
-            }
-        }
 
-        private void showPasswordCheckBox_CheckedChanged(object sender)
-        {
-            passwordTextBox.UseChar = !showPasswordCheckBox.Checked;
-        }
-
-        private void stayLoggedCheckBox_CheckedChanged(object sender)
-        {
-            Properties.Settings.Default.IsRemember = false;
-            Properties.Settings.Default.Save();
         }
 
         private void exitPictureBox_Click(object sender, EventArgs e)
@@ -226,12 +222,6 @@ namespace HeroPecApp
             wrapPictureBox.Image = Properties.Resources.wrap;
         }
 
-        private void offlineModeToggleSwitch_CheckedChanged(object sender)
-        {
-            showPasswordCheckBox.Enabled = stayLoggedCheckBox.Enabled = emailLoginTextBox.Enabled
-                = passwordTextBox.Enabled = !offlineModeToggleSwitch.Checked;
-        }
-
         private void configurationPictureBox_Click(object sender, EventArgs e)
         {
             Hide();
@@ -241,6 +231,38 @@ namespace HeroPecApp
             }
             Show();
         }
-    }
 
+        private void showPassHeroToggleSwitch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stayLoggedToggleSwitch_Click(object sender, EventArgs e)
+        { }
+
+        private void offlineModeToggleSwitch_Click(object sender, EventArgs e)
+        { }
+
+        private void showPasswordToggleSwitch_CheckedChanged()
+        {
+            passwordTextBox.UseChar = !showPasswordToggleSwitch.Checked;
+        }
+
+        private void stayLoggedToggleSwitch_CheckedChanged()
+        {
+            Properties.Settings.Default.IsRemember = false;
+            Properties.Settings.Default.Save();
+        }
+
+        private void offlineModeToggleSwitch_CheckedChanged()
+        {
+            showPasswordToggleSwitch.Enabled = stayLoggedToggleSwitch.Enabled
+                = emailLoginTextBox.Enabled = passwordTextBox.Enabled = !offlineModeToggleSwitch.Checked;
+        }
+
+        private void infoPictureBox_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start($@"{Environment.CurrentDirectory}\HeroPecInfo.pdf");
+        }
+    }
 }
