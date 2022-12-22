@@ -361,6 +361,9 @@ namespace HeroPecApp
 
         private async void cloudLocalToggleSwitch_CheckedChanged()
         {
+            cloudLocalToggleSwitch.Texts = cloudLocalToggleSwitch.Checked
+                ? "Облачное хранилище"
+                : "Локальное хранилище";
             ChangeState(false);
             filesListView.Clear();
             filesListView.Items.AddRange(await Task.Run(() => FillListView()));
@@ -380,6 +383,13 @@ namespace HeroPecApp
         private void backPictureBox_MouseLeave(object sender, EventArgs e)
         {
             backPictureBox.Image = Properties.Resources.HeroBackIcon;
+        }
+
+        private async void refreshPictureBox_Click(object sender, EventArgs e)
+        {
+            ChangeState(false);
+            filesListView.Items.AddRange(await Task.Run(() => FillListView()));
+            ChangeState(true);
         }
     }
 }

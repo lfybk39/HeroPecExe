@@ -41,12 +41,14 @@ namespace HeroPecApp
             this.extractFileButton = new System.Windows.Forms.Button();
             this.backPictureBox = new System.Windows.Forms.PictureBox();
             this.cloudLocalToggleSwitch = new HeroPecApp.Controls.HeroToggleSwitch();
+            this.refreshPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // filesListView
@@ -201,10 +203,21 @@ namespace HeroPecApp
             this.cloudLocalToggleSwitch.Checked = false;
             this.cloudLocalToggleSwitch.Location = new System.Drawing.Point(31, 416);
             this.cloudLocalToggleSwitch.Name = "cloudLocalToggleSwitch";
-            this.cloudLocalToggleSwitch.Size = new System.Drawing.Size(189, 16);
+            this.cloudLocalToggleSwitch.Size = new System.Drawing.Size(210, 16);
             this.cloudLocalToggleSwitch.TabIndex = 68;
-            this.cloudLocalToggleSwitch.Texts = "Автономный режим";
+            this.cloudLocalToggleSwitch.Texts = "Локальное хранилище";
             this.cloudLocalToggleSwitch.CheckedChanged += new System.Action(this.cloudLocalToggleSwitch_CheckedChanged);
+            // 
+            // refreshPictureBox
+            // 
+            this.refreshPictureBox.Image = global::HeroPecApp.Properties.Resources.refresh;
+            this.refreshPictureBox.Location = new System.Drawing.Point(52, 5);
+            this.refreshPictureBox.Name = "refreshPictureBox";
+            this.refreshPictureBox.Size = new System.Drawing.Size(29, 24);
+            this.refreshPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.refreshPictureBox.TabIndex = 73;
+            this.refreshPictureBox.TabStop = false;
+            this.refreshPictureBox.Click += new System.EventHandler(this.refreshPictureBox_Click);
             // 
             // MainForm
             // 
@@ -212,6 +225,7 @@ namespace HeroPecApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(723, 529);
+            this.Controls.Add(this.refreshPictureBox);
             this.Controls.Add(this.backPictureBox);
             this.Controls.Add(this.cloudLocalToggleSwitch);
             this.Controls.Add(this.extractFileButton);
@@ -235,6 +249,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,6 +269,7 @@ namespace HeroPecApp
         private System.Windows.Forms.Button extractFileButton;
         private Controls.HeroToggleSwitch cloudLocalToggleSwitch;
         private System.Windows.Forms.PictureBox backPictureBox;
+        private System.Windows.Forms.PictureBox refreshPictureBox;
     }
 }
 

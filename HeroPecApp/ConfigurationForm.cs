@@ -103,10 +103,10 @@ namespace HeroPecApp
         private void folderPictureBox_Click(object sender, EventArgs e)
         {
             var folder = new FolderBrowserDialog();
-            folder.SelectedPath = folderTextBox.Text;
+            folder.SelectedPath = folderTextBox.Texts;
             if (folder.ShowDialog() == DialogResult.OK)
             {
-                folderTextBox.Text = folder.SelectedPath;
+                folderTextBox.Texts = folder.SelectedPath;
             }
         }
 

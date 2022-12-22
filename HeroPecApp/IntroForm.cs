@@ -15,11 +15,17 @@ namespace HeroPecApp
         public IntroForm()
         {
             InitializeComponent();
+            timer1.Start();
         }
 
         private void IntroForm_Load(object sender, EventArgs e)
         {
             this.Icon = HeroPecApp.Properties.Resources.iconmain;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

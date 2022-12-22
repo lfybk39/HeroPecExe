@@ -15,11 +15,12 @@ namespace HeroPecApp.Controls
         private Color borderColor = Color.FromArgb(255, 188, 23, 27);
         private int borderSize = 2;
         private bool underlinedStyle = false;
+        public event Action Changed;
 
         public TextBoxControl()
         {
             InitializeComponent();
-
+            textBox1.TextChanged += (s, e) => Changed?.Invoke();
 
         }
 

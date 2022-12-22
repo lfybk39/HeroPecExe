@@ -40,17 +40,15 @@ namespace HeroPecApp
             this.emailLoginTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.codeTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.restorationPanel = new System.Windows.Forms.Panel();
-            this.showPasswordPictureBox = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.confirmationTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.wrapPictureBox = new System.Windows.Forms.PictureBox();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.showPasswordToggleSwitch = new HeroPecApp.Controls.HeroToggleSwitch();
             this.codePanel.SuspendLayout();
             this.restorationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.showPasswordPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
@@ -197,9 +195,8 @@ namespace HeroPecApp
             // 
             // restorationPanel
             // 
-            this.restorationPanel.Controls.Add(this.showPasswordPictureBox);
+            this.restorationPanel.Controls.Add(this.showPasswordToggleSwitch);
             this.restorationPanel.Controls.Add(this.restoreButton);
-            this.restorationPanel.Controls.Add(this.label1);
             this.restorationPanel.Controls.Add(this.passwordTextBox);
             this.restorationPanel.Controls.Add(this.confirmationTextBox);
             this.restorationPanel.Controls.Add(this.confirmPasswordLabel);
@@ -209,31 +206,6 @@ namespace HeroPecApp
             this.restorationPanel.Size = new System.Drawing.Size(509, 281);
             this.restorationPanel.TabIndex = 40;
             this.restorationPanel.Visible = false;
-            // 
-            // showPasswordPictureBox
-            // 
-            this.showPasswordPictureBox.Image = global::HeroPecApp.Properties.Resources.toggleswitchoff;
-            this.showPasswordPictureBox.Location = new System.Drawing.Point(175, 146);
-            this.showPasswordPictureBox.Name = "showPasswordPictureBox";
-            this.showPasswordPictureBox.Size = new System.Drawing.Size(40, 15);
-            this.showPasswordPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.showPasswordPictureBox.TabIndex = 63;
-            this.showPasswordPictureBox.TabStop = false;
-            this.showPasswordPictureBox.Click += new System.EventHandler(this.showPasswordPictureBox_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(255)))), ((int)(((byte)(186)))));
-            this.label1.Location = new System.Drawing.Point(220, 146);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 16);
-            this.label1.TabIndex = 64;
-            this.label1.Text = "Показать пароль";
-            this.label1.Click += new System.EventHandler(this.showPasswordPictureBox_Click);
             // 
             // passwordTextBox
             // 
@@ -319,6 +291,16 @@ namespace HeroPecApp
             this.exitPictureBox.MouseLeave += new System.EventHandler(this.exitPictureBox_MouseLeave);
             this.exitPictureBox.MouseHover += new System.EventHandler(this.exitPictureBox_MouseHover);
             // 
+            // showPasswordToggleSwitch
+            // 
+            this.showPasswordToggleSwitch.Checked = false;
+            this.showPasswordToggleSwitch.Location = new System.Drawing.Point(163, 147);
+            this.showPasswordToggleSwitch.Name = "showPasswordToggleSwitch";
+            this.showPasswordToggleSwitch.Size = new System.Drawing.Size(175, 16);
+            this.showPasswordToggleSwitch.TabIndex = 66;
+            this.showPasswordToggleSwitch.Texts = "Показать пароль";
+            this.showPasswordToggleSwitch.CheckedChanged += new System.Action(this.showPasswordToggleSwitch_CheckedChanged);
+            // 
             // RestorationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,7 +320,6 @@ namespace HeroPecApp
             this.codePanel.PerformLayout();
             this.restorationPanel.ResumeLayout(false);
             this.restorationPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.showPasswordPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).EndInit();
@@ -365,7 +346,6 @@ namespace HeroPecApp
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox wrapPictureBox;
         private System.Windows.Forms.PictureBox exitPictureBox;
-        private System.Windows.Forms.PictureBox showPasswordPictureBox;
-        private System.Windows.Forms.Label label1;
+        private Controls.HeroToggleSwitch showPasswordToggleSwitch;
     }
 }

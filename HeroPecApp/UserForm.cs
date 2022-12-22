@@ -112,15 +112,19 @@ namespace HeroPecApp
         private async void confirmButton_Click(object sender, EventArgs e)
         {
             ChangeState(false);
-            DialogResult = await Task.Run(() => SaveUser(new User
+            var user = new User
             {
-                id = Core.Context.User.FirstOrDefault(u => u.userid == selectedUserLogin).id,
                 userid = loginTextBox.Texts,
                 email = eMailTextBox.Texts,
                 passwd = passwordTextBox.Texts,
                 username = nicknameTextBox.Texts,
                 phone = phoneTextBox.Texts == "+7 (   )       -" || phoneTextBox.Texts.Trim() == "" ? null : phoneTextBox.Texts
-            }));
+            };
+            if(isEdit)
+            {
+                user.id = Core.Context.User.FirstOrDefault(u => u.userid == selectedUserLogin).id;
+            }
+            DialogResult = await Task.Run(() => SaveUser(user));
             ChangeState(true);
             if (DialogResult == DialogResult.OK)
             {

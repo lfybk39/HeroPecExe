@@ -110,13 +110,7 @@ namespace HeroPecApp
         {
             this.Icon = HeroPecApp.Properties.Resources.iconmain;
             var intro = new IntroForm();
-            intro.Show();
-            //if (Properties.Settings.Default.IsRemember == true)
-            //{
-            //    stayLoggedToggleSwitch.Checked = true;
-            //    emailLoginTextBox.Texts = Properties.Settings.Default.CurrentUserLogin;
-            //    passwordTextBox.Texts = Properties.Settings.Default.CurrentUserPassword;
-            //}
+            intro.ShowDialog();
             InitializeComponent();
             if (Properties.Settings.Default.IsRemember == true)
             {
@@ -124,7 +118,6 @@ namespace HeroPecApp
                 emailLoginTextBox.Texts = Properties.Settings.Default.CurrentUserLogin;
                 passwordTextBox.Texts = Properties.Settings.Default.CurrentUserPassword;
             }
-            intro.Close();
         }
 
         private async void authorizationButton_Click(object sender, EventArgs e)

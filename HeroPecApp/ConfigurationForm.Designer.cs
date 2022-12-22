@@ -47,6 +47,7 @@ namespace HeroPecApp
             this.label8 = new System.Windows.Forms.Label();
             this.databaseOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.appOptionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.showPasswordToggleSwitch = new HeroPecApp.Controls.HeroToggleSwitch();
             this.connectionOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.loadPictureBox = new System.Windows.Forms.PictureBox();
             this.serverPortTextBox = new HeroPecApp.Controls.TextBoxControl();
@@ -56,7 +57,6 @@ namespace HeroPecApp
             this.databaseTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.folderTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.showPasswordToggleSwitch = new HeroPecApp.Controls.HeroToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
@@ -270,6 +270,16 @@ namespace HeroPecApp
             this.appOptionsGroupBox.TabStop = false;
             this.appOptionsGroupBox.Text = "Настройки приложения";
             // 
+            // showPasswordToggleSwitch
+            // 
+            this.showPasswordToggleSwitch.Checked = false;
+            this.showPasswordToggleSwitch.Location = new System.Drawing.Point(10, 137);
+            this.showPasswordToggleSwitch.Name = "showPasswordToggleSwitch";
+            this.showPasswordToggleSwitch.Size = new System.Drawing.Size(204, 18);
+            this.showPasswordToggleSwitch.TabIndex = 66;
+            this.showPasswordToggleSwitch.Texts = "Показать пароль";
+            this.showPasswordToggleSwitch.CheckedChanged += new System.Action(this.showPasswordToggleSwitch_CheckedChanged);
+            // 
             // connectionOptionsGroupBox
             // 
             this.connectionOptionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -411,18 +421,9 @@ namespace HeroPecApp
             this.folderTextBox.UnderlinedStyle = false;
             this.folderTextBox.UseChar = false;
             // 
-            // showPasswordToggleSwitch
-            // 
-            this.showPasswordToggleSwitch.Checked = false;
-            this.showPasswordToggleSwitch.Location = new System.Drawing.Point(10, 137);
-            this.showPasswordToggleSwitch.Name = "showPasswordToggleSwitch";
-            this.showPasswordToggleSwitch.Size = new System.Drawing.Size(204, 18);
-            this.showPasswordToggleSwitch.TabIndex = 66;
-            this.showPasswordToggleSwitch.Texts = "Показать пароль";
-            this.showPasswordToggleSwitch.CheckedChanged += new System.Action(this.showPasswordToggleSwitch_CheckedChanged);
-            // 
             // ConfigurationForm
             // 
+            this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));

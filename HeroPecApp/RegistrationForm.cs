@@ -216,7 +216,7 @@ namespace HeroPecApp
 
         private async void registrationButton_Click(object sender, EventArgs e)
         {
-            if (passwordDifficultyLabel.Visible || errorEmailLabel.Visible || errorLoginLabel.Visible || errorPasswordLabel.Visible ||
+            if (errorEmailLabel.Visible || errorLoginLabel.Visible || errorPasswordLabel.Visible ||
                 errorConfirmPasswordLabel.Visible || emailTextBox.Texts == "" || loginTextBox.Texts == "" ||
                 passwordTextBox.Texts == "" || confirmationPasswordTextBox.Texts == "")
             {
@@ -239,7 +239,7 @@ namespace HeroPecApp
                 else
                 {
                     ChangeState(false);
-                    if(await Task.Run(() => Registration(user)))
+                    if (await Task.Run(() => Registration(user)))
                     {
                         Close();
                     }
@@ -370,6 +370,16 @@ namespace HeroPecApp
 
         private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            
+        }
+
+        private void infoPictureBox_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start($@"{Environment.CurrentDirectory}\HeroPecInfo.pdf");
+        }
+
+        private void passwordTextBox_Changed()
+        {
             passwordDifficultyLabel.Visible = true;
             if (CheckDifficulty(passwordTextBox.Texts) <= 1)
             {
@@ -390,11 +400,6 @@ namespace HeroPecApp
                 passwordDifficultyLabel.BackColor = Color.FromArgb(255, 77, 255, 186);
                 passwordDifficultyLabel.Text = "Сложный пароль";
             }
-        }
-
-        private void infoPictureBox_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start($@"{Environment.CurrentDirectory}\HeroPecInfo.pdf");
         }
     }
 }

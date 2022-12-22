@@ -51,6 +51,7 @@ namespace HeroPecApp
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.loadPictureBox = new System.Windows.Forms.PictureBox();
             this.passwordDifficultyLabel = new System.Windows.Forms.Label();
+            this.infoPictureBox = new System.Windows.Forms.PictureBox();
             this.captchaTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.confirmationPasswordTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.passwordTextBox = new HeroPecApp.Controls.TextBoxControl();
@@ -58,7 +59,6 @@ namespace HeroPecApp
             this.loginTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.nicknameTextBox = new HeroPecApp.Controls.TextBoxControl();
             this.emailTextBox = new HeroPecApp.Controls.TextBoxControl();
-            this.infoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshCaptchaPictureBox)).BeginInit();
@@ -318,6 +318,17 @@ namespace HeroPecApp
             this.passwordDifficultyLabel.TabIndex = 73;
             this.passwordDifficultyLabel.Text = "Введите пароль";
             // 
+            // infoPictureBox
+            // 
+            this.infoPictureBox.Image = global::HeroPecApp.Properties.Resources.HeroQuestion;
+            this.infoPictureBox.Location = new System.Drawing.Point(12, 478);
+            this.infoPictureBox.Name = "infoPictureBox";
+            this.infoPictureBox.Size = new System.Drawing.Size(40, 38);
+            this.infoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.infoPictureBox.TabIndex = 74;
+            this.infoPictureBox.TabStop = false;
+            this.infoPictureBox.Click += new System.EventHandler(this.infoPictureBox_Click);
+            // 
             // captchaTextBox
             // 
             this.captchaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
@@ -368,7 +379,7 @@ namespace HeroPecApp
             this.passwordTextBox.Texts = "";
             this.passwordTextBox.UnderlinedStyle = true;
             this.passwordTextBox.UseChar = false;
-            this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTextBox_KeyDown);
+            this.passwordTextBox.Changed += new System.Action(this.passwordTextBox_Changed);
             this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 
             // phoneTextBox
@@ -441,25 +452,15 @@ namespace HeroPecApp
             this.emailTextBox.UseChar = false;
             this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             // 
-            // infoPictureBox
-            // 
-            this.infoPictureBox.Image = global::HeroPecApp.Properties.Resources.HeroQuestion;
-            this.infoPictureBox.Location = new System.Drawing.Point(12, 478);
-            this.infoPictureBox.Name = "infoPictureBox";
-            this.infoPictureBox.Size = new System.Drawing.Size(40, 38);
-            this.infoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.infoPictureBox.TabIndex = 74;
-            this.infoPictureBox.TabStop = false;
-            this.infoPictureBox.Click += new System.EventHandler(this.infoPictureBox_Click);
-            // 
             // RegistrationForm
             // 
+            this.AcceptButton = this.registrationButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(700, 524);
-            this.Controls.Add(this.infoPictureBox);
             this.Controls.Add(this.loadPictureBox);
+            this.Controls.Add(this.infoPictureBox);
             this.Controls.Add(this.passwordDifficultyLabel);
             this.Controls.Add(this.errorConfirmPasswordLabel);
             this.Controls.Add(this.errorPasswordLabel);

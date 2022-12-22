@@ -153,5 +153,12 @@ namespace HeroPecApp
                 this.Location = new Point(this.Location.X + e.X - windowPoint.X, this.Location.Y + e.Y - windowPoint.Y);
             }
         }
+
+        private async void refreshPictureBox_Click(object sender, EventArgs e)
+        {
+            ChangeState(false);
+            usersDataGridView.DataSource = await Task.Run(() => FillDataGridView());
+            ChangeState(true);
+        }
     }
 }

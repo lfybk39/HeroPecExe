@@ -44,11 +44,13 @@ namespace HeroPecApp
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.dragPanel = new System.Windows.Forms.PictureBox();
             this.loadPictureBox = new System.Windows.Forms.PictureBox();
+            this.refreshPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wrapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // usersDataGridView
@@ -211,12 +213,24 @@ namespace HeroPecApp
             this.loadPictureBox.TabStop = false;
             this.loadPictureBox.Visible = false;
             // 
+            // refreshPictureBox
+            // 
+            this.refreshPictureBox.Image = global::HeroPecApp.Properties.Resources.refresh;
+            this.refreshPictureBox.Location = new System.Drawing.Point(628, 418);
+            this.refreshPictureBox.Name = "refreshPictureBox";
+            this.refreshPictureBox.Size = new System.Drawing.Size(43, 34);
+            this.refreshPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.refreshPictureBox.TabIndex = 72;
+            this.refreshPictureBox.TabStop = false;
+            this.refreshPictureBox.Click += new System.EventHandler(this.refreshPictureBox_Click);
+            // 
             // ManageUsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(686, 473);
+            this.Controls.Add(this.refreshPictureBox);
             this.Controls.Add(this.loadPictureBox);
             this.Controls.Add(this.wrapPictureBox);
             this.Controls.Add(this.exitPictureBox);
@@ -235,6 +249,7 @@ namespace HeroPecApp
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,5 +267,6 @@ namespace HeroPecApp
         private System.Windows.Forms.PictureBox exitPictureBox;
         private System.Windows.Forms.PictureBox dragPanel;
         private System.Windows.Forms.PictureBox loadPictureBox;
+        private System.Windows.Forms.PictureBox refreshPictureBox;
     }
 }
